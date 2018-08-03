@@ -1,11 +1,16 @@
 package com.example.demo2.entity.global;
 
 import com.example.demo2.Constant;
+import org.apache.tomcat.util.bcel.Const;
 
 public class RespBean<T> {
     String code;
     String msg;
     T data;
+
+    public static RespBean suc() {
+        return new RespBean<>(Constant.Code.Suc, Constant.Msg.Success);
+    }
 
     public static RespBean of(String code, String msg) {
         return new RespBean<>(code, msg);
@@ -22,7 +27,7 @@ public class RespBean<T> {
     }
 
     public RespBean() {
-        this(Constant.RespCode.Suc, "");
+        this(Constant.Code.Suc, "");
     }
 
     public RespBean(String code, String msg, T data) {
