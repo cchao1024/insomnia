@@ -12,8 +12,20 @@ public class RespBean<T> {
         return new RespBean<>(Constant.Code.Suc, Constant.Msg.Success);
     }
 
+    public static <T> RespBean<T> suc(T data) {
+        return new RespBean<T>(Constant.Code.Suc, Constant.Msg.Success).setData(data);
+    }
+
     public static RespBean of(String code, String msg) {
         return new RespBean<>(code, msg);
+    }
+
+    public static RespBean ofFail(String msg) {
+        return new RespBean<>(Constant.Code.Fail, msg);
+    }
+
+    public static RespBean ofError(String msg) {
+        return new RespBean<>(Constant.Code.Error, msg);
     }
 
     public static <T> RespBean<T> of(String code, String msg, T data) {
@@ -56,7 +68,8 @@ public class RespBean<T> {
         return data;
     }
 
-    public void setData(T data) {
+    public RespBean<T> setData(T data) {
         this.data = data;
+        return this;
     }
 }

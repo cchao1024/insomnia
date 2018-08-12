@@ -11,6 +11,6 @@ public class Constant {
    public interface Msg {
         String Empty_Param = "参数不能为空";
         String Success = "Success";
-        String Fail = "02";
+        String Has_Exisits = "该项已存在";
     }
 }
