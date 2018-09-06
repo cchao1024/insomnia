@@ -23,7 +23,7 @@ public class FallMusicController {
     @Autowired
     FallMusicRepository mFallMusicRepository;
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/getByPage")
     public RespListBean<FallMusic> getMusicByPage(@RequestParam(value = "page", defaultValue = "1") int page
             , @RequestParam(value = "pageSize", defaultValue = "30") int pageSize) {
         Page<FallMusic> data = mFallMusicRepository.findAll(PageRequest.of(page, pageSize, SortHelper.basicSortId()));

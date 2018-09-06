@@ -5,15 +5,15 @@ import org.springframework.boot.Banner;
 import java.util.List;
 
 public class FallIndex {
-    List<Banner> banners;
+    List<FallBanner> banners;
     List<FallImage> fallimages;
     List<FallMusic> music;
 
-    public List<Banner> getBanners() {
+    public List<FallBanner> getBanners() {
         return banners;
     }
 
-    public void setBanners(List<Banner> banners) {
+    public void setBanners(List<FallBanner> banners) {
         this.banners = banners;
     }
 

@@ -1,6 +1,7 @@
 package com.example.demo2.web;
 
 import com.example.demo2.Constant;
+import com.example.demo2.dao.FallBannerRepository;
 import com.example.demo2.entity.FallMusic;
 import com.example.demo2.entity.FallIndex;
 import com.example.demo2.entity.global.RespBean;
@@ -20,13 +21,15 @@ public class FallIndexController {
     FallMusicController fallMusicController;
     @Autowired
     FallImageController fallImageController;
+    @Autowired
+    FallBannerRepository fallBannerRepository;
 
     @RequestMapping(value = "/fallIndex")
     public RespBean<FallIndex> getFallIndex() {
-        FallIndex fallIndex=new FallIndex();
-        fallIndex.setBanners(new ArrayList<>());
-        fallIndex.setFallimages(fallImageController.getImageByPage(0,10).getData());
-        fallIndex.setMusic(fallMusicController.getMusicByPage(0,10).getData());
+        FallIndex fallIndex = new FallIndex();
+        fallIndex.setBanners(fallBannerRepository.findAll());
+        fallIndex.setFallimages(fallImageController.getImageByPage(0, 8).getData());
+        fallIndex.setMusic(fallMusicController.getMusicByPage(0, 6).getData());
         return RespBean.suc(fallIndex);
     }
 }

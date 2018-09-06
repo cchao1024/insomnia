@@ -17,6 +17,9 @@ public class FallMusic {
     private String src;
 
     @Column(nullable = false)
+    private String singer;
+
+    @Column(nullable = false)
     private int play_count;
 
     @Column(nullable = false)
@@ -72,5 +75,13 @@ public class FallMusic {
 
     public void setAdd_time(String add_time) {
         this.add_time = add_time;
+    }
+
+    public String getSinger() {
+        return singer;
+    }
+
+    public void setSinger(String singer) {
+        this.singer = singer;
     }
 }

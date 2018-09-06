@@ -19,7 +19,7 @@ public class FallImageController {
     @Autowired
     FallImageRepository mFallImageRepository;
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/getByPage")
     public RespListBean<FallImage> getImageByPage(@RequestParam(value = "page", defaultValue = "1") int page
             , @RequestParam(value = "pageSize", defaultValue = "30") int pageSize) {
         Page<FallImage> data = mFallImageRepository.findAll(PageRequest.of(page, pageSize, SortHelper.basicSortId()));
