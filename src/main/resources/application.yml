@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://95.169.23.128:3306/sleep?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2ddl:
+         auto=update
+  jackson:
+    default-property-inclusion: non_null
+server:
+  servlet:
+    context-path:  /sleep
