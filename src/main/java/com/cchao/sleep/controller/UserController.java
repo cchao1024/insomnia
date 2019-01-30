@@ -1,4 +1,4 @@
-package com.cchao.sleep.web;
+package com.cchao.sleep.controller;
 
 import com.cchao.sleep.dao.User;
 import com.cchao.sleep.repository.UserRepository;

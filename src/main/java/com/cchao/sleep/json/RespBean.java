@@ -1,6 +1,6 @@
 package com.cchao.sleep.json;
 
-import com.cchao.sleep.Constant;
+import com.cchao.sleep.constant.Constant;
 
 public class RespBean<T> {
     String code;
@@ -17,6 +17,10 @@ public class RespBean<T> {
 
     public static RespBean of(String code, String msg) {
         return new RespBean<>(code, msg);
+    }
+
+    public static RespBean of(int code, String msg) {
+        return new RespBean<>(String.valueOf(code), msg);
     }
 
     public static RespBean ofFail(String msg) {

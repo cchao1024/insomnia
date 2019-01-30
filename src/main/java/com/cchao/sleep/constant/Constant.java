@@ -1,4 +1,4 @@
-package com.cchao.sleep;
+package com.cchao.sleep.constant;
 
 public class Constant {
 

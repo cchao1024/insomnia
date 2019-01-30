@@ -1,8 +1,9 @@
-package com.cchao.sleep.web;
+package com.cchao.sleep.controller;
 
 import com.cchao.sleep.repository.FallBannerRepository;
 import com.cchao.sleep.dao.FallIndex;
 import com.cchao.sleep.json.RespBean;
+import com.cchao.sleep.service.FallService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FallIndexController {
 
     @Autowired
-    FallMusicController fallMusicController;
-    @Autowired
-    FallImageController fallImageController;
+    FallService mFallService;
     @Autowired
     FallBannerRepository fallBannerRepository;
 
@@ -21,8 +20,8 @@ public class FallIndexController {
     public RespBean<FallIndex> getFallIndex() {
         FallIndex fallIndex = new FallIndex();
         fallIndex.setBanners(fallBannerRepository.findAll());
-        fallIndex.setFallimages(fallImageController.getImageByPage(0, 8).getData());
-        fallIndex.setMusic(fallMusicController.getMusicByPage(0, 6).getData());
+        fallIndex.setFallimages(mFallService.getImageByPage(0, 8).getContent());
+        fallIndex.setMusic(mFallService.getMusicByPage(0, 6).getContent());
         return RespBean.suc(fallIndex);
     }
 }

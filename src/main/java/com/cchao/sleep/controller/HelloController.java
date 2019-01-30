@@ -1,4 +1,4 @@
-package com.cchao.sleep.web;
+package com.cchao.sleep.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

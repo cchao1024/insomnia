@@ -1,9 +1,12 @@
 package com.cchao.sleep.dao;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Fall_Music")
+@Data
 public class FallMusic {
 
     @Id
@@ -28,60 +31,7 @@ public class FallMusic {
     @Column(nullable = false)
     private String add_time;
 
+    @Column(nullable = false)
+    private long duration;
 
-    public int getPlay_count() {
-        return play_count;
-    }
-
-    public void setPlay_count(int play_count) {
-        this.play_count = play_count;
-    }
-
-    public String getCover_img() {
-        return cover_img;
-    }
-
-    public void setCover_img(String cover_img) {
-        this.cover_img = cover_img;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSrc() {
-        return src;
-    }
-
-    public void setSrc(String src) {
-        this.src = src;
-    }
-
-    public String getAdd_time() {
-        return add_time;
-    }
-
-    public void setAdd_time(String add_time) {
-        this.add_time = add_time;
-    }
-
-    public String getSinger() {
-        return singer;
-    }
-
-    public void setSinger(String singer) {
-        this.singer = singer;
-    }
 }
