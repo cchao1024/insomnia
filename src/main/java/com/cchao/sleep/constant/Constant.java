@@ -3,7 +3,7 @@ package com.cchao.sleep.constant;
 public class Constant {
 
    public interface Code {
-        String Suc = "00";
+        int Suc = 0;
         String Error = "01";
         String Fail = "02";
     }
