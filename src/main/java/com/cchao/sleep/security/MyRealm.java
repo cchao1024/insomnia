@@ -1,4 +1,4 @@
-package com.cchao.sleep.authority;
+package com.cchao.sleep.security;
 
 import com.cchao.sleep.dao.User;
 import com.cchao.sleep.service.UserService;
@@ -9,10 +9,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author : cchao
@@ -41,11 +37,11 @@ public class MyRealm extends AuthorizingRealm {
         User user = userService.findUserById(555);
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         simpleAuthorizationInfo.addRole(user.getRole());
-        Set<String> permission = new HashSet<>(Arrays.asList(user.getPermission().split(",")));
-        simpleAuthorizationInfo.addStringPermissions(permission);
+//        Set<String> permission = new HashSet<>(Arrays.asList(user.getPermission().split(",")));
+//        simpleAuthorizationInfo.addStringPermissions(permission);
         return simpleAuthorizationInfo;
     }
-
+//
     /**
      * 默认使用此方法进行用户名正确与否验证，错误抛出异常即可。
      */
@@ -58,12 +54,12 @@ public class MyRealm extends AuthorizingRealm {
             throw new AuthenticationException("token invalid");
         }
 
-        UserBean userBean = userService.getUser(username);
-        if (userBean == null) {
+        User user = userService.findUserByName(username);
+        if (user == null) {
             throw new AuthenticationException("User didn't existed!");
         }
 
-        if (!JWTUtil.verify(token, username, userBean.getPassword())) {
+        if (!JWTUtil.verify(token, username,user.getId(), user.getPassword())) {
             throw new AuthenticationException("Username or password error");
         }
 

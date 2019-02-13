@@ -1,24 +1,29 @@
 package com.cchao.sleep.dao;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
 @Data
+@DynamicUpdate
 public class User {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    private String nickname;
+
     private String password;
 
-    @Column(nullable = false)
+    private String role;
+
     private Integer age;
+
+    private String updateTime;
+
+    private String createTime;
 }

@@ -42,7 +42,11 @@ public class FallService {
         return mMusicRepository.save(fallImage);
     }
 
-    public void playMusic(long id) {
+    /**
+     * 点击播放 播放数量+1
+     * @param id id
+     */
+    public void onMusicPlayed(long id) {
         FallMusic fallMusic = mMusicRepository.getOne(id);
         fallMusic.setPlay_count(fallMusic.getPlay_count() + 1);
         mMusicRepository.save(fallMusic);

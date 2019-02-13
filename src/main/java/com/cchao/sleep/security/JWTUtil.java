@@ -1,11 +1,14 @@
-package com.cchao.sleep.authority;
+package com.cchao.sleep.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
+import com.cchao.sleep.dao.User;
+import org.apache.commons.lang3.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
@@ -13,10 +16,12 @@ import java.util.Date;
  * @version 2019-01-31
  */
 public class JWTUtil {
-    // 过期时间5分钟
-    private static final long EXPIRE_TIME = 5 * 60 * 1000;
+    // 过期时间1天
+    private static final long EXPIRE_TIME = 60 * 60 * 1000;
     private static final String USER_NAME = "userName";
     private static final String USER_ID = "userId";
+    private static final String HEADER_NAME = "Authorization";
+    private static final String BEARER = "Bearer";
 
     /**
      * 校验token是否正确
@@ -51,6 +56,17 @@ public class JWTUtil {
         } catch (JWTDecodeException e) {
             return null;
         }
+    }
+
+    /**
+     * 获得token中的信息无需secret解密也能获得
+     *
+     * @return token中包含的用户名
+     */
+    public static String getUsername(HttpServletRequest httpServletRequest) {
+//        String token = StringUtils.removeFirst(httpServletRequest.getHeader(HEADER_NAME), BEARER);
+        String token = httpServletRequest.getHeader(HEADER_NAME);
+        return getUsername(token);
     }
 
     /**

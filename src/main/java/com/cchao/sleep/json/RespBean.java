@@ -1,6 +1,5 @@
 package com.cchao.sleep.json;
 
-import com.cchao.sleep.constant.Constant;
 import com.cchao.sleep.constant.enums.Results;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,11 +12,15 @@ public class RespBean<T> {
     T data;
 
     public static RespBean suc() {
-        return new RespBean<>(Constant.Code.Suc, Constant.Msg.Success);
+        return new RespBean<>(Results.SUC);
     }
 
     public static <T> RespBean<T> suc(T data) {
         return new RespBean<T>(Results.SUC).setData(data);
+    }
+
+    public static RespBean fail(Results results) {
+        return new RespBean(results.getCode(),results.getMessage());
     }
 
     public static RespBean of(int code, String msg) {

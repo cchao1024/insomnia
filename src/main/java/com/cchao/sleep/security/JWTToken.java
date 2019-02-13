@@ -1,4 +1,4 @@
-package com.cchao.sleep.authority;
+package com.cchao.sleep.security;
 
 import org.apache.shiro.authc.AuthenticationToken;
 

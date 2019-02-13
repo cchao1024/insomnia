@@ -2,6 +2,7 @@ package com.cchao.sleep.controller;
 
 import com.cchao.sleep.constant.enums.Results;
 import com.cchao.sleep.dao.FallImage;
+import com.cchao.sleep.json.fall.FallIndex;
 import com.cchao.sleep.dao.FallMusic;
 import com.cchao.sleep.exception.CommonException;
 import com.cchao.sleep.json.fall.FallImageVo;
@@ -15,9 +16,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Fall的控制器，包含 图片和音频
+ */
 @RestController
 @RequestMapping(value = "/fall")
 public class FallController {
@@ -25,9 +28,21 @@ public class FallController {
     @Autowired
     FallService mFallService;
 
+    /**
+     * 首页数据
+     */
+    @RequestMapping(value = "/index")
+    public RespBean<FallIndex> getFallIndex() {
+        FallIndex fallIndex = new FallIndex();
+//        fallIndex.setBanners(fallBannerRepository.findAll());
+        fallIndex.setFallImages(mFallService.getImageByPage(0, 8).getContent());
+        fallIndex.setMusic(mFallService.getMusicByPage(0, 6).getContent());
+        return RespBean.suc(fallIndex);
+    }
+
     @RequestMapping(value = "/image/getByPage")
-    public RespListBean<FallImageVo> getImageByPage(@RequestParam(value = "page", defaultValue = "1") int page,
-                                                    @RequestParam(value = "pageSize", defaultValue = "30") int pageSize) {
+    public RespListBean<FallImageVo> getImageByPage(@RequestParam(value = "page", defaultValue = "1") int page
+            , @RequestParam(value = "pageSize", defaultValue = "30") int pageSize) {
 
         Page<FallImage> pageObj = mFallService.getImageByPage(page, pageSize);
         List<FallImageVo> categoryTypeList = pageObj.getContent().stream()
@@ -54,7 +69,6 @@ public class FallController {
     public RespListBean<FallMusicVo> getMusicByPage(@RequestParam(value = "page", defaultValue = "1") int page
             , @RequestParam(value = "pageSize", defaultValue = "30") int pageSize) {
 
-
         Page<FallMusic> pageObj = mFallService.getMusicByPage(page, pageSize);
         List<FallMusicVo> categoryTypeList = pageObj.getContent().stream()
                 .map(fallImage -> {
@@ -68,7 +82,7 @@ public class FallController {
 
     @RequestMapping(value = "/music/play")
     public RespBean updatePlayCount(@RequestParam(value = "id") long id) {
-        mFallService.playMusic(id);
+        mFallService.onMusicPlayed(id);
         return RespBean.suc();
     }
 }

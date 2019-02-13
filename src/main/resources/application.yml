@@ -7,6 +7,7 @@ spring:
   jpa:
     show-sql: true
     properties:
+      enable_lazy_load_no_trans: true
       hibernate:
         hbm2ddl:
          auto=update
@@ -15,3 +16,8 @@ spring:
 server:
   servlet:
     context-path:  /sleep
+
+projectUrl:
+  expire_time: http://sell.natapp4.cc
+  wechatOpenAuthorize: http://sell.natapp4.cc
+  sell: http://sell.natapp4.cc

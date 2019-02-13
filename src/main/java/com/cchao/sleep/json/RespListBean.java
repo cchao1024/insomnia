@@ -1,7 +1,10 @@
 package com.cchao.sleep.json;
 
+import com.cchao.sleep.constant.enums.Results;
 import com.cchao.sleep.dao.FallImage;
 import com.cchao.sleep.util.SortHelper;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -11,6 +14,10 @@ public class RespListBean<T> extends RespBean<List<T>> {
 
     int totalPage;
     int curPage;
+
+    public RespListBean(Results results) {
+        super(results);
+    }
 
     public int getTotalPage() {
         return totalPage;
@@ -33,7 +40,7 @@ public class RespListBean<T> extends RespBean<List<T>> {
     }
 
     public static <T> RespListBean<T> of(Page pageObj, List<T> data, int curPage) {
-        RespListBean<T> respListBean = new RespListBean<>();
+        RespListBean<T> respListBean = new RespListBean<>(Results.SUC);
         respListBean.setCurPage(curPage);
         respListBean.setTotalPage(pageObj.getTotalPages());
         respListBean.setData(data);
