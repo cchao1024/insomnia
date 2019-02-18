@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByName(String name);
+    User findByEmail(String name);
 
     User findByNameAndAge(String name, Integer age);
 

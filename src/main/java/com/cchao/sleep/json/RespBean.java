@@ -4,7 +4,6 @@ import com.cchao.sleep.constant.enums.Results;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@Data
 @AllArgsConstructor
 public class RespBean<T> {
     int code;
@@ -16,11 +15,15 @@ public class RespBean<T> {
     }
 
     public static <T> RespBean<T> suc(T data) {
-        return new RespBean<T>(Results.SUC).setData(data);
+        return RespBean.suc(data, Results.SUC.getMessage());
+    }
+
+    public static <T> RespBean<T> suc(T data, String msg) {
+        return new RespBean<T>(Results.SUC).setData(data).setMsg(msg);
     }
 
     public static RespBean fail(Results results) {
-        return new RespBean(results.getCode(),results.getMessage());
+        return new RespBean(results.getCode(), results.getMessage());
     }
 
     public static RespBean of(int code, String msg) {
@@ -38,6 +41,11 @@ public class RespBean<T> {
 
     public RespBean<T> setData(T data) {
         this.data = data;
+        return this;
+    }
+
+    public RespBean<T> setMsg(String msg) {
+        this.msg = msg;
         return this;
     }
 }

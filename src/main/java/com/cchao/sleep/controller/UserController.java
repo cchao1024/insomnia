@@ -1,17 +1,15 @@
 package com.cchao.sleep.controller;
 
 import com.cchao.sleep.constant.enums.Results;
+import com.cchao.sleep.json.user.LoginResp;
 import com.cchao.sleep.security.JWTUtil;
 import com.cchao.sleep.dao.User;
-import com.cchao.sleep.exception.UnauthorizedException;
 import com.cchao.sleep.json.RespBean;
 import com.cchao.sleep.service.UserService;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,16 +27,24 @@ public class UserController {
     /**
      * login
      *
-     * @param name     name
+     * @param email     email
      * @param password password
      * @return suc
      */
     @RequestMapping(value = "/login")
-    public RespBean login(@RequestParam String name, @RequestParam String password) {
-        User user = mUserService.findUserByName(name);
+    public RespBean login(@RequestParam String email, @RequestParam String password) {
+        User user = mUserService.findUserByEmail(email);
 
         if (user.getPassword().equals(password)) {
-            return RespBean.suc(JWTUtil.sign(name, user.getId(), password));
+            String token = JWTUtil.sign(email, user.getId(), password);
+
+            LoginResp loginResp = new LoginResp();
+            loginResp.setAge(user.getAge());
+            loginResp.setAvatar(user.getNickname());
+            loginResp.setEmail(user.getEmail());
+            loginResp.setToken(token);
+
+            return RespBean.suc(loginResp).setMsg("登录成功");
         } else {
             return RespBean.fail(Results.LOGIN_FAIL);
         }
@@ -47,14 +53,21 @@ public class UserController {
     /**
      * signUp
      *
-     * @param name     name
+     * @param email     name
      * @param password password
      */
     @RequestMapping(value = "/signup")
-    public RespBean signUp(@RequestParam String name, @RequestParam String password) {
-        User user = mUserService.signUp(name, password);
+    public RespBean signUp(@RequestParam String email, @RequestParam String password) {
+        User user = mUserService.signUp(email, password);
+        String token = JWTUtil.sign(email, user.getId(), password);
 
-        return RespBean.suc(JWTUtil.sign(name, user.getId(), password));
+        LoginResp loginResp = new LoginResp();
+        loginResp.setAge(user.getAge());
+        loginResp.setAvatar(user.getNickname());
+        loginResp.setEmail(user.getEmail());
+        loginResp.setToken(token);
+
+        return RespBean.suc(loginResp).setMsg("注册成功");
     }
 
     /**

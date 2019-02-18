@@ -24,20 +24,20 @@ public class UserService {
         return mUserRepository.getOne(id);
     }
 
-    public User findUserByName(String name) {
-        return mUserRepository.findByName(name);
+    public User findUserByEmail(String name) {
+        return mUserRepository.findByEmail(name);
     }
 
     /**
      * 注册
      */
-    public User signUp(String name, String password) {
-        if (!Pattern.matches("\\w{4,12}", name)) {
+    public User signUp(String email, String password) {
+        if (!Pattern.matches("\\w{4,12}", email)) {
             throw CommonException.of(Results.FAIL.msg("用户名需为4到12位英文和数字组合"));
         }
 
         // 用户名已被占用
-        if (mUserRepository.findByName(name) != null) {
+        if (mUserRepository.findByEmail(email) != null) {
             throw CommonException.of(Results.FAIL.msg("用户名已被占用"));
         }
 
@@ -46,7 +46,7 @@ public class UserService {
         }
 
         User user = new User();
-        user.setName(name);
+        user.setEmail(email);
         user.setPassword(password);
         user.setRole("user");
         return mUserRepository.save(user);
@@ -55,8 +55,8 @@ public class UserService {
     /**
      * 更新用户信息
      */
-    public User saveUserInfo(String name, Map<String, String> map) {
-        User user = mUserRepository.findUser(name);
+    public User saveUserInfo(String email, Map<String, String> map) {
+        User user = mUserRepository.findByEmail(email);
         if (user == null) {
             throw CommonException.of(Results.PARAM_ERROR.msg("用户不存在"));
         }
