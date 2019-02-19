@@ -5,6 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
+import com.cchao.sleep.constant.Constant;
 import com.cchao.sleep.dao.User;
 import org.apache.commons.lang3.StringUtils;
 
@@ -18,8 +19,7 @@ import java.util.Date;
 public class JWTUtil {
     // 过期时间1天
     private static final long EXPIRE_TIME = 60 * 60 * 1000;
-    private static final String USER_NAME = "userName";
-    private static final String USER_ID = "userId";
+
     private static final String HEADER_NAME = "Authorization";
     private static final String BEARER = "Bearer";
 
@@ -34,8 +34,8 @@ public class JWTUtil {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             JWTVerifier verifier = JWT.require(algorithm)
-                    .withClaim(USER_NAME, username)
-                    .withClaim(USER_ID, userId)
+                    .withClaim(Constant.USER_NAME, username)
+                    .withClaim(Constant.USER_ID, userId)
                     .build();
             DecodedJWT jwt = verifier.verify(token);
             return true;
@@ -52,7 +52,7 @@ public class JWTUtil {
     public static String getUsername(String token) {
         try {
             DecodedJWT jwt = JWT.decode(token);
-            return jwt.getClaim(USER_NAME).asString();
+            return jwt.getClaim(Constant.USER_NAME).asString();
         } catch (JWTDecodeException e) {
             return null;
         }
@@ -77,7 +77,7 @@ public class JWTUtil {
     public static long getUserId(String token) {
         try {
             DecodedJWT jwt = JWT.decode(token);
-            return jwt.getClaim(USER_ID).asLong();
+            return jwt.getClaim(Constant.USER_ID).asLong();
         } catch (JWTDecodeException e) {
             return 0;
         }
@@ -95,8 +95,8 @@ public class JWTUtil {
         Algorithm algorithm = Algorithm.HMAC256(secret);
         // 附带username信息
         return JWT.create()
-                .withClaim(USER_NAME, username)
-                .withClaim(USER_ID, id)
+                .withClaim(Constant.USER_NAME, username)
+                .withClaim(Constant.USER_ID, id)
                 .withExpiresAt(date)
                 .sign(algorithm);
     }
