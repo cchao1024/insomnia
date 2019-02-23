@@ -1,5 +1,6 @@
 package com.cchao.sleep.controller;
 
+import com.cchao.sleep.bean.req.UserLoginDTO;
 import com.cchao.sleep.constant.enums.Results;
 import com.cchao.sleep.json.RespBean;
 import com.cchao.sleep.util.Printer;
@@ -28,7 +29,10 @@ public class UserControllerTest {
         String name = "test1";
         String password = "test1_pwd";
 
-        RespBean respBean = userController.login(name, password);
+        UserLoginDTO params = new UserLoginDTO();
+        params.setEmail(name);
+        params.setPassword(password);
+        RespBean respBean = userController.login(params);
         Printer.print("UserControllerTest#login", respBean.getMsg());
         Printer.print("UserControllerTest#login", respBean.getData());
         Assert.assertEquals(respBean.getCode(), (int) Results.SUC.getCode());
