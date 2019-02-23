@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.Map;
 
 /**
@@ -38,7 +39,7 @@ public class UserController {
      */
     @ApiOperation(value = "用户登录", notes = "用户登录接口")
     @PostMapping("/login")
-    public RespBean login(UserLoginDTO params) {
+    public RespBean login(@Valid @RequestBody UserLoginDTO params) {
         return RespBean.suc(mUserService.login(params)).setMsg("登录成功");
     }
 
