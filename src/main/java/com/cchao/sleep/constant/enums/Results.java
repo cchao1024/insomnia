@@ -1,5 +1,6 @@
 package com.cchao.sleep.constant.enums;
 
+import com.cchao.sleep.exception.ErrorMessage;
 import lombok.Getter;
 
 /**
@@ -7,7 +8,7 @@ import lombok.Getter;
  * @version 2019-01-30
  */
 @Getter
-public enum Results {
+public enum Results implements ErrorMessage {
 
     // 0+ 通用异常
     SUC(0, "请求成功"),
