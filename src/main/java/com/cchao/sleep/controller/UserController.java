@@ -6,6 +6,8 @@ import com.cchao.sleep.json.RespBean;
 import com.cchao.sleep.json.user.LoginResp;
 import com.cchao.sleep.security.JWTUtil;
 import com.cchao.sleep.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -20,6 +22,7 @@ import java.util.Map;
 /**
  * The type User controller.
  */
+@Api(tags = "用户接口", description = "用户相关接口")
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
@@ -27,14 +30,14 @@ public class UserController {
     @Autowired
     private UserService mUserService;
 
-
     /**
      * login
      *
      * @param params the params
      * @return suc resp bean
      */
-    @RequestMapping(value = "/login")
+    @ApiOperation(value = "用户登录", notes = "用户登录接口")
+    @PostMapping("/login")
     public RespBean login(UserLoginDTO params) {
         return RespBean.suc(mUserService.login(params)).setMsg("登录成功");
     }

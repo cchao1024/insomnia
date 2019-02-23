@@ -7,10 +7,7 @@ import org.apache.shiro.ShiroException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
 
@@ -18,7 +15,7 @@ import java.util.stream.Collectors;
  * @author : cchao
  * @version 2019-01-30
  */
-@ControllerAdvice
+@RestControllerAdvice
 public class ExceptionHandlers {
 
     /**
