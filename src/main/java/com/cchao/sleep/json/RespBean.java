@@ -4,6 +4,7 @@ import com.cchao.sleep.constant.enums.Results;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+@Data
 @AllArgsConstructor
 public class RespBean<T> {
     int code;
