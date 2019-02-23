@@ -10,7 +10,7 @@ import lombok.Getter;
  * @since 1.0
  */
 @Getter
-public enum SystemErrorMessage {
+public enum SystemErrorMessage implements ErrorMessage {
 
     /**
      * 100000 用户相关
