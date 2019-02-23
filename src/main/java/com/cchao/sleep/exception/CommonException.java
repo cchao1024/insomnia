@@ -1,6 +1,5 @@
 package com.cchao.sleep.exception;
 
-import com.cchao.sleep.constant.enums.Results;
 import lombok.Getter;
 
 /**
@@ -12,10 +11,9 @@ public class CommonException extends RuntimeException{
 
     private Integer code;
 
-    public CommonException(Results results) {
-        super(results.getMessage());
-
-        this.code = results.getCode();
+    public CommonException(ErrorMessage errorMessage) {
+        super(errorMessage.getMessage());
+        this.code = errorMessage.getCode();
     }
 
     public CommonException(Integer code, String message) {
@@ -23,7 +21,7 @@ public class CommonException extends RuntimeException{
         this.code = code;
     }
 
-    public static CommonException of(Results result) {
-        return new CommonException(result);
+    public static CommonException of(ErrorMessage errorMessage) {
+        return new CommonException(errorMessage);
     }
 }
