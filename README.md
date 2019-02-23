@@ -1,5 +1,6 @@
-<<<<<<< HEAD
-#Sleep
-=======
-#Sleep_Server
->>>>>>> 276cfa39b17892b0ccfbe79320a9dbbf9b309f1a
+# Sleep_Server
+
+## 快速上手
+
+**文档**  
+运行系统后, 通过浏览器打开[swagger](http://localhost:8080/sleep/swagger-ui.html#/).
