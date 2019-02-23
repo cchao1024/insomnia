@@ -48,6 +48,7 @@ public class UserController {
      */
     @RequestMapping(value = "/signup")
     public RespBean signUp(@RequestParam String email, @RequestParam String password) {
+        //FIXME 业务下沉到service层
         User user = mUserService.signUp(email, password);
         String token = JWTUtil.sign(email, user.getId(), password);
 
