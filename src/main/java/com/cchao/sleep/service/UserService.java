@@ -1,9 +1,14 @@
 package com.cchao.sleep.service;
 
+import com.cchao.sleep.bean.req.UserLoginDTO;
 import com.cchao.sleep.constant.enums.Results;
 import com.cchao.sleep.dao.User;
 import com.cchao.sleep.exception.CommonException;
+import com.cchao.sleep.exception.SystemErrorMessage;
+import com.cchao.sleep.json.user.LoginResp;
 import com.cchao.sleep.repository.UserRepository;
+import com.cchao.sleep.security.JWTUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +29,31 @@ public class UserService {
         return mUserRepository.getOne(id);
     }
 
-    public User findUserByEmail(String name) {
-        return mUserRepository.findByEmail(name);
+    public User findUserByEmail(String email) {
+        return
+                mUserRepository.findByEmail(email)
+                        .orElseThrow(() -> new CommonException(SystemErrorMessage.USER_NOT_EXISTED));
+    }
+
+    public LoginResp login(UserLoginDTO params) {
+        String
+                email = params.getEmail(),
+                password = params.getPassword();
+
+        User user = findUserByEmail(email);
+        boolean validPassword = StringUtils.equals(user.getPassword(), password);
+        if (validPassword) {
+            String token = JWTUtil.sign(email, user.getId(), password);
+
+            return
+                    new LoginResp()
+                            .setAge(user.getAge())
+                            .setNikeName(user.getNickname())
+                            .setEmail(email)
+                            .setToken(token);
+        } else {
+            throw new CommonException(SystemErrorMessage.USER_PASSWORD_INVALID);
+        }
     }
 
     /**
@@ -56,10 +84,7 @@ public class UserService {
      * 更新用户信息
      */
     public User saveUserInfo(String email, Map<String, String> map) {
-        User user = mUserRepository.findByEmail(email);
-        if (user == null) {
-            throw CommonException.of(Results.PARAM_ERROR.msg("用户不存在"));
-        }
+        User user = findUserByEmail(email);
 
         try {
             for (Map.Entry<String, String> entry : map.entrySet()) {
