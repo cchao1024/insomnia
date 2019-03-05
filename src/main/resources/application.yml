@@ -15,9 +15,7 @@ spring:
     default-property-inclusion: non_null
 server:
   servlet:
-    context-path:  /sleep
+    context-path:  /insomnia
 
 projectUrl:
-  expire_time: http://sell.natapp4.cc
-  wechatOpenAuthorize: http://sell.natapp4.cc
-  sell: http://sell.natapp4.cc
+  expire_time:
