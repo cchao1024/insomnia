@@ -1,10 +1,6 @@
-package com.cchao.insomnia.json.fall;
+package com.cchao.insomnia.resp.fall;
 
 import lombok.Data;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 /**
  * @author : cchao

@@ -1,4 +1,4 @@
-package com.cchao.insomnia.json.wish;
+package com.cchao.insomnia.resp.wish;
 
 /**
  * @author : cchao

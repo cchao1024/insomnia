@@ -2,8 +2,8 @@ package com.cchao.insomnia.controller;
 
 import com.cchao.insomnia.bean.req.UserLoginDTO;
 import com.cchao.insomnia.dao.User;
-import com.cchao.insomnia.json.RespBean;
-import com.cchao.insomnia.json.user.LoginResp;
+import com.cchao.insomnia.resp.RespBean;
+import com.cchao.insomnia.resp.user.LoginResp;
 import com.cchao.insomnia.security.JWTUtil;
 import com.cchao.insomnia.service.UserService;
 import io.swagger.annotations.Api;

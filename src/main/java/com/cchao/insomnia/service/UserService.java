@@ -5,7 +5,7 @@ import com.cchao.insomnia.constant.enums.Results;
 import com.cchao.insomnia.dao.User;
 import com.cchao.insomnia.exception.CommonException;
 import com.cchao.insomnia.exception.SystemErrorMessage;
-import com.cchao.insomnia.json.user.LoginResp;
+import com.cchao.insomnia.resp.user.LoginResp;
 import com.cchao.insomnia.repository.UserRepository;
 import com.cchao.insomnia.security.JWTUtil;
 import org.apache.commons.lang3.StringUtils;

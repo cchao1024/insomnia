@@ -2,7 +2,7 @@ package com.cchao.insomnia.handler;
 
 import com.cchao.insomnia.exception.CommonException;
 import com.cchao.insomnia.exception.UnauthorizedException;
-import com.cchao.insomnia.json.RespBean;
+import com.cchao.insomnia.resp.RespBean;
 import org.apache.shiro.ShiroException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ public class ExceptionHandlers {
     /**
      * 通用异常拦截
      *
-     * @return json
+     * @return resp
      */
     @ResponseBody
     @ExceptionHandler(value = CommonException.class)

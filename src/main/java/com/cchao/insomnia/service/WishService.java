@@ -5,8 +5,7 @@ import com.cchao.insomnia.constant.enums.WishType;
 import com.cchao.insomnia.dao.FallImage;
 import com.cchao.insomnia.dao.WishImage;
 import com.cchao.insomnia.exception.CommonException;
-import com.cchao.insomnia.json.convertor.FallConverter;
-import com.cchao.insomnia.json.fall.FallImageVo;
+import com.cchao.insomnia.resp.fall.FallImageVo;
 import com.cchao.insomnia.repository.FallImageRepository;
 import com.cchao.insomnia.repository.WishRepository;
 import com.cchao.insomnia.security.SecurityHelper;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**

@@ -1,4 +1,4 @@
-package com.cchao.insomnia.json.user;
+package com.cchao.insomnia.resp.user;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

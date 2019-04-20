@@ -2,15 +2,17 @@ package com.cchao.insomnia.controller;
 
 import com.cchao.insomnia.bean.req.UserLoginDTO;
 import com.cchao.insomnia.constant.enums.Results;
-import com.cchao.insomnia.json.RespBean;
+import com.cchao.insomnia.resp.RespBean;
 import com.cchao.insomnia.util.Printer;
-import lombok.extern.slf4j.Slf4j;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author : cchao

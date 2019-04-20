@@ -1,4 +1,4 @@
-package com.cchao.insomnia.json;
+package com.cchao.insomnia.resp;
 
 import com.cchao.insomnia.constant.enums.Results;
 import lombok.AllArgsConstructor;

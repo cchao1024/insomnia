@@ -1,8 +1,7 @@
-package com.cchao.insomnia.json.convertor;
+package com.cchao.insomnia.resp.convertor;
 
 import com.cchao.insomnia.dao.FallImage;
-import com.cchao.insomnia.dao.WishImage;
-import com.cchao.insomnia.json.fall.FallImageVo;
+import com.cchao.insomnia.resp.fall.FallImageVo;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;

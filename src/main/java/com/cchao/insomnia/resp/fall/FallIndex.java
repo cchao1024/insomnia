@@ -1,4 +1,4 @@
-package com.cchao.insomnia.json.fall;
+package com.cchao.insomnia.resp.fall;
 
 import com.cchao.insomnia.dao.FallBanner;
 import com.cchao.insomnia.dao.FallImage;
