@@ -1,0 +1,55 @@
+package me.cchao.insomnia.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+
+import lombok.extern.slf4j.Slf4j;
+import me.cchao.insomnia.dao.FallImage;
+import me.cchao.insomnia.dao.FallMusic;
+import me.cchao.insomnia.repository.FallImageRepository;
+import me.cchao.insomnia.repository.FallMusicRepository;
+import me.cchao.insomnia.util.SortHelper;
+
+/**
+ * @author : cchao
+ * @version 1/30/19
+ */
+@Service
+@Slf4j
+public class FallService {
+
+    @Autowired
+    FallImageRepository mImageRepository;
+    @Autowired
+    FallMusicRepository mMusicRepository;
+
+    public Page<FallImage> getImageByPage(int page, int pageSize) {
+        Page<FallImage> data = mImageRepository.findAll(PageRequest.of(page, pageSize, SortHelper.basicSortId()));
+        return data;
+    }
+
+    public FallImage save(FallImage fallImage) {
+        return mImageRepository.save(fallImage);
+    }
+
+    public Page<FallMusic> getMusicByPage(int page, int pageSize) {
+        Page<FallMusic> data = mMusicRepository.findAll(PageRequest.of(page, pageSize, SortHelper.basicSortId()));
+        return data;
+    }
+
+    public FallMusic save(FallMusic fallImage) {
+        return mMusicRepository.save(fallImage);
+    }
+
+    /**
+     * 点击播放 播放数量+1
+     * @param id id
+     */
+    public void onMusicPlayed(long id) {
+        FallMusic fallMusic = mMusicRepository.getOne(id);
+        fallMusic.setPlay_count(fallMusic.getPlay_count() + 1);
+        mMusicRepository.save(fallMusic);
+    }
+}
