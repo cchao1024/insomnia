@@ -26,8 +26,6 @@ public class JWTUtil {
     // 过期时间
     private static final long EXPIRE_TIME = 100 * 24 * 3600 * 1000;
 
-    private static final String BEARER = "Bearer";
-
     @Autowired
     UserService userService;
 
@@ -74,11 +72,11 @@ public class JWTUtil {
     public static long getUserId(HttpServletRequest httpServletRequest) {
         return getUserId(getToken(httpServletRequest));
     }
-        /**
-         * 获得token中的信息无需secret解密也能获得
-         *
-         * @return token中包含的用户名
-         */
+    /**
+     * 获得token中的信息无需secret解密也能获得
+     *
+     * @return token中包含的用户名
+     */
     public static long getUserId(String token) {
         try {
             DecodedJWT jwt = JWT.decode(token);

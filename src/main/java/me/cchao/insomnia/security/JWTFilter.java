@@ -89,7 +89,6 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
                 executeLogin(request, response);
             } catch (Exception e) {
                 Logs.logException("response401", ((HttpServletRequest) request).getRequestURI(), e.getMessage());
-                e.printStackTrace();
                 throw new UnauthorizedException("token error");
             }
         }

@@ -1,16 +1,18 @@
 package me.cchao.insomnia.dao;
 
-import me.cchao.insomnia.constant.enums.WishType;
-import lombok.Data;
-
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import lombok.Data;
+import me.cchao.insomnia.constant.enums.WishType;
 
 @Entity
 @Data
 @DynamicUpdate
-public class WishImage {
+public class WishImage extends Auditable {
     @Id
     @GeneratedValue
     private Long id;
@@ -22,8 +24,4 @@ public class WishImage {
     private Long userId;
 
     private String url;
-
-    private String updateTime;
-
-    private String createTime;
 }

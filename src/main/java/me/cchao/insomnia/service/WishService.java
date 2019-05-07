@@ -1,22 +1,25 @@
 package me.cchao.insomnia.service;
 
-import me.cchao.insomnia.constant.enums.Results;
-import me.cchao.insomnia.constant.enums.WishType;
-import me.cchao.insomnia.dao.FallImage;
-import me.cchao.insomnia.dao.WishImage;
-import me.cchao.insomnia.exception.CommonException;
-import me.cchao.insomnia.bean.resp.fall.FallImageVo;
-import me.cchao.insomnia.repository.FallImageRepository;
-import me.cchao.insomnia.repository.WishRepository;
-import me.cchao.insomnia.security.SecurityHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import me.cchao.insomnia.bean.resp.fall.FallImageVo;
+import me.cchao.insomnia.constant.enums.Results;
+import me.cchao.insomnia.constant.enums.WishType;
+import me.cchao.insomnia.dao.FallImage;
+import me.cchao.insomnia.dao.WishImage;
+import me.cchao.insomnia.exception.CommonException;
+import me.cchao.insomnia.repository.FallImageRepository;
+import me.cchao.insomnia.repository.WishRepository;
+import me.cchao.insomnia.security.SecurityHelper;
 
 /**
  * @author : cchao
@@ -38,7 +41,7 @@ public class WishService {
         WishImage wishImage = new WishImage();
         wishImage.setContentId(id);
         wishImage.setType(type);
-        wishImage.setUrl(optionalFallImage.get().getUrl());
+        wishImage.setUrl(optionalFallImage.get().getSrc());
         wishImage.setUserId(SecurityHelper.getUserId());
         mWishRepository.save(wishImage);
     }

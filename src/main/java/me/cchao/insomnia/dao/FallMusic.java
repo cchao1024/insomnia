@@ -1,35 +1,27 @@
 package me.cchao.insomnia.dao;
 
-import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.Data;
 
 @Entity
 @Data
 @DynamicUpdate
-public class FallMusic {
+public class FallMusic extends Auditable {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
-    private String name;
-
-    private String src;
-
-    private String singer;
-
-    private int play_count;
-
-    private String cover_img;
-
-    private String add_time;
-
-    private long duration;
-
-    private Date createTime;
-
-    private Date updateTime;
+    String name;
+    String src;
+    String singer;
+    int play_count;
+    int like_count;
+    String cover_img;
 }

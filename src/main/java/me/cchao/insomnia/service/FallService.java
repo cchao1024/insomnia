@@ -2,15 +2,19 @@ package me.cchao.insomnia.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import lombok.extern.slf4j.Slf4j;
+import me.cchao.insomnia.bean.req.PageDTO;
+import me.cchao.insomnia.bean.resp.RespListBean;
+import me.cchao.insomnia.config.GlobalConfig;
 import me.cchao.insomnia.dao.FallImage;
 import me.cchao.insomnia.dao.FallMusic;
 import me.cchao.insomnia.repository.FallImageRepository;
 import me.cchao.insomnia.repository.FallMusicRepository;
-import me.cchao.insomnia.util.SortHelper;
 
 /**
  * @author : cchao
@@ -25,26 +29,40 @@ public class FallService {
     @Autowired
     FallMusicRepository mMusicRepository;
 
-    public Page<FallImage> getImageByPage(int page, int pageSize) {
-        Page<FallImage> data = mImageRepository.findAll(PageRequest.of(page, pageSize, SortHelper.basicSortId()));
-        return data;
+    public RespListBean<FallImage> getImageByPage(PageDTO pageDTO) {
+        Page<FallImage> page = mImageRepository.findAll(pageDTO.toPageable());
+
+        List<FallImage> list = page.getContent().stream()
+            .map(fallImage -> {
+                fallImage.setSrc(GlobalConfig.joinRemotePath(fallImage.getSrc()));
+                return fallImage;
+            }).collect(Collectors.toList());
+
+        return RespListBean.of(page, list, pageDTO.getPage());
+    }
+
+    public RespListBean<FallMusic> getMusicByPage(PageDTO pageDTO) {
+        Page<FallMusic> page = mMusicRepository.findAll(pageDTO.toPageable());
+
+        List<FallMusic> list = page.getContent().stream()
+            .map(music -> {
+                music.setSrc(GlobalConfig.joinRemotePath(music.getSrc()));
+                return music;
+            }).collect(Collectors.toList());
+        return RespListBean.of(page, list, pageDTO.getPage());
     }
 
     public FallImage save(FallImage fallImage) {
         return mImageRepository.save(fallImage);
     }
 
-    public Page<FallMusic> getMusicByPage(int page, int pageSize) {
-        Page<FallMusic> data = mMusicRepository.findAll(PageRequest.of(page, pageSize, SortHelper.basicSortId()));
-        return data;
-    }
-
-    public FallMusic save(FallMusic fallImage) {
-        return mMusicRepository.save(fallImage);
+    public FallMusic save(FallMusic music) {
+        return mMusicRepository.save(music);
     }
 
     /**
      * 点击播放 播放数量+1
+     *
      * @param id id
      */
     public void onMusicPlayed(long id) {

@@ -1,5 +1,6 @@
 package me.cchao.insomnia.bean.req;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
@@ -15,8 +16,10 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @AllArgsConstructor
 public class PageDTO {
-    int page;
-    int pageSize;
+    @Range(min = 1, message = "页码需大于1")
+    int page = 1;
+    @Range(min = 5, max = 100, message = "页大小为 5-100 之间")
+    int pageSize = 10;
 
     public Pageable toPageable() {
         return PageRequest.of(page, pageSize);

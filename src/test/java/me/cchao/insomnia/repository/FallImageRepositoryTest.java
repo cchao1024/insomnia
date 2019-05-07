@@ -24,7 +24,7 @@ public class FallImageRepositoryTest {
     @Test
     public void updateTest() {
         FallImage fallImage = fallImageRepository.findById(3L).get();
-        log.debug(fallImage.getUrl());
+        log.debug(fallImage.getSrc());
         fallImage.setHeight(fallImage.getHeight()+10000);
         FallImage result = fallImageRepository.save(fallImage);
         Assert.assertNotNull(result);
@@ -36,7 +36,7 @@ public class FallImageRepositoryTest {
         FallImage fallImage = new FallImage();
         fallImage.setHeight(9999);
         fallImage.setWidth(9999);
-        fallImage.setUrl("xxx");
+        fallImage.setSrc("xxx");
         FallImage result = fallImageRepository.save(fallImage);
         Assert.assertNotNull(result);
 

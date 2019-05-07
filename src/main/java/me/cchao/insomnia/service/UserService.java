@@ -1,15 +1,5 @@
 package me.cchao.insomnia.service;
 
-import me.cchao.insomnia.bean.req.user.UserLoginDTO;
-import me.cchao.insomnia.bean.req.user.UserSignUpDTO;
-import me.cchao.insomnia.bean.resp.user.LoginResp;
-import me.cchao.insomnia.constant.enums.Results;
-import me.cchao.insomnia.dao.User;
-import me.cchao.insomnia.exception.CommonException;
-import me.cchao.insomnia.exception.SystemErrorMessage;
-import me.cchao.insomnia.repository.UserRepository;
-import me.cchao.insomnia.security.JWTUtil;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -19,6 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 import lombok.extern.slf4j.Slf4j;
+import me.cchao.insomnia.bean.req.user.UserLoginDTO;
+import me.cchao.insomnia.bean.req.user.UserSignUpDTO;
+import me.cchao.insomnia.bean.resp.user.LoginResp;
+import me.cchao.insomnia.config.GlobalConfig;
+import me.cchao.insomnia.constant.enums.Results;
+import me.cchao.insomnia.dao.User;
+import me.cchao.insomnia.exception.CommonException;
+import me.cchao.insomnia.exception.SystemErrorMessage;
+import me.cchao.insomnia.repository.UserRepository;
+import me.cchao.insomnia.security.JWTUtil;
 
 /**
  * @author : cchao
@@ -35,7 +35,7 @@ public class UserService {
     @Cacheable(key = "'user_id_' + #id", unless = "#result eq null")
     public User findUserById(Long id) {
         log.info("UserService#findUserById:" + id);
-        return mUserRepository.getOne(id);
+        return GlobalConfig.joinRemotePath(mUserRepository.getOne(id));
     }
 
     public void increaseLike(Long id) {
@@ -47,8 +47,8 @@ public class UserService {
     @Cacheable(key = "'user_email_' + #id", unless = "#result eq null")
     public User findUserByEmail(String email) {
         log.info("UserService#findUserByEmail:" + email);
-        return mUserRepository.findByEmail(email)
-            .orElse(null);
+        return GlobalConfig.joinRemotePath(mUserRepository.findByEmail(email)
+            .orElse(null));
     }
 
     public LoginResp login(UserLoginDTO params) {

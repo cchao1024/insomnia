@@ -2,8 +2,6 @@ package me.cchao.insomnia.dao;
 
 import org.hibernate.annotations.DynamicUpdate;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +20,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @DynamicUpdate
-public class Reply {
+public class Reply extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,8 +35,6 @@ public class Reply {
     String images;
 
     int likeCount;
-    Date createTime;
-    Date updateTime;
 
     public Reply increaseLike() {
         likeCount++;
