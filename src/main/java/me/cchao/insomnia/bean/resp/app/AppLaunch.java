@@ -1,9 +1,8 @@
 package me.cchao.insomnia.bean.resp.app;
 
-import me.cchao.insomnia.bean.resp.user.LoginResp;
-
 import lombok.Data;
 import lombok.experimental.Accessors;
+import me.cchao.insomnia.bean.resp.user.UpdateUser;
 
 /**
  * app启动初始化参数
@@ -15,6 +14,6 @@ import lombok.experimental.Accessors;
 public class AppLaunch {
     int lastAndroidVersion;
     String versionUpdateMsg;
-    LoginResp userInfo;
+    UpdateUser userInfo;
 
 }

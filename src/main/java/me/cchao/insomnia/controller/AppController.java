@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import me.cchao.insomnia.bean.resp.RespBean;
 import me.cchao.insomnia.bean.resp.app.AppLaunch;
-import me.cchao.insomnia.bean.resp.user.LoginResp;
+import me.cchao.insomnia.bean.resp.user.UpdateUser;
 import me.cchao.insomnia.constant.Constant;
 import me.cchao.insomnia.security.JWTUtil;
 import me.cchao.insomnia.service.UserService;
@@ -36,21 +36,21 @@ public class AppController {
     @RequestMapping("/getLaunch")
     public RespBean<AppLaunch> getLaunch(HttpServletRequest request) {
         String token = JWTUtil.getToken(request);
-        LoginResp loginResp = null;
+        UpdateUser resp = null;
         Logs.println(token);
         // 没有token 就给他游客身份
-        if (!JWTUtil.haveToken(request)) {
-            loginResp = userService.visitorSignup();
+        if (JWTUtil.haveToken(request)) {
+            resp = userService.updateToken(token);
         } else {
-            loginResp = userService.updateToken(token);
+            resp = userService.visitorSignup();
         }
         // token 过期
 //        if(JWTUtil.verify())
 
         AppLaunch appLaunch = new AppLaunch();
         appLaunch.setLastAndroidVersion(Constant.ANDROID_LAST_VERSION)
-                .setVersionUpdateMsg("empty")
-                .setUserInfo(loginResp);
+            .setVersionUpdateMsg("empty")
+            .setUserInfo(resp);
         return RespBean.suc(appLaunch);
     }
 }

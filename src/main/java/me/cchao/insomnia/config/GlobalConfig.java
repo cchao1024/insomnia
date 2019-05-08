@@ -40,7 +40,7 @@ public class GlobalConfig {
         if (relativePath.startsWith("http")) {
             return relativePath;
         }
-        return sourceServerPath + relativePath;
+        return (sourceServerPath + relativePath).replaceAll("//", "/");
     }
 
     /**

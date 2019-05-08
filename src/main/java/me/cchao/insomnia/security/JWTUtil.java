@@ -24,7 +24,7 @@ import static me.cchao.insomnia.constant.Constant.AUTHORIZATION_HEADER_NAME;
  */
 public class JWTUtil {
     // 过期时间
-    private static final long EXPIRE_TIME = 100 * 24 * 3600 * 1000;
+    private static final long EXPIRE_TIME = 100 * 24 * 3600 * 1000L;
 
     @Autowired
     UserService userService;
@@ -40,9 +40,9 @@ public class JWTUtil {
 
         Algorithm algorithm = Algorithm.HMAC256(secret);
         JWTVerifier verifier = JWT.require(algorithm)
-                .withClaim(Constant.USER_NAME, username)
-                .withClaim(Constant.USER_ID, userId)
-                .build();
+            .withClaim(Constant.USER_NAME, username)
+            .withClaim(Constant.USER_ID, userId)
+            .build();
         verifier.verify(token);
         return true;
     }
@@ -72,6 +72,7 @@ public class JWTUtil {
     public static long getUserId(HttpServletRequest httpServletRequest) {
         return getUserId(getToken(httpServletRequest));
     }
+
     /**
      * 获得token中的信息无需secret解密也能获得
      *
@@ -93,14 +94,14 @@ public class JWTUtil {
      * @param secret   用户的密码
      * @return 加密的token
      */
-    public static String sign(String username, long id, String secret) {
+    public static String createToken(String username, long id, String secret) {
         Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
         Algorithm algorithm = Algorithm.HMAC256(secret);
         // 附带username信息
         return JWT.create()
-                .withClaim(Constant.USER_NAME, username)
-                .withClaim(Constant.USER_ID, id)
-                .withExpiresAt(date)
-                .sign(algorithm);
+            .withClaim(Constant.USER_NAME, username)
+            .withClaim(Constant.USER_ID, id)
+            .withExpiresAt(date)
+            .sign(algorithm);
     }
 }

@@ -1,11 +1,5 @@
 package me.cchao.insomnia.controller;
 
-import me.cchao.insomnia.bean.req.user.UserLoginDTO;
-import me.cchao.insomnia.bean.req.user.UserSignUpDTO;
-import me.cchao.insomnia.bean.resp.RespBean;
-import me.cchao.insomnia.constant.enums.Results;
-import me.cchao.insomnia.util.Printer;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import lombok.extern.slf4j.Slf4j;
+import me.cchao.insomnia.bean.req.user.UserLoginDTO;
+import me.cchao.insomnia.bean.resp.RespBean;
+import me.cchao.insomnia.constant.enums.Results;
+import me.cchao.insomnia.util.Printer;
 
 /**
  * @author : cchao
@@ -41,15 +39,4 @@ public class UserControllerTest {
         Assert.assertEquals(respBean.getCode(), (int) Results.SUC.getCode());
     }
 
-    @Test
-    public void signup() {
-        UserSignUpDTO userSignUpDTO = new UserSignUpDTO();
-        userSignUpDTO.setEmail("14234@qq.com")
-            .setPassword("14234");
-
-        RespBean respBean = userController.signUp(userSignUpDTO);
-        Printer.print("UserControllerTest#signUp", respBean.getMsg());
-        Printer.print("UserControllerTest#signUp", respBean.getData());
-        Assert.assertEquals(respBean.getCode(), (int) Results.SUC.getCode());
-    }
 }

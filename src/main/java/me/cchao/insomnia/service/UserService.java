@@ -1,17 +1,16 @@
 package me.cchao.insomnia.service;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-
 import lombok.extern.slf4j.Slf4j;
+import me.cchao.insomnia.bean.req.user.EditUserDTO;
 import me.cchao.insomnia.bean.req.user.UserLoginDTO;
-import me.cchao.insomnia.bean.req.user.UserSignUpDTO;
-import me.cchao.insomnia.bean.resp.user.LoginResp;
+import me.cchao.insomnia.bean.resp.user.UpdateUser;
 import me.cchao.insomnia.config.GlobalConfig;
 import me.cchao.insomnia.constant.enums.Results;
 import me.cchao.insomnia.dao.User;
@@ -51,7 +50,7 @@ public class UserService {
             .orElse(null));
     }
 
-    public LoginResp login(UserLoginDTO params) {
+    public UpdateUser login(UserLoginDTO params) {
         String email = params.getEmail();
         String password = params.getPassword();
 
@@ -60,93 +59,69 @@ public class UserService {
         boolean validPassword = StringUtils.equals(user.getPassword(), password);
         if (validPassword) {
             // 登录成功 返回 token
-            String token = JWTUtil.sign(email, user.getId(), password);
+            String token = JWTUtil.createToken(email, user.getId(), password);
 
-            return new LoginResp()
-                .setAge(user.getAge())
-                .setNikeName(user.getNickName())
-                .setEmail(email)
-                .setToken(token);
+            return wrapUpdateUser(user, token);
         } else {
             throw new CommonException(SystemErrorMessage.USER_PASSWORD_INVALID);
         }
     }
 
-    public LoginResp updateToken(String token) {
+    private UpdateUser wrapUpdateUser(User user, String token) {
+        UpdateUser updateUser = new UpdateUser();
+        updateUser.setToken(token);
+        BeanUtils.copyProperties(user, updateUser);
+        return updateUser;
+
+    }
+
+    public UpdateUser updateToken(String token) {
         long userId = JWTUtil.getUserId(token);
 
         User user = findUserById(userId);
-        // 登录成功 返回 token
-        String newToken = JWTUtil.sign(user.getEmail(), user.getId(), user.getPassword());
-        return new LoginResp()
-            .setAge(user.getAge())
-            .setNikeName(user.getNickName())
-            .setEmail(user.getEmail())
-            .setToken(newToken);
+        // 刷新token
+        String newToken = JWTUtil.createToken(user.getEmail(), user.getId(), user.getPassword());
+        // 构建返回 携带Token的用户实体
+        return wrapUpdateUser(user, newToken);
     }
 
-    public LoginResp visitorSignup() {
+    /**
+     * 游客注册
+     */
+    public UpdateUser visitorSignup() {
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String nameLabel = timeStamp.substring(timeStamp.length() - 5);
         String defPwd = "123456";
         String defEmail = nameLabel + "@qq.com";
-        User user = new User().setVisitor(1)
+        User user = new User()
+            .setVisitor(1)
             .setEmail(defEmail)
             .setNickName("游客" + nameLabel)
             .setPassword(defPwd);
 
-        Long id = mUserRepository.save(user).getId();
-        return new LoginResp()
-            .setVisitor(true)
-            .setAge(user.getAge())
-            .setNikeName(user.getNickName())
-            .setEmail(defEmail)
-            .setToken(JWTUtil.sign(defEmail, id, defPwd));
-    }
-
-    public LoginResp signup(UserSignUpDTO params) {
-        String email = params.getEmail();
-        String password = params.getPassword();
-        String nikeName = params.getEmail().split("@")[0];
-
-        User user = findUserByEmail(email);
-        if (user != null) {
-            throw CommonException.of(Results.EMAIL_EXIST);
-        }
-
-        user = new User().setEmail(email)
-            .setNickName(nikeName)
-            .setPassword(password);
-
-        Long id = mUserRepository.save(user).getId();
-        return new LoginResp()
-            .setAge(user.getAge())
-            .setNikeName(user.getNickName())
-            .setEmail(email)
-            .setToken(JWTUtil.sign(email, id, password));
+        // 写入库
+        user = mUserRepository.save(user);
+        String token = JWTUtil.createToken(defEmail, user.getId(), defPwd);
+        return wrapUpdateUser(user, token);
     }
 
     /**
      * 更新用户信息
      */
-    public User saveUserInfo(long id, Map<String, String> map) {
+    public UpdateUser saveUserInfo(long id, EditUserDTO reqUser) {
         User user = findUserById(id);
+        user.setVisitor(0);
 
         try {
-            for (Map.Entry<String, String> entry : map.entrySet()) {
-                switch (entry.getKey()) {
-                    case "nickName":
-                        user.setNickName(entry.getValue());
-                        break;
-                    case "age":
-                        user.setAge(Integer.valueOf(entry.getValue()));
-                        break;
-                }
-            }
+            BeanUtils.copyProperties(reqUser, user);
             mUserRepository.save(user);
         } catch (Exception ex) {
             throw CommonException.of(Results.PARAM_ERROR);
         }
-        return user;
+        UpdateUser result = new UpdateUser();
+        BeanUtils.copyProperties(user, result);
+        // 生成新的token
+        result.setToken(JWTUtil.createToken(result.getEmail(), result.getId(), result.getPassword()));
+        return result;
     }
 }

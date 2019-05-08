@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class PostDTO {
 
-    @Length(min = 5, max = 1024, message = "大于于5，小于1024")
+    @Length(min = 5, max = 1024, message = "说说内容需大于5字符，小于1024字符")
     String content;
 
     String images;
