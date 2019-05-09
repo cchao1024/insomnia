@@ -11,6 +11,7 @@ import me.cchao.insomnia.bean.resp.app.AppLaunch;
 import me.cchao.insomnia.bean.resp.user.UpdateUser;
 import me.cchao.insomnia.constant.Constant;
 import me.cchao.insomnia.security.JWTUtil;
+import me.cchao.insomnia.service.AppService;
 import me.cchao.insomnia.service.UserService;
 import me.cchao.insomnia.util.Logs;
 
@@ -26,6 +27,8 @@ public class AppController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    AppService mAppService;
 
     /**
      * 获取启动初始化
@@ -57,9 +60,9 @@ public class AppController {
     /**
      * feedBack
      */
-    @RequestMapping("/feedBack")
+    @RequestMapping("/feed_back")
     public RespBean getLaunch(String content, String email) {
-
+        mAppService.feedBack(content, email);
         return RespBean.suc();
     }
 }
