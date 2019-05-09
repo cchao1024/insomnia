@@ -1,6 +1,7 @@
 package me.cchao.insomnia.bean.resp.post;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -20,6 +21,6 @@ public class PostListVO {
     String content;
     String postUserName;
     String postUserAvatar;
-    String images;
+    List<String> imageList;
     Date updateTime;
 }

@@ -20,7 +20,7 @@ public class PostVO {
     String content;
     String postUserName;
     String postUserAvatar;
-    String images;
+    List<String> imageList;
     Date updateTime;
 
     int curPage;

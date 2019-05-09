@@ -1,24 +1,25 @@
 package me.cchao.insomnia.service;
 
-import me.cchao.insomnia.bean.req.PageDTO;
-import me.cchao.insomnia.bean.req.post.PostDTO;
-import me.cchao.insomnia.bean.resp.RespBean;
-import me.cchao.insomnia.bean.resp.post.CommentVO;
-import me.cchao.insomnia.bean.resp.post.PostListVO;
-import me.cchao.insomnia.bean.resp.post.PostVO;
-import me.cchao.insomnia.constant.enums.Results;
-import me.cchao.insomnia.dao.Post;
-import me.cchao.insomnia.dao.User;
-import me.cchao.insomnia.exception.CommonException;
-import me.cchao.insomnia.repository.PostRepository;
-import me.cchao.insomnia.security.SecurityHelper;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+import me.cchao.insomnia.bean.req.PageDTO;
+import me.cchao.insomnia.bean.req.post.PostDTO;
+import me.cchao.insomnia.bean.resp.RespBean;
+import me.cchao.insomnia.bean.resp.post.CommentVO;
+import me.cchao.insomnia.bean.resp.post.PostListVO;
+import me.cchao.insomnia.bean.resp.post.PostVO;
+import me.cchao.insomnia.business.ImagePathConvert;
+import me.cchao.insomnia.constant.enums.Results;
+import me.cchao.insomnia.dao.Post;
+import me.cchao.insomnia.dao.User;
+import me.cchao.insomnia.exception.CommonException;
+import me.cchao.insomnia.repository.PostRepository;
+import me.cchao.insomnia.security.SecurityHelper;
 
 /**
  * @author : cchao
@@ -72,12 +73,13 @@ public class PostService {
         Page<CommentVO> commentVO = mCommentService.findCommentVoByPost(post.getId(), dto);
 
         postVO.setPostUserId(postUser.getId())
-                .setPostUserAvatar(postUser.getAvatar())
-                .setPostUserName(postUser.getNickName())
-                // list comment
-                .setList(commentVO.getContent())
-                .setCurPage(dto.getPage())
-                .setTotalPage(commentVO.getTotalPages());
+            .setPostUserAvatar(postUser.getAvatar())
+            .setPostUserName(postUser.getNickName())
+            .setImageList(ImagePathConvert.convertImageList(post.getImages()))
+            // list comment
+            .setList(commentVO.getContent())
+            .setCurPage(dto.getPage())
+            .setTotalPage(commentVO.getTotalPages());
         return postVO;
     }
 
@@ -96,8 +98,9 @@ public class PostService {
             PostListVO postListVO = new PostListVO();
             BeanUtils.copyProperties(post, postListVO);
             postListVO.setPostUserAvatar(user.getAvatar())
-                    .setPostUserName(user.getNickName())
-                    .setPostUserId(user.getId());
+                .setPostUserName(user.getNickName())
+                .setImageList(ImagePathConvert.convertImageList(post.getImages()))
+                .setPostUserId(user.getId());
 
             return postListVO;
         });

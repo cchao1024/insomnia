@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 
 import lombok.Data;
-import me.cchao.insomnia.dao.User;
 
 /**
  * @author : cchao
@@ -33,32 +32,6 @@ public class GlobalConfig {
 
     public static String getSourceServerPath() {
         return sourceServerPath;
-    }
-
-    public static String joinRemotePath(String relativePath) {
-        // 以 http 开头默认已经不是相对路径
-        if (relativePath.startsWith("http")) {
-            return relativePath;
-        }
-        return (sourceServerPath + relativePath).replaceAll("//", "/");
-    }
-
-    /**
-     * 图片或资源，拼接远程路径，
-     *
-     * @param object 传入类型，通过 instanceof 判断拼接
-     * @param <T>    类型
-     * @return T
-     */
-    public static <T> T joinRemotePath(T object) {
-        if (object == null) {
-            return null;
-        }
-        if (object instanceof User) {
-            User user = (User) object;
-            user.setAvatar(joinRemotePath(user.getAvatar()));
-        }
-        return object;
     }
 
     public static String getUploadFileName(String suffix) {

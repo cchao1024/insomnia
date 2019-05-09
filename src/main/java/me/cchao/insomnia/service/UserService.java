@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import me.cchao.insomnia.bean.req.user.EditUserDTO;
 import me.cchao.insomnia.bean.req.user.UserLoginDTO;
 import me.cchao.insomnia.bean.resp.user.UpdateUser;
-import me.cchao.insomnia.config.GlobalConfig;
+import me.cchao.insomnia.business.ImagePathConvert;
 import me.cchao.insomnia.constant.enums.Results;
 import me.cchao.insomnia.dao.User;
 import me.cchao.insomnia.exception.CommonException;
@@ -34,7 +34,7 @@ public class UserService {
     @Cacheable(key = "'user_id_' + #id", unless = "#result eq null")
     public User findUserById(Long id) {
         log.info("UserService#findUserById:" + id);
-        return GlobalConfig.joinRemotePath(mUserRepository.getOne(id));
+        return ImagePathConvert.joinRemotePath(mUserRepository.getOne(id));
     }
 
     public void increaseLike(Long id) {
@@ -46,7 +46,7 @@ public class UserService {
     @Cacheable(key = "'user_email_' + #id", unless = "#result eq null")
     public User findUserByEmail(String email) {
         log.info("UserService#findUserByEmail:" + email);
-        return GlobalConfig.joinRemotePath(mUserRepository.findByEmail(email)
+        return ImagePathConvert.joinRemotePath(mUserRepository.findByEmail(email)
             .orElse(null));
     }
 

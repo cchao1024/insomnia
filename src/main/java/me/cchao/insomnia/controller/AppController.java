@@ -53,4 +53,13 @@ public class AppController {
             .setUserInfo(resp);
         return RespBean.suc(appLaunch);
     }
+
+    /**
+     * feedBack
+     */
+    @RequestMapping("/feedBack")
+    public RespBean getLaunch(String content, String email) {
+
+        return RespBean.suc();
+    }
 }

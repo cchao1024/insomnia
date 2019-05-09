@@ -26,7 +26,6 @@ public class CommentVO {
 
     int likeCount;
     String content;
-    String images;
     Date updateTime;
 
     int curPage;

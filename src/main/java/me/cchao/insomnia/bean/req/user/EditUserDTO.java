@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Range;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import me.cchao.insomnia.config.GlobalConfig;
 
 /**
  * 修改用户信息
@@ -20,7 +21,7 @@ import lombok.experimental.Accessors;
 public class EditUserDTO extends UserLoginDTO {
     @Length(max = 24, min = 2, message = "昵称长度2-24字符")
     String nickName;
-    String avatar;
+    String avatar = GlobalConfig.defaultAvatar;
     @Range(min = 1, max = 200, message = "年龄异常")
     int age;
     int gender;

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import me.cchao.insomnia.bean.req.PageDTO;
 import me.cchao.insomnia.bean.resp.RespListBean;
-import me.cchao.insomnia.config.GlobalConfig;
+import me.cchao.insomnia.business.ImagePathConvert;
 import me.cchao.insomnia.dao.FallImage;
 import me.cchao.insomnia.dao.FallMusic;
 import me.cchao.insomnia.repository.FallImageRepository;
@@ -34,7 +34,7 @@ public class FallService {
 
         List<FallImage> list = page.getContent().stream()
             .map(fallImage -> {
-                fallImage.setSrc(GlobalConfig.joinRemotePath(fallImage.getSrc()));
+                fallImage.setSrc(ImagePathConvert.joinRemotePath(fallImage.getSrc()));
                 return fallImage;
             }).collect(Collectors.toList());
 
@@ -46,7 +46,7 @@ public class FallService {
 
         List<FallMusic> list = page.getContent().stream()
             .map(music -> {
-                music.setSrc(GlobalConfig.joinRemotePath(music.getSrc()));
+                music.setSrc(ImagePathConvert.joinRemotePath(music.getSrc()));
                 return music;
             }).collect(Collectors.toList());
         return RespListBean.of(page, list, pageDTO.getPage());
