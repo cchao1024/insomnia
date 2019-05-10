@@ -6,15 +6,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import me.cchao.insomnia.config.GlobalConfig;
+import me.cchao.insomnia.dao.FallImage;
+import me.cchao.insomnia.dao.FallMusic;
 import me.cchao.insomnia.dao.User;
 
 /**
  * 图片资源的绝对路径追加
  */
 public class ImagePathConvert {
+
+    private static final Pattern COMPILE = Pattern.compile("//");
 
     public static String joinRemotePath(String relativePath) {
         if (StringUtils.isEmpty(relativePath)) {
@@ -24,7 +29,12 @@ public class ImagePathConvert {
         if (relativePath.startsWith("http")) {
             return relativePath;
         }
-        return (GlobalConfig.sourceServerPath + relativePath).replaceAll("//", "/");
+        // 重复的//
+        String absPath = GlobalConfig.sourceServerPath + relativePath;
+        if (absPath.lastIndexOf("//") > 7) {
+            return COMPILE.matcher(absPath).replaceAll("/");
+        }
+        return absPath;
     }
 
     /**
@@ -41,6 +51,13 @@ public class ImagePathConvert {
         if (object instanceof User) {
             User user = (User) object;
             user.setAvatar(joinRemotePath(user.getAvatar()));
+        } else if (object instanceof FallMusic) {
+            FallMusic item = (FallMusic) object;
+            item.setSrc(joinRemotePath(item.getSrc()));
+            item.setCover_img(joinRemotePath(item.getCover_img()));
+        } else if (object instanceof FallImage) {
+            FallImage item = (FallImage) object;
+            item.setSrc(joinRemotePath(item.getSrc()));
         }
         return object;
     }

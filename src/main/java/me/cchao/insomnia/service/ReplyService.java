@@ -1,5 +1,12 @@
 package me.cchao.insomnia.service;
 
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
 import me.cchao.insomnia.bean.req.PageDTO;
 import me.cchao.insomnia.bean.req.post.ReplyDTO;
 import me.cchao.insomnia.bean.resp.RespBean;
@@ -11,13 +18,6 @@ import me.cchao.insomnia.dao.User;
 import me.cchao.insomnia.exception.CommonException;
 import me.cchao.insomnia.repository.ReplyRepository;
 import me.cchao.insomnia.security.SecurityHelper;
-
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * @author : cchao
@@ -36,17 +36,23 @@ public class ReplyService {
     /**
      * 新的回复
      */
-    public RespBean ReplyNew(ReplyDTO dto) {
-        Comment comment = mCommentService.findById(dto.getToId());
+    public RespBean replyNew(ReplyDTO dto) {
+        long commentId = dto.getToId();
+        Comment comment = mCommentService.findById(commentId);
+
+        if (comment.getCommentUserId() == SecurityHelper.getUserId()) {
+            throw CommonException.of(Results.FAIL.msg("你不能回复自己的说说"));
+        }
         // comment 评论+1
-        mCommentService.increaseReview(dto.getToId());
+        mCommentService.increaseReview(commentId);
 
         Reply reply = new Reply();
         BeanUtils.copyProperties(dto, reply);
 
         reply.setPostId(comment.getPostId())
-                .setCommentUserId(comment.getCommentUserId())
-                .setReplyUserId(SecurityHelper.getUserId());
+            .setCommentId(commentId)
+            .setCommentUserId(comment.getCommentUserId())
+            .setReplyUserId(SecurityHelper.getUserId());
 
         mReplyRepository.save(reply);
         return RespBean.suc();
@@ -71,8 +77,8 @@ public class ReplyService {
             ReplyVO replyVO = new ReplyVO();
             BeanUtils.copyProperties(comment, replyVO);
             replyVO.setReplyUserId(replyUser.getId())
-                    .setCommentUserId(commentUser.getId())
-                    .setCommentUserName(commentUser.getNickName());
+                .setCommentUserId(commentUser.getId())
+                .setCommentUserName(commentUser.getNickName());
             return replyVO;
         });
         return result;

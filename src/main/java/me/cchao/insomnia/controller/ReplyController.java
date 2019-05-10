@@ -25,7 +25,7 @@ public class ReplyController {
     @RequestMapping("/new")
     @RequiresAuthentication
     public RespBean ReplyNew(@Valid ReplyDTO params) {
-        return mReplyService.ReplyNew(params);
+        return mReplyService.replyNew(params);
     }
 
 

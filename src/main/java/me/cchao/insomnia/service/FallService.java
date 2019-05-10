@@ -33,10 +33,8 @@ public class FallService {
         Page<FallImage> page = mImageRepository.findAll(pageDTO.toPageable());
 
         List<FallImage> list = page.getContent().stream()
-            .map(fallImage -> {
-                fallImage.setSrc(ImagePathConvert.joinRemotePath(fallImage.getSrc()));
-                return fallImage;
-            }).collect(Collectors.toList());
+            .map(ImagePathConvert::joinRemotePath)
+            .collect(Collectors.toList());
 
         return RespListBean.of(page, list, pageDTO.getPage());
     }
@@ -45,10 +43,8 @@ public class FallService {
         Page<FallMusic> page = mMusicRepository.findAll(pageDTO.toPageable());
 
         List<FallMusic> list = page.getContent().stream()
-            .map(music -> {
-                music.setSrc(ImagePathConvert.joinRemotePath(music.getSrc()));
-                return music;
-            }).collect(Collectors.toList());
+            .map(ImagePathConvert::joinRemotePath)
+            .collect(Collectors.toList());
         return RespListBean.of(page, list, pageDTO.getPage());
     }
 

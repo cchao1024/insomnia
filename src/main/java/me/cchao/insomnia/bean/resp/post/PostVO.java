@@ -22,6 +22,7 @@ public class PostVO {
     String postUserAvatar;
     List<String> imageList;
     Date updateTime;
+    Date createTime;
 
     int curPage;
     int totalPage;

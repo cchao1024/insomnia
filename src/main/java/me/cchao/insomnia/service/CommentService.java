@@ -1,5 +1,12 @@
 package me.cchao.insomnia.service;
 
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
 import me.cchao.insomnia.bean.req.PageDTO;
 import me.cchao.insomnia.bean.req.post.CommentDTO;
 import me.cchao.insomnia.bean.resp.RespBean;
@@ -12,13 +19,6 @@ import me.cchao.insomnia.dao.User;
 import me.cchao.insomnia.exception.CommonException;
 import me.cchao.insomnia.repository.CommentRepository;
 import me.cchao.insomnia.security.SecurityHelper;
-
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * @author : cchao
@@ -45,21 +45,25 @@ public class CommentService {
      */
     public RespBean CommentNew(CommentDTO dto) {
         Post post = mPostService.findById(dto.getToId());
+        if (post.getUserId() == SecurityHelper.getUserId()) {
+            throw CommonException.of(Results.FAIL.msg("你不能评论自己的说说"));
+        }
         // post 评论+1
         mPostService.reviewPost(dto.getToId());
 
         Comment comment = new Comment();
         BeanUtils.copyProperties(dto, comment);
 
-        comment.setPostUserId(post.getUserId())
-                .setCommentUserId(SecurityHelper.getUserId());
+        comment.setPostId(post.getId())
+            .setPostUserId(post.getUserId())
+            .setCommentUserId(SecurityHelper.getUserId());
 
         mCommentRepository.save(comment);
         return RespBean.suc();
     }
 
     /**
-     * 获取评论下的 部分回复
+     * 获取评论
      */
     public Page<CommentVO> findCommentVoByPost(long posId, PageDTO dto) {
         // 拿到comment 分页
@@ -77,18 +81,18 @@ public class CommentService {
             // 获取 replyVo
             Page<ReplyVO> replyVO = mReplyService.findReplyVoByComment(comment.getId(), dto);
             commentVO.setPostId(postUser.getId())
-                    .setPostUserAvatar(postUser.getAvatar())
-                    .setPostUserName(postUser.getNickName())
+                .setPostUserAvatar(postUser.getAvatar())
+                .setPostUserName(postUser.getNickName())
 
-                    // comment
-                    .setCommentUserAvatar(commentUser.getAvatar())
-                    .setCommentUserId(commentUser.getId())
-                    .setCommentUserName(commentUser.getNickName())
+                // comment
+                .setCommentUserAvatar(commentUser.getAvatar())
+                .setCommentUserId(commentUser.getId())
+                .setCommentUserName(commentUser.getNickName())
 
-                    // list reply
-                    .setList(replyVO.getContent())
-                    .setCurPage(dto.getPage())
-                    .setTotalPage(replyVO.getTotalPages());
+                // list reply
+                .setList(replyVO.getContent())
+                .setCurPage(dto.getPage())
+                .setTotalPage(replyVO.getTotalPages());
             return commentVO;
         });
         return result;

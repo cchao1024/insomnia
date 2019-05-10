@@ -1,8 +1,9 @@
 package me.cchao.insomnia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,7 +22,7 @@ import me.cchao.insomnia.util.Logs;
  * @author : cchao
  * @version 2019-04-13
  */
-@RestController
+@Controller
 @RequestMapping("/app")
 public class AppController {
 
@@ -37,6 +38,7 @@ public class AppController {
      * @return
      */
     @RequestMapping("/getLaunch")
+    @ResponseBody
     public RespBean<AppLaunch> getLaunch(HttpServletRequest request) {
         String token = JWTUtil.getToken(request);
         UpdateUser resp = null;
@@ -61,8 +63,17 @@ public class AppController {
      * feedBack
      */
     @RequestMapping("/feed_back")
+    @ResponseBody
     public RespBean getLaunch(String content, String email) {
         mAppService.feedBack(content, email);
         return RespBean.suc();
+    }
+
+    /**
+     * about us
+     */
+    @RequestMapping("/about_us")
+    public String getAboutUs() {
+        return "about_us";
     }
 }
