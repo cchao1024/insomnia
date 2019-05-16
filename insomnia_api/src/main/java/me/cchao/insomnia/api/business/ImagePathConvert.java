@@ -21,6 +21,11 @@ public class ImagePathConvert {
 
     private static final Pattern COMPILE = Pattern.compile("//");
 
+    /**
+     * 拼接成绝对路径
+     * @param relativePath 相对路径
+     * @return
+     */
     public static String joinRemotePath(String relativePath) {
         if (StringUtils.isEmpty(relativePath)) {
             return "";

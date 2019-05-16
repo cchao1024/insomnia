@@ -24,7 +24,7 @@ public class GlobalConfig {
      */
     public String uploadDirPath = "/www/file/upload/";
     @Value("${sourceServerPath}")
-    public static final String sourceServerPath = "https://me.cchao.insomnia-1254010092.cos.ap-hongkong.myqcloud.com/";
+    public static final String sourceServerPath = "https://insomnia-1254010092.cos.ap-hongkong.myqcloud.com/";
     @Value("${defaultAvatarPath}")
     public static final String defaultAvatarPath = sourceServerPath + "common/default/avatar.png";
     public static final String defaultAvatar = "common/default/avatar.png";

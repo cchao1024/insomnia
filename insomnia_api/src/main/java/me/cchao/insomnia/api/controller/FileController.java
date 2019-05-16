@@ -9,14 +9,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
-
 import me.cchao.insomnia.api.bean.resp.global.FileUpload;
 import me.cchao.insomnia.api.business.FileServiceManager;
-import me.cchao.insomnia.common.RespBean;
-import me.cchao.insomnia.common.constant.Results;
 import me.cchao.insomnia.api.config.GlobalConfig;
 import me.cchao.insomnia.api.util.Logs;
+import me.cchao.insomnia.common.RespBean;
 
 /**
  * @author : cchao
@@ -30,10 +27,7 @@ public class FileController {
     GlobalConfig mGlobalConfig;
 
     @RequestMapping("/uploadImage")
-    public RespBean upload(@RequestParam("file") MultipartFile[] uploadingFiles, HttpServletRequest request) throws IOException {
-        if (uploadingFiles.length == 0) {
-            return RespBean.fail(Results.FILE_EMPTY);
-        }
+    public RespBean<FileUpload> upload(@RequestParam("file") MultipartFile[] uploadingFiles) throws IOException {
 
         String uploadFileName = GlobalConfig.getUploadFileName(".png");
         String uploadDir = GlobalConfig.getUploadDir("image");
