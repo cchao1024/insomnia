@@ -2,5 +2,12 @@
     font-size: 36px;
     color: dodgerblue;
     align-content: center;
-    margin: 40px;
+    margin-top: 40px;
+    margin-left: 200px;
+    margin-bottom: 40px;
+}
+
+table tr td, table tr th {
+    text-align: center;
+    vertical-align: middle;
 }

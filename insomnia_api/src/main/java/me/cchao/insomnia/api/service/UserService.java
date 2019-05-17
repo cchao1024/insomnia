@@ -5,13 +5,20 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.req.user.EditUserDTO;
 import me.cchao.insomnia.api.bean.req.user.UserLoginDTO;
 import me.cchao.insomnia.api.bean.resp.user.UpdateUser;
 import me.cchao.insomnia.api.business.ImagePathConvert;
 import lombok.extern.slf4j.Slf4j;
+import me.cchao.insomnia.api.domain.FallMusic;
+import me.cchao.insomnia.common.RespListBean;
 import me.cchao.insomnia.common.constant.Results;
 import me.cchao.insomnia.api.domain.User;
 import me.cchao.insomnia.api.exception.CommonException;
@@ -48,6 +55,20 @@ public class UserService {
         log.info("UserService#findUserByEmail:" + email);
         return ImagePathConvert.joinRemotePath(mUserRepository.findByEmail(email)
             .orElse(null));
+    }
+
+    /**
+     * 获取用户列表
+     * @param pageDTO 分页
+     * @return list
+     */
+    public RespListBean<User> getUserByPage(PageDTO pageDTO) {
+        Page<User> page = mUserRepository.findAll(pageDTO.toPageable());
+
+        List<User> list = page.getContent().stream()
+                .map(ImagePathConvert::joinRemotePath)
+                .collect(Collectors.toList());
+        return RespListBean.of(page, list, pageDTO.getPage());
     }
 
     public UpdateUser login(UserLoginDTO params) {

@@ -46,7 +46,7 @@ public class PostController {
     @RequestMapping("/index")
     public RespListBean<PostVO> getIndex(@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
 
-        Page<PostVO> pageObj = mPostService.getIndex(PageDTO.of(0, pageSize));
+        Page<PostVO> pageObj = mPostService.getIndex(PageDTO.of(1, pageSize));
         return RespListBean.of(pageObj, 0);
     }
 
@@ -54,13 +54,12 @@ public class PostController {
     public RespListBean<PostListVO> getPostByPage(@RequestParam(value = "page", defaultValue = "1") int page
             , @RequestParam(value = "pageSize", defaultValue = "30") int pageSize) {
 
-        Page<PostListVO> pageObj = mPostService.findPostList(PageDTO.of(page - 1, pageSize));
-        return RespListBean.of(pageObj, page);
+        return mPostService.getPostByPage(PageDTO.of(page, pageSize));
     }
 
     @RequestMapping("/detail")
     public RespBean getPostById(Long id) {
-        PostVO postVO = mPostService.findPostVo(id, PageDTO.of(0, 10));
+        PostVO postVO = mPostService.findPostVo(id, PageDTO.of(1, 10));
         return RespBean.suc(postVO);
     }
 }

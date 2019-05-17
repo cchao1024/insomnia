@@ -22,7 +22,7 @@ public class PageDTO {
     int pageSize = 10;
 
     public Pageable toPageable() {
-        return PageRequest.of(page, pageSize);
+        return PageRequest.of(page - 1, pageSize);
     }
 
     public static PageDTO of(int page, int pageSize) {

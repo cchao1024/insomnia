@@ -5,12 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.req.post.PostDTO;
 import me.cchao.insomnia.api.business.ImagePathConvert;
 import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.common.RespListBean;
 import me.cchao.insomnia.common.constant.Results;
 import me.cchao.insomnia.api.bean.resp.post.CommentVO;
 import me.cchao.insomnia.api.bean.resp.post.PostListVO;
@@ -73,38 +76,38 @@ public class PostService {
         Page<CommentVO> commentVO = mCommentService.findCommentVoByPost(post.getId(), dto);
 
         postVO.setPostUserId(postUser.getId())
-            .setPostUserAvatar(postUser.getAvatar())
-            .setPostUserName(postUser.getNickName())
-            .setImageList(ImagePathConvert.convertImageList(post.getImages()))
-            // list comment
-            .setList(commentVO.getContent())
-            .setCurPage(dto.getPage())
-            .setTotalPage(commentVO.getTotalPages());
+                .setPostUserAvatar(postUser.getAvatar())
+                .setPostUserName(postUser.getNickName())
+                .setImageList(ImagePathConvert.convertImageList(post.getImages()))
+                // list comment
+                .setList(commentVO.getContent())
+                .setCurPage(dto.getPage())
+                .setTotalPage(commentVO.getTotalPages());
         return postVO;
     }
 
     public Page<PostVO> getIndex(PageDTO dto) {
         Page<PostVO> result = mPostRepository.findAll(dto.toPageable()).map(post -> {
-            return findPostVo(post.getId(), PageDTO.of(0, 10));
+            return findPostVo(post.getId(), PageDTO.of(1, 10));
         });
         return result;
     }
 
-    public Page<PostListVO> findPostList(PageDTO dto) {
-        Page<PostListVO> result = mPostRepository.findAll(dto.toPageable()).map(post -> {
+    public RespListBean<PostListVO> getPostByPage(PageDTO pageDTO) {
+        Page<Post> page = mPostRepository.findAll(pageDTO.toPageable());
+        List<PostListVO> list = page.getContent().stream().map(post -> {
             User user = mUserService.findUserById(post.getUserId());
-
             // postListVO
             PostListVO postListVO = new PostListVO();
             BeanUtils.copyProperties(post, postListVO);
             postListVO.setPostUserAvatar(user.getAvatar())
-                .setPostUserName(user.getNickName())
-                .setImageList(ImagePathConvert.convertImageList(post.getImages()))
-                .setPostUserId(user.getId());
+                    .setPostUserName(user.getNickName())
+                    .setImageList(ImagePathConvert.convertImageList(post.getImages()))
+                    .setPostUserId(user.getId());
 
             return postListVO;
-        });
-        return result;
+        }).collect(Collectors.toList());
+        return RespListBean.of(page, list, pageDTO.getPage());
     }
 
     /**
