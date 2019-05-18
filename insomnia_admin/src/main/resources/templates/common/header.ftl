@@ -5,5 +5,6 @@
     <link href="/css/nav2.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
 
-    <link type="text/javascript" href="/js/admin.js"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/js/admin.js" type="text/javascript"></script>
 </head>

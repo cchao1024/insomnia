@@ -20,7 +20,7 @@ public class FileServiceManager {
 
     private static final String SecretId = "AKIDHqFG2Y1rihQt6xqw41A4h4HdnjhzeoS6";
     private static final String SecretKey = "nWSYS6XO1OVM6C3ez4tSkwve6RZRSQWR";
-    private static final String bucketName = "me.cchao.insomnia-1254010092";
+    private static final String bucketName = "insomnia-1254010092";
     private static COSClient cosClient = null;
 
     static {

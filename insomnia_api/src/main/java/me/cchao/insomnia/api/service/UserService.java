@@ -63,7 +63,7 @@ public class UserService {
      * @return list
      */
     public RespListBean<User> getUserByPage(PageDTO pageDTO) {
-        Page<User> page = mUserRepository.findAll(pageDTO.toPageable());
+        Page<User> page = mUserRepository.findAll(pageDTO.toPageIdDesc());
 
         List<User> list = page.getContent().stream()
                 .map(ImagePathConvert::joinRemotePath)

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import me.cchao.insomnia.api.util.SortHelper;
 
 /**
  * @author : cchao
@@ -23,6 +24,10 @@ public class PageDTO {
 
     public Pageable toPageable() {
         return PageRequest.of(page - 1, pageSize);
+    }
+
+    public Pageable toPageIdDesc() {
+        return PageRequest.of(page - 1, pageSize, SortHelper.basicDownSort("id"));
     }
 
     public static PageDTO of(int page, int pageSize) {

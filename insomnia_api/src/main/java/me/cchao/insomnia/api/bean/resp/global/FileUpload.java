@@ -12,4 +12,5 @@ import lombok.experimental.Accessors;
 public class FileUpload {
     String relativeUrl;
     String absoluteUrl;
+    String fileName;
 }

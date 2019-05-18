@@ -14,6 +14,8 @@
                 图片列表
             </div>
 
+            <#include "../common/add_item.html">
+
             <div class="col-md-12 column">
                 <table class="table table-bordered table-condensed">
                     <thead>

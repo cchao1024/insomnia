@@ -30,7 +30,7 @@ public class FallService {
     FallMusicRepository mMusicRepository;
 
     public RespListBean<FallImage> getImageByPage(PageDTO pageDTO) {
-        Page<FallImage> page = mImageRepository.findAll(pageDTO.toPageable());
+        Page<FallImage> page = mImageRepository.findAll(pageDTO.toPageIdDesc());
 
         List<FallImage> list = page.getContent().stream()
             .map(ImagePathConvert::joinRemotePath)
