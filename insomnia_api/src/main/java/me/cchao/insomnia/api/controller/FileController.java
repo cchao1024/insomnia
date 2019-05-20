@@ -18,6 +18,8 @@ import me.cchao.insomnia.api.util.Logs;
 import me.cchao.insomnia.common.RespBean;
 import me.cchao.insomnia.common.constant.Results;
 
+import static me.cchao.insomnia.api.business.ImagePathConvert.joinRemotePath;
+
 /**
  * @author : cchao
  * @version 2019-03-12
@@ -30,17 +32,26 @@ public class FileController {
     GlobalConfig mGlobalConfig;
 
     @RequestMapping("/uploadImage")
-    public RespBean<FileUpload> upload(@RequestParam("file") MultipartFile[] uploadingFiles) throws IOException {
+    public RespBean<FileUpload> upload(@RequestParam(value = "type", defaultValue = "user_post") String type
+            , @RequestParam("file") MultipartFile[] uploadingFiles) throws IOException {
 
         if (uploadingFiles[0] == null) {
             throw new IllegalArgumentException(Results.PARAM_EMPTY.getMessage());
+        }
+        String uploadDir = GlobalConfig.getUploadDir("image");
+        switch (type) {
+            case "fall_image":
+                uploadDir = "/image" + GlobalConfig.getTimeFormatPath();
+                break;
+            case "fall_music":
+                uploadDir = "/music" + GlobalConfig.getTimeFormatPath();
+                break;
         }
 
         // 后缀
         String suffix = FileUtil.getFileSuffix(uploadingFiles[0].getOriginalFilename(), ".png");
         // 待上传的 文件信息
         String uploadFileName = GlobalConfig.getUploadFileName(suffix);
-        String uploadDir = GlobalConfig.getUploadDir("image");
         String relativePath = uploadDir + uploadFileName;
         // 临时保存在 web服务器
         File tempFile = GlobalConfig.getTempSaveFile(uploadDir, uploadFileName);
@@ -52,7 +63,7 @@ public class FileController {
         FileServiceManager.uploadFile(relativePath, tempFile);
         // 返回值
         FileUpload fileUpload = new FileUpload();
-        fileUpload.setAbsoluteUrl(GlobalConfig.getUploadAbsolutePath(relativePath))
+        fileUpload.setAbsoluteUrl(joinRemotePath(relativePath))
                 .setRelativeUrl(relativePath)
                 .setFileName(uploadFileName);
         return RespBean.suc(fileUpload);

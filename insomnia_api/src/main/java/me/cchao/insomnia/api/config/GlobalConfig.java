@@ -30,6 +30,7 @@ public class GlobalConfig {
     public static final String defaultAvatar = "common/default/avatar.png";
     public static String mUserHome = System.getProperty("user.home");
 
+
     public static String getSourceServerPath() {
         return sourceServerPath;
     }
@@ -39,12 +40,11 @@ public class GlobalConfig {
     }
 
     public static String getUploadDir(String type) {
-        return "/upload/" + type + "/" + DateFormatUtils.format(System.currentTimeMillis(), "yyyy_MM_dd/");
+        return "/upload/" + type + getTimeFormatPath();
     }
 
-    public static String getUploadAbsolutePath(String relativePath) {
-        // https://insomnia-1254010092.cos.ap-hongkong.myqcloud.com/common/default/avatar.png
-        return "https://me.cchao.insomnia-1254010092.cos.ap-hongkong.myqcloud.com" + relativePath;
+    public static String getTimeFormatPath() {
+        return "/" + DateFormatUtils.format(System.currentTimeMillis(), "yyyy_MM_dd/");
     }
 
     public static File getTempSaveFile(String uploadDirPath, String fileName) {

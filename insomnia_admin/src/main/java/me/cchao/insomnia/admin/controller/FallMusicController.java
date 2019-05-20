@@ -69,17 +69,6 @@ public class FallMusicController {
             map.put("url", "admin/fall_image/save");
             return new ModelAndView("common/error", map);
         }
-        try {
-            // 上传图片
-            String relativePath = mFileController.upload(uploadingFiles).getData().getRelativeUrl();
-            form.setSrc(relativePath);
-            // 提交保存
-            mFallService.save(form);
-        } catch (Exception e) {
-            map.put("msg", "文件上传失败");
-            map.put("url", "admin/fall_image/save");
-            return new ModelAndView("common/error", map);
-        }
 
         map.put("url", "/admin/fall_image/list");
         return new ModelAndView("common/success", map);
