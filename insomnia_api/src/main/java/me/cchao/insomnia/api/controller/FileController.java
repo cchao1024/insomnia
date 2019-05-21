@@ -31,34 +31,34 @@ public class FileController {
     @Autowired
     GlobalConfig mGlobalConfig;
 
-    @RequestMapping("/uploadImage")
+    @RequestMapping("/upload")
     public RespBean<FileUpload> upload(@RequestParam(value = "type", defaultValue = "user_post") String type
-            , @RequestParam("file") MultipartFile[] uploadingFiles) throws IOException {
+            , @RequestParam("file") MultipartFile uploadingFile) throws IOException {
 
-        if (uploadingFiles[0] == null) {
+        if (uploadingFile == null) {
             throw new IllegalArgumentException(Results.PARAM_EMPTY.getMessage());
         }
         String uploadDir = GlobalConfig.getUploadDir("image");
+        String defSuffix = ".png";
         switch (type) {
             case "fall_image":
                 uploadDir = "/image" + GlobalConfig.getTimeFormatPath();
                 break;
             case "fall_music":
                 uploadDir = "/music" + GlobalConfig.getTimeFormatPath();
+                defSuffix = ".mp3";
                 break;
         }
 
         // 后缀
-        String suffix = FileUtil.getFileSuffix(uploadingFiles[0].getOriginalFilename(), ".png");
+        String suffix = FileUtil.getFileSuffix(uploadingFile.getOriginalFilename(), defSuffix);
         // 待上传的 文件信息
         String uploadFileName = GlobalConfig.getUploadFileName(suffix);
         String relativePath = uploadDir + uploadFileName;
         // 临时保存在 web服务器
         File tempFile = GlobalConfig.getTempSaveFile(uploadDir, uploadFileName);
         Logs.println("保存文件到 " + tempFile.getAbsolutePath());
-        for (MultipartFile uploadedFile : uploadingFiles) {
-            uploadedFile.transferTo(tempFile);
-        }
+        uploadingFile.transferTo(tempFile);
         // 传到文件服务器
         FileServiceManager.uploadFile(relativePath, tempFile);
         // 返回值

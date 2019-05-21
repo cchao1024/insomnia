@@ -4,34 +4,13 @@
 <body>
 
 <script>
-    /*
-
-        var preview = document.querySelector('img');
-        var file = document.querySelector('input[type=file]').files[0];
-        var reader = new FileReader();
-
-        reader.onloadend = function () {
-            preview.src = reader.result;
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = "";
-        }
-    */
-
-    // 预览图片
-    function preview_img() {
+    // 预览音频
+    function on_music_change() {
         var input_file = $("#file_input");
         var reader = new FileReader();
         reader.onloadend = function () {
-            var preview_img = $("#preview_image");
-            preview_img.attr("src", reader.result);
-            preview_img.naturalHeight;
-            preview_img.naturalWidth;
-
-            console.log("真实高度 " + preview_img.naturalHeight);
+            var preview_music = $("#preview_music");
+            preview_music.attr("src", reader.result);
         };
         reader.readAsDataURL(input_file[0].files[0]);
     }
@@ -47,12 +26,12 @@
         var forData = new FormData();
         forData.set("file", file_blob);
         forData.set("file_name", filename);
-        forData.set("type", "fall_image");
+        forData.set("type", "fall_music");
 
         // 发起请求 上传到服务端
         $.ajax({
             type: "POST",
-            url: "/file/uploadImage",
+            url: "/file/upload",
             enctype: 'multipart/form-data',
             processData: false,
             contentType: false,
@@ -76,11 +55,10 @@
                 $("#submit_btn").click();
             },
             error: function () {
-                document.alert("上传失败")
+                alert("上传失败")
             }
         });
         return upload_suc;
-    }
     }
 </script>
 
@@ -96,42 +74,22 @@
                 <label for="exampleInputFile">文件上传</label>
 
                 <div class="form-group">
-                    <input type="file" id="file_input" accept="image/*"
-                           onchange="preview_img()"/>
+                    <input type="file" id="file_input" accept="audio/mpeg"
+                           onchange="on_music_change()"/>
                 </div>
 
-                <img id="preview_image" src="/image/place_holder.svg" height="200"
-                     alt="上传图片预览">
+                <#--播放音乐预览-->
+                <audio loop="loop" src="" id="preview_music" controls="controls">播放</audio>
 
-                <form role="form" method="post" action="/admin/fall_image/save"
+                <form role="form" method="post" action="/admin/fall_music/save"
                       onsubmit="return on_submit()" style="margin-top: 50px">
                     <div class="form-group">
-                        <label>width</label>
-                        <input name="width" type="number" class="form-control"
-                               value="${(fallImage.width)!''}"/>
-                    </div>
-                    <div class="form-group">
-                        <label>height</label>
-                        <input name="height" type="number" class="form-control"
-                               value="${(fallImage.height)!''}"/>
+                        <label>时长，单位s</label>
+                        <input name="during" type="number" class="form-control"
+                               value="${(fallMusic.during)!''}"/>
                     </div>
 
                     <input id="resouce" name="src" hidden/>
-
-                    <#--<div class="form-group">
-                        <label>类目</label>
-                        <select name="categoryType" class="form-control">
-                            <#list categoryList as category>
-                                <option value="${(category.categoryType)}"
-                                        <#if (fallImage.categoryType)?? && fallImage.categoryType==category.categoryType>
-                                selected
-                                        </#if>>
-                                    ${category.categoryName}
-                                </option>
-                            </#list>
-
-                        </select>
-                    </div>-->
 
                     <button id="submit_btn" type="submit" class="btn btn-default">提交添加</button>
                 </form>

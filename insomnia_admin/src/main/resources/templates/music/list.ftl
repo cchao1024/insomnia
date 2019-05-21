@@ -39,7 +39,7 @@
                             <td>${fallMusic.singer}</td>
                             <td><img width="60" src="${fallMusic.cover_img}"/></td>
                             <td>
-                                <audio src="${fallMusic.src}" controls="controls">播放</audio>
+                                <audio src="${fallMusic.src}" loop="loop" controls="controls">播放</audio>
                             </td>
                             <td>${fallMusic.like_count}</td>
                             <td>${fallMusic.play_count}</td>
