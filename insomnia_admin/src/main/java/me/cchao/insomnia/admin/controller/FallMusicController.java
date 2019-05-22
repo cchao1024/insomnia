@@ -56,7 +56,6 @@ public class FallMusicController {
      *
      * @param form          表单
      * @param bindingResult 验证
-     * @return
      */
     @PostMapping("/save")
     public ModelAndView save(@Valid FallMusic form, BindingResult bindingResult,
@@ -69,6 +68,18 @@ public class FallMusicController {
         FallMusic result = mFallService.save(form);
 
         map.put("msg", "保存成功 生成id" + result.getId());
+        map.put("url", "/admin/fall_music/list");
+        return new ModelAndView("common/success", map);
+    }
+
+    /**
+     * 删除
+     */
+    @PostMapping("/delete")
+    public ModelAndView save(@RequestParam long id, Map<String, Object> map) {
+        // 提交保存
+        mFallService.deleteMusic(id);
+
         map.put("url", "/admin/fall_music/list");
         return new ModelAndView("common/success", map);
     }

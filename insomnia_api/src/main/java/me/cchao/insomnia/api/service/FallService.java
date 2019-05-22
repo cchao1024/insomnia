@@ -33,8 +33,8 @@ public class FallService {
         Page<FallImage> page = mImageRepository.findAll(pageDTO.toPageIdDesc());
 
         List<FallImage> list = page.getContent().stream()
-            .map(ImagePathConvert::joinRemotePath)
-            .collect(Collectors.toList());
+                .map(ImagePathConvert::joinRemotePath)
+                .collect(Collectors.toList());
 
         return RespListBean.of(page, list, pageDTO.getPage());
     }
@@ -43,8 +43,8 @@ public class FallService {
         Page<FallMusic> page = mMusicRepository.findAll(pageDTO.toPageable());
 
         List<FallMusic> list = page.getContent().stream()
-            .map(ImagePathConvert::joinRemotePath)
-            .collect(Collectors.toList());
+                .map(ImagePathConvert::joinRemotePath)
+                .collect(Collectors.toList());
         return RespListBean.of(page, list, pageDTO.getPage());
     }
 
@@ -54,6 +54,14 @@ public class FallService {
 
     public FallMusic save(FallMusic music) {
         return mMusicRepository.save(music);
+    }
+
+    public void deleteMusic(long id) {
+        mMusicRepository.deleteById(id);
+    }
+
+    public void deleteImage(long id) {
+        mImageRepository.deleteById(id);
     }
 
     /**

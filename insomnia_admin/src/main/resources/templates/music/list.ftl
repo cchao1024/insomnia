@@ -11,8 +11,10 @@
     <div class="container-fluid">
         <div class="row clearfix">
             <div class="content_title">
-                音乐列表
+                 音乐列表
             </div>
+
+            <a class="add_item" href="/admin/fall_music/add">新增项目</a>
 
             <div class="col-md-12 column">
                 <table class="table table-bordered table-condensed">
@@ -39,14 +41,16 @@
                             <td>${fallMusic.singer}</td>
                             <td><img width="60" src="${fallMusic.cover_img}"/></td>
                             <td>
-                                <audio src="${fallMusic.src}" loop="loop" controls="controls">播放</audio>
+                                <audio src="${fallMusic.src}" loop="loop" controls="controls">播放
+                                </audio>
                             </td>
                             <td>${fallMusic.like_count}</td>
                             <td>${fallMusic.play_count}</td>
                             <td>${fallMusic.createTime}</td>
                             <td>${fallMusic.updateTime}</td>
                             <td><a href="javascript:"
-                                   onclick="del_confirm('xx/xxx'+${fallMusic.id})">删除</a></td>
+                                   onclick="del_confirm('/admin/fall_music/delete?id='+${fallMusic.id})">删除</a>
+                            </td>
                         </tr>
                     </#list>
                     </tbody>

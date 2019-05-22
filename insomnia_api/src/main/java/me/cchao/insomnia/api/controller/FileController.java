@@ -1,6 +1,5 @@
 package me.cchao.insomnia.api.controller;
 
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,6 +40,9 @@ public class FileController {
         String uploadDir = GlobalConfig.getUploadDir("image");
         String defSuffix = ".png";
         switch (type) {
+            case "user_avatar":
+                uploadDir = "/avatar" + GlobalConfig.getTimeFormatPath();
+                break;
             case "fall_image":
                 uploadDir = "/image" + GlobalConfig.getTimeFormatPath();
                 break;

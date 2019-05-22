@@ -2,7 +2,6 @@
 <#include "../common/header.ftl">
 
 <body>
-
 <#--边栏sidebar-->
 <#include "../common/nav2.ftl">
 
@@ -14,7 +13,7 @@
                 图片列表
             </div>
 
-            <#include "../common/add_item.html">
+            <a class="add_item" href="/admin/fall_image/add">新增项目</a>
 
             <div class="col-md-12 column">
                 <table class="table table-bordered table-condensed">
@@ -35,13 +34,16 @@
                     <#list data as fallImage>
                         <tr>
                             <td>${fallImage.id}</td>
-                            <td><img height="200" width="200" src="${fallImage.src}" alt="${fallImage.src}"></td>
+                            <td><img height="200" width="200" src="${fallImage.src}"
+                                     alt="${fallImage.src}"></td>
                             <td>${fallImage.width}</td>
                             <td>${fallImage.height}</td>
                             <td>${fallImage.like_count}</td>
                             <td>${fallImage.createTime}</td>
                             <td>${fallImage.updateTime}</td>
-                            <td><a href="javascript:" onclick="del_confirm('xx/xxx'+${fallImage.id})">删除</a></td>
+                            <td><a href="javascript:"
+                                   onclick="del_confirm('/admin/fall_image/delete?id='+${fallImage.id})">删除</a>
+                            </td>
                         </tr>
                     </#list>
                     </tbody>
@@ -54,21 +56,25 @@
                     <#if curPage lte 1>
                         <li class="disabled"><a href="#">上一页</a></li>
                     <#else>
-                        <li><a href="/admin/fall_image/list?page=${curPage - 1}&size=${pageSize}">上一页</a></li>
+                        <li><a href="/admin/fall_image/list?page=${curPage - 1}&size=${pageSize}">上一页</a>
+                        </li>
                     </#if>
 
                     <#list 1..totalPage as index>
                         <#if curPage == index>
                             <li class="disabled"><a href="#">${index}</a></li>
                         <#else>
-                            <li><a href="/admin/fall_image/list?page=${index}&size=${pageSize}">${index}</a></li>
+                            <li>
+                                <a href="/admin/fall_image/list?page=${index}&size=${pageSize}">${index}</a>
+                            </li>
                         </#if>
                     </#list>
 
                     <#if curPage gte totalPage>
                         <li class="disabled"><a href="#">下一页</a></li>
                     <#else>
-                        <li><a href="/admin/fall_image/list?page=${curPage + 1}&size=${pageSize}">下一页</a></li>
+                        <li><a href="/admin/fall_image/list?page=${curPage + 1}&size=${pageSize}">下一页</a>
+                        </li>
                     </#if>
                 </ul>
             </div>
