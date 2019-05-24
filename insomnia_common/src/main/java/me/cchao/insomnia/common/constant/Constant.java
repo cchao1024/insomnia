@@ -2,8 +2,10 @@ package me.cchao.insomnia.common.constant;
 
 public interface Constant {
     interface TYPE {
-        int IMAGE = 3333;
-        int MUSIC = 2222;
+        int FALL_IMAGE = 1;
+        int FALL_MUSIC = 2;
+        int UP_IMAGE = 3;
+        int UP_MUSIC = 4;
     }
 
     String USER_NAME = "userName";

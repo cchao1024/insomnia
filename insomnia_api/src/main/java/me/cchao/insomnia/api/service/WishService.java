@@ -3,23 +3,20 @@ package me.cchao.insomnia.api.service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
-import me.cchao.insomnia.api.bean.resp.fall.FallImageVo;
-import me.cchao.insomnia.common.constant.Results;
-import me.cchao.insomnia.common.constant.WishType;
-import me.cchao.insomnia.api.exception.CommonException;
-import me.cchao.insomnia.api.repository.FallImageRepository;
+import me.cchao.insomnia.api.bean.req.PageDTO;
+import me.cchao.insomnia.api.bean.resp.wish.WishItem;
+import me.cchao.insomnia.api.business.ImagePathConvert;
+import me.cchao.insomnia.api.config.GlobalConfig;
+import me.cchao.insomnia.api.domain.Wish;
 import me.cchao.insomnia.api.repository.WishRepository;
 import me.cchao.insomnia.api.security.SecurityHelper;
-import me.cchao.insomnia.api.domain.FallImage;
-import me.cchao.insomnia.api.domain.WishImage;
+import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.common.constant.Constant;
 
 /**
  * @author : cchao
@@ -31,31 +28,44 @@ public class WishService {
     @Autowired
     WishRepository mWishRepository;
     @Autowired
-    FallImageRepository mFallImageRepository;
+    FallService mFallService;
 
-    public void addWish(WishType type, Long id) {
-        Optional<FallImage> optionalFallImage = mFallImageRepository.findById(id);
-        if (!optionalFallImage.isPresent()) {
-            throw CommonException.of(Results.FAIL);
-        }
-        WishImage wishImage = new WishImage();
-        wishImage.setContentId(id);
-        wishImage.setType(type);
-        wishImage.setUrl(optionalFallImage.get().getSrc());
-        wishImage.setUserId(SecurityHelper.getUserId());
-        mWishRepository.save(wishImage);
+    public void addWish(Long id) {
+        Wish wish = new Wish();
+        wish.setWishId(id);
+        wish.setUserId(SecurityHelper.getUserId());
+        mWishRepository.save(wish);
     }
 
-    public Page<FallImageVo> getWishImageByPage(Pageable pageable) {
-        Page<WishImage> wishImagePage = mWishRepository.findByUserId(SecurityHelper.getUserId(), pageable);
+    public void remove(Long id) {
+        mWishRepository.deleteById(id);
+    }
 
-        List<FallImageVo> fallImageVoList = wishImagePage.getContent()
-                .stream().map(wishImage -> {
-                    FallImageVo fallImageVo = new FallImageVo();
-                    BeanUtils.copyProperties(mFallImageRepository.findById(wishImage.getId()), fallImageVo);
-                    return fallImageVo;
+    public RespListBean<WishItem> getWishByPage(PageDTO pageable) {
+        Page<Wish> page = mWishRepository.findByUserId(SecurityHelper.getUserId(), pageable.toPageIdDesc());
+
+        List<WishItem> wishItems = page.getContent()
+                .stream()
+                .map(wish -> {
+                    // 加入 wish 的实体obj
+                    WishItem wishItem = new WishItem();
+                    BeanUtils.copyProperties(wish, wishItem);
+
+                    Object object = null;
+                    long wishId = wish.getWishId();
+                    wishItem.setType(GlobalConfig.getTypeById(wishId));
+                    switch (GlobalConfig.getTypeById(wishId)) {
+                        case Constant.TYPE.FALL_IMAGE:
+                            object = mFallService.getImage(wishId);
+                            break;
+                        case Constant.TYPE.FALL_MUSIC:
+                            object = mFallService.getMusic(wishId);
+                            break;
+                    }
+                    wishItem.setContent(ImagePathConvert.joinRemotePath(object));
+                    return wishItem;
                 }).collect(Collectors.toList());
 
-        return new PageImpl<>(fallImageVoList, pageable, wishImagePage.getTotalElements());
+        return RespListBean.of(page, wishItems, pageable.getPage());
     }
 }

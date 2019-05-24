@@ -19,10 +19,11 @@ import me.cchao.insomnia.api.domain.User;
  */
 public class ImagePathConvert {
 
-    private static final Pattern COMPILE = Pattern.compile("//");
+    private static final Pattern COMPILE = Pattern.compile("(?<!:)//");
 
     /**
      * 拼接成绝对路径
+     *
      * @param relativePath 相对路径
      * @return
      */
@@ -34,10 +35,10 @@ public class ImagePathConvert {
         if (relativePath.startsWith("http")) {
             return relativePath;
         }
-        // 重复的//
         String absPath = GlobalConfig.sourceServerPath + relativePath;
+        // 重复的//
         if (absPath.lastIndexOf("//") > 7) {
-            return COMPILE.matcher(absPath).replaceAll("/");
+            absPath = COMPILE.matcher(absPath).replaceAll("/");
         }
         return absPath;
     }
@@ -78,12 +79,12 @@ public class ImagePathConvert {
             return new ArrayList<>();
         }
         List<String> list = Arrays.stream(StringUtils.split(images, ","))
-            .map(new Function<String, String>() {
-                @Override
-                public String apply(String s) {
-                    return joinRemotePath(s);
-                }
-            }).collect(Collectors.toList());
+                .map(new Function<String, String>() {
+                    @Override
+                    public String apply(String s) {
+                        return joinRemotePath(s);
+                    }
+                }).collect(Collectors.toList());
         return list;
     }
 }

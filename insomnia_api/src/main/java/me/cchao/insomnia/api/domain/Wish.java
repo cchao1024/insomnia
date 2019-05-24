@@ -2,26 +2,24 @@ package me.cchao.insomnia.api.domain;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import me.cchao.insomnia.common.constant.WishType;
 import lombok.Data;
 
 @Entity
 @Data
 @DynamicUpdate
-public class WishImage extends Auditable {
+public class Wish extends Auditable implements Serializable {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private WishType type;
-
-    private Long contentId;
-
     private Long userId;
-
-    private String url;
+    private Long wishId;
 }

@@ -1,21 +1,17 @@
 package me.cchao.insomnia.api.controller;
 
-import me.cchao.insomnia.api.bean.resp.fall.FallImageVo;
-import me.cchao.insomnia.common.RespBean;
-import me.cchao.insomnia.common.RespListBean;
-import me.cchao.insomnia.common.constant.WishType;
-import me.cchao.insomnia.api.service.WishService;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- */
+import me.cchao.insomnia.api.bean.req.PageDTO;
+import me.cchao.insomnia.api.bean.resp.wish.WishItem;
+import me.cchao.insomnia.api.service.WishService;
+import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.common.RespListBean;
+
 @RestController
 @RequestMapping(value = "/wish")
 public class WishController {
@@ -26,27 +22,24 @@ public class WishController {
     /**
      * 图片的wish列表
      */
-    @RequestMapping(value = "/getImageList")
+    @RequestMapping(value = "/list")
     @RequiresAuthentication
-    public RespListBean<FallImageVo> getFallIndex(@RequestParam(value = "page", defaultValue = "1") int page
+    public RespListBean<WishItem> getFallIndex(@RequestParam(value = "page", defaultValue = "1") int page
             , @RequestParam(value = "pageSize", defaultValue = "30") int pageSize) {
-
-        Page<FallImageVo> pageObj = mWishService.getWishImageByPage(PageRequest.of(page, pageSize));
-        return RespListBean.of(pageObj, pageObj.getContent(), page);
+        return mWishService.getWishByPage(PageDTO.of(page, pageSize));
     }
 
-    @RequestMapping(value = "/addwish")
+    @RequestMapping(value = "/add")
     @RequiresAuthentication
-    public RespBean postFallImage(@RequestParam("type") int type, @RequestParam("wish_id") long wishId) {
-        // 1 ： image
-        // 2 ： music
-        WishType wishType = WishType.IMAGE;
-        switch (type) {
-            case 2:
-                wishType = WishType.MUSIC;
-                break;
-        }
-        mWishService.addWish(wishType, wishId);
+    public RespBean addWish(@RequestParam("id") long id) {
+        mWishService.addWish(id);
+        return RespBean.suc();
+    }
+
+    @RequestMapping(value = "/remove")
+    @RequiresAuthentication
+    public RespBean removeWish(@RequestParam("id") long id) {
+        mWishService.remove(id);
         return RespBean.suc();
     }
 }

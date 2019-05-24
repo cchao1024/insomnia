@@ -39,6 +39,14 @@ public class FallService {
         return RespListBean.of(page, list, pageDTO.getPage());
     }
 
+    public FallImage getImage(long id) {
+        return mImageRepository.findById(id).get();
+    }
+
+    public FallMusic getMusic(long id) {
+        return mMusicRepository.findById(id).get();
+    }
+
     public RespListBean<FallMusic> getMusicByPage(PageDTO pageDTO) {
         Page<FallMusic> page = mMusicRepository.findAll(pageDTO.toPageable());
 

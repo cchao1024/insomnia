@@ -54,8 +54,8 @@ public class AppController {
 
         AppLaunch appLaunch = new AppLaunch();
         appLaunch.setLastAndroidVersion(Constant.ANDROID_LAST_VERSION)
-            .setVersionUpdateMsg("empty")
-            .setUserInfo(resp);
+                .setVersionUpdateMsg("empty")
+                .setUserInfo(resp);
         return RespBean.suc(appLaunch);
     }
 
@@ -75,5 +75,13 @@ public class AppController {
     @RequestMapping("/about_us")
     public String getAboutUs() {
         return "about_us";
+    }
+
+    /**
+     * 478
+     */
+    @RequestMapping("/sleep_478")
+    public String get478question() {
+        return "sleep_478";
     }
 }

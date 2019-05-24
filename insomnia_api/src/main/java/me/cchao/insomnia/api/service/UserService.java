@@ -11,20 +11,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
 import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.req.user.EditUserDTO;
 import me.cchao.insomnia.api.bean.req.user.UserLoginDTO;
 import me.cchao.insomnia.api.bean.resp.user.UpdateUser;
 import me.cchao.insomnia.api.business.ImagePathConvert;
-import lombok.extern.slf4j.Slf4j;
-import me.cchao.insomnia.api.domain.FallMusic;
-import me.cchao.insomnia.common.RespListBean;
-import me.cchao.insomnia.common.constant.Results;
 import me.cchao.insomnia.api.domain.User;
 import me.cchao.insomnia.api.exception.CommonException;
 import me.cchao.insomnia.api.exception.SystemErrorMessage;
 import me.cchao.insomnia.api.repository.UserRepository;
 import me.cchao.insomnia.api.security.JWTUtil;
+import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.common.constant.Results;
 
 /**
  * @author : cchao
@@ -54,11 +53,12 @@ public class UserService {
     public User findUserByEmail(String email) {
         log.info("UserService#findUserByEmail:" + email);
         return ImagePathConvert.joinRemotePath(mUserRepository.findByEmail(email)
-            .orElse(null));
+                .orElse(null));
     }
 
     /**
      * 获取用户列表
+     *
      * @param pageDTO 分页
      * @return list
      */
@@ -113,12 +113,12 @@ public class UserService {
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String nameLabel = timeStamp.substring(timeStamp.length() - 5);
         String defPwd = "123456";
-        String defEmail = nameLabel + "@qq.com";
+        String defEmail = "";
         User user = new User()
-            .setVisitor(1)
-            .setEmail(defEmail)
-            .setNickName("游客" + nameLabel)
-            .setPassword(defPwd);
+                .setVisitor(1)
+                .setEmail(defEmail)
+                .setNickName("游客" + nameLabel)
+                .setPassword(defPwd);
 
         // 写入库
         user = mUserRepository.save(user);

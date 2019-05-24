@@ -1,12 +1,12 @@
 package me.cchao.insomnia.api.repository;
 
-import me.cchao.insomnia.api.domain.WishImage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface WishRepository extends JpaRepository<WishImage, Long> {
+import me.cchao.insomnia.api.domain.Wish;
 
-    Page<WishImage> findByUserId(Long userId, Pageable pageable);
+public interface WishRepository extends JpaRepository<Wish, Long> {
 
+    Page<Wish> findByUserId(Long userId, Pageable pageable);
 }

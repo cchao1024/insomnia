@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 
 import lombok.Data;
+import me.cchao.insomnia.common.constant.Constant;
 
 /**
  * @author : cchao
@@ -53,5 +54,20 @@ public class GlobalConfig {
             new File(dir).mkdirs();
         }
         return new File(dir + fileName);
+    }
+
+    /**
+     * 根据 id 获取不同的 类型
+     * fall_music id 大于 2000000
+     * fall_image id 大于 1000000
+     */
+    public static int getTypeById(long id) {
+        if (id > 2000000) {
+            return Constant.TYPE.FALL_MUSIC;
+        } else if (id > 1000000) {
+            return Constant.TYPE.FALL_IMAGE;
+        } else {
+            return Constant.TYPE.FALL_IMAGE;
+        }
     }
 }
