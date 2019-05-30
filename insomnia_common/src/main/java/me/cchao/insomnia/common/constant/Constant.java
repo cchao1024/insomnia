@@ -12,5 +12,5 @@ public interface Constant {
     String USER_ID = "userId";
 
     String AUTHORIZATION_HEADER_NAME = "Authorization";
-    int ANDROID_LAST_VERSION=234;
+    int ANDROID_LAST_VERSION = 234;
 }

@@ -9,6 +9,7 @@ import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import me.cchao.insomnia.api.bean.resp.user.UpdateUser;
 import me.cchao.insomnia.api.config.GlobalConfig;
 import me.cchao.insomnia.api.domain.FallImage;
 import me.cchao.insomnia.api.domain.FallMusic;

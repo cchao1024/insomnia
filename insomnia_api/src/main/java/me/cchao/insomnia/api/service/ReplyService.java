@@ -9,8 +9,6 @@ import java.util.Optional;
 
 import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.req.post.ReplyDTO;
-import me.cchao.insomnia.common.RespBean;
-import me.cchao.insomnia.common.constant.Results;
 import me.cchao.insomnia.api.bean.resp.post.ReplyVO;
 import me.cchao.insomnia.api.domain.Comment;
 import me.cchao.insomnia.api.domain.Reply;
@@ -18,6 +16,8 @@ import me.cchao.insomnia.api.domain.User;
 import me.cchao.insomnia.api.exception.CommonException;
 import me.cchao.insomnia.api.repository.ReplyRepository;
 import me.cchao.insomnia.api.security.SecurityHelper;
+import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.common.constant.Results;
 
 /**
  * @author : cchao
@@ -40,21 +40,26 @@ public class ReplyService {
         long commentId = dto.getToId();
         Comment comment = mCommentService.findById(commentId);
 
-        if (comment.getCommentUserId() == SecurityHelper.getUserId()) {
-            throw CommonException.of(Results.FAIL.msg("你不能回复自己的说说"));
-        }
         // comment 评论+1
         mCommentService.increaseReview(commentId);
 
-        Reply reply = new Reply();
-        BeanUtils.copyProperties(dto, reply);
+        Reply row = new Reply();
+        BeanUtils.copyProperties(dto, row);
 
-        reply.setPostId(comment.getPostId())
-            .setCommentId(commentId)
-            .setCommentUserId(comment.getCommentUserId())
-            .setReplyUserId(SecurityHelper.getUserId());
+        row.setPostId(comment.getPostId())
+                .setCommentId(commentId)
+                .setCommentUserId(comment.getCommentUserId())
+                .setToUserId(comment.getCommentUserId())
+                .setReplyUserId(SecurityHelper.getUserId());
 
-        mReplyRepository.save(reply);
+        // 不为0，表示 回复用户
+        if (0 != dto.getReplyId()) {
+            Reply fromReply = mReplyRepository.findById(dto.getReplyId()).get();
+            row.setToUserId(fromReply.getReplyUserId())
+                    .setToReplyId(dto.getReplyId());
+        }
+
+        mReplyRepository.save(row);
         return RespBean.suc();
     }
 
@@ -68,17 +73,21 @@ public class ReplyService {
         // 拿到comment 分页
         Page<Reply> commentPage = mReplyRepository.findByCommentId(commentId, dto.toPageable());
         // 转化成 VO
-        Page<ReplyVO> result = commentPage.map(comment -> {
+        Page<ReplyVO> result = commentPage.map(reply -> {
             // 获取用户信息
-            User replyUser = mUserService.findUserById(comment.getReplyUserId());
-            User commentUser = mUserService.findUserById(comment.getCommentUserId());
+            User replyUser = mUserService.findUserById(reply.getReplyUserId());
+            User commentUser = mUserService.findUserById(reply.getToUserId());
 
             // 封装 vo
             ReplyVO replyVO = new ReplyVO();
-            BeanUtils.copyProperties(comment, replyVO);
+            BeanUtils.copyProperties(reply, replyVO);
             replyVO.setReplyUserId(replyUser.getId())
-                .setCommentUserId(commentUser.getId())
-                .setCommentUserName(commentUser.getNickName());
+                    .setReplyUserAvatar(replyUser.getAvatar())
+                    .setReplyUserName(replyUser.getNickName())
+                    .setToReplyId(reply.getToReplyId())
+                    .setToUserId(reply.getToUserId())
+                    .setCommentUserId(commentUser.getId())
+                    .setCommentUserName(commentUser.getNickName());
             return replyVO;
         });
         return result;

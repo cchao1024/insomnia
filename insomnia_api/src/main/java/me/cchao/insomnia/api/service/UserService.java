@@ -81,7 +81,6 @@ public class UserService {
         if (validPassword) {
             // 登录成功 返回 token
             String token = JWTUtil.createToken(email, user.getId(), password);
-
             return wrapUpdateUser(user, token);
         } else {
             throw new CommonException(SystemErrorMessage.USER_PASSWORD_INVALID);
@@ -141,6 +140,7 @@ public class UserService {
         }
         UpdateUser result = new UpdateUser();
         BeanUtils.copyProperties(user, result);
+        ImagePathConvert.joinRemotePath(result);
         // 生成新的token
         result.setToken(JWTUtil.createToken(result.getEmail(), result.getId(), result.getPassword()));
         return result;

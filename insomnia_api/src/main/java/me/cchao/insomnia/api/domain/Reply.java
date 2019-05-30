@@ -28,6 +28,8 @@ public class Reply extends Auditable {
     long postId;
     long commentId;
     long commentUserId;
+    long toUserId;
+    long toReplyId;
 
     long replyUserId;
 

@@ -18,8 +18,11 @@ public class ReplyVO {
     long commentId;
     long commentUserId;
     long replyUserId;
+    String replyUserName;
     String replyUserAvatar;
     String commentUserName;
+    long toUserId;
+    long toReplyId;
 
     int likeCount;
     String content;
