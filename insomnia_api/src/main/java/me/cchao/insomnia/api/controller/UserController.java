@@ -52,7 +52,7 @@ public class UserController {
     public RespBean<UpdateUser> update(EditUserDTO user, HttpServletRequest httpRequest) {
 
         long id = JWTUtil.getUserId(httpRequest);
-        UpdateUser result = mUserService.saveUserInfo(id, user);
+        UpdateUser result = mUserService.updateUserInfo(id, user);
 
         return RespBean.suc(result);
     }

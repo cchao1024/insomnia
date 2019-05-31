@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ import me.cchao.insomnia.api.exception.CommonException;
 import me.cchao.insomnia.api.exception.SystemErrorMessage;
 import me.cchao.insomnia.api.repository.UserRepository;
 import me.cchao.insomnia.api.security.JWTUtil;
+import me.cchao.insomnia.api.util.Printer;
 import me.cchao.insomnia.common.RespListBean;
 import me.cchao.insomnia.common.constant.Results;
 
@@ -37,21 +39,21 @@ public class UserService {
     @Autowired
     UserRepository mUserRepository;
 
-    @Cacheable(key = "'user_id_' + #id", unless = "#result eq null")
+    @Cacheable(key = "'id_' + #id", unless = "#result eq null")
     public User findUserById(Long id) {
-        log.info("UserService#findUserById:" + id);
+        Printer.print("UserService#findUserById:" + id);
         return ImagePathConvert.joinRemotePath(mUserRepository.getOne(id));
     }
 
+    @CacheEvict(key = "'id_' + #id", condition = "#result !=null")
     public void increaseLike(Long id) {
         // 用户 like +1
         User user = mUserRepository.getOne(id);
         mUserRepository.save(user.increaseLike());
     }
 
-    @Cacheable(key = "'user_email_' + #id", unless = "#result eq null")
     public User findUserByEmail(String email) {
-        log.info("UserService#findUserByEmail:" + email);
+        Printer.print("UserService#findUserByEmail:" + email);
         return ImagePathConvert.joinRemotePath(mUserRepository.findByEmail(email)
                 .orElse(null));
     }
@@ -128,7 +130,8 @@ public class UserService {
     /**
      * 更新用户信息
      */
-    public UpdateUser saveUserInfo(long id, EditUserDTO reqUser) {
+    @CacheEvict(key = "'id_' + #id", condition = "#result !=null")
+    public UpdateUser updateUserInfo(long id, EditUserDTO reqUser) {
         User user = findUserById(id);
         user.setVisitor(0);
 

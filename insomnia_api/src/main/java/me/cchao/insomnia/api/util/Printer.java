@@ -11,6 +11,6 @@ public class Printer {
         for (Object arg : args) {
             content += "[" + arg + "]";
         }
-        System.out.print(content);
+        System.out.println(content);
     }
 }
