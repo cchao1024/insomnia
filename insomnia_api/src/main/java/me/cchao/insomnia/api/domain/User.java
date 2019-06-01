@@ -1,6 +1,7 @@
 package me.cchao.insomnia.api.domain;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Proxy;
 
 import java.io.Serializable;
 
@@ -17,6 +18,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @DynamicUpdate
+@Proxy(lazy = false)
 public class User extends Auditable implements Serializable {
 
     @Id

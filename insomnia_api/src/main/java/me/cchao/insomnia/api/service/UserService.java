@@ -52,12 +52,6 @@ public class UserService {
         mUserRepository.save(user.increaseLike());
     }
 
-    public User findUserByEmail(String email) {
-        Printer.print("UserService#findUserByEmail:" + email);
-        return ImagePathConvert.joinRemotePath(mUserRepository.findByEmail(email)
-                .orElse(null));
-    }
-
     /**
      * 获取用户列表
      *
@@ -77,7 +71,11 @@ public class UserService {
         String email = params.getEmail();
         String password = params.getPassword();
 
-        User user = findUserByEmail(email);
+        // 不存在
+        if (!mUserRepository.findByEmail(email).isPresent()) {
+            throw new CommonException(SystemErrorMessage.USER_PASSWORD_INVALID);
+        }
+        User user = mUserRepository.findByEmail(email).get();
         // 检验密码是否正确
         boolean validPassword = StringUtils.equals(user.getPassword(), password);
         if (validPassword) {

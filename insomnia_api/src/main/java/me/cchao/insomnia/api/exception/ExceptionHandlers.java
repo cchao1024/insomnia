@@ -3,6 +3,7 @@ package me.cchao.insomnia.api.exception;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 
 import org.apache.shiro.ShiroException;
+import org.apache.shiro.authc.AuthenticationException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
@@ -63,6 +64,13 @@ public class ExceptionHandlers {
     @ResponseBody
     @ExceptionHandler(value = TokenExpiredException.class)
     public RespBean handle401(TokenExpiredException e) {
+        log.error("ExceptionHandlers", e);
+        return RespBean.fail(Results.TOKEN_EXPIRED);
+    }
+
+    @ResponseBody
+    @ExceptionHandler(value = AuthenticationException.class)
+    public RespBean handle401(AuthenticationException e) {
         log.error("ExceptionHandlers", e);
         return RespBean.fail(Results.TOKEN_EXPIRED);
     }

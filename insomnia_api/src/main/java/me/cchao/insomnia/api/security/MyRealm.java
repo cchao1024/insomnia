@@ -61,7 +61,7 @@ public class MyRealm extends AuthorizingRealm {
             throw new AuthenticationException("token invalid");
         }
 
-        User user = userService.findUserByEmail(username);
+        User user = userService.findUserById(JWTUtil.getUserId(token));
         if (user == null) {
             throw new AuthenticationException("User didn't existed!");
         }
