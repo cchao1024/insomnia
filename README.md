@@ -1,6 +1,6 @@
 # Insomnia
 
-Insomnia-server 是全栈项目 ** Insomnia ** 的服务端代码，项目基于 SpringBoot 开发
+Insomnia-server 是全栈项目 **Insomnia** 的服务端代码，项目基于 SpringBoot 开发
 
  * [insomnia-server springBoot后端项目](https://github.com/cchao1024/insomnia-server)
  * [insomnia-android android 客户端](https://github.com/cchao1024/insomnia-android)
