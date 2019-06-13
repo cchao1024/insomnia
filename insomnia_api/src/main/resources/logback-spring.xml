@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="logger.path" value="D:/logs" />
+    <property name="logger.path" value="./logs" />
 
     <!-- 彩色日志 -->
     <!-- 彩色日志依赖的渲染类 -->

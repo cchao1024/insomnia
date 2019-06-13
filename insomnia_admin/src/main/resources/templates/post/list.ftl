@@ -34,14 +34,18 @@
                     <#list data as item>
                         <tr>
                             <td>${item.id}</td>
-                            <td>${item.content}</td>
+                            <td width="50%">
+                                <span style="display:block;text-indent:2em;text-align: left">${item.content}</span>
+                            </td>
                             <td>${item.postUserId}</td>
                             <td>${item.postUserName}</td>
-                            <td><img height="60" width="60" src="${item.postUserAvatar}" alt="${item.postUserAvatar}"></td>
+                            <td><img height="60" width="60" src="${item.postUserAvatar}"
+                                     alt="${item.postUserAvatar}"></td>
                             <td>${item.reviewCount}</td>
                             <td>${item.likeCount}</td>
                             <td>${item.updateTime}</td>
-                            <td><a href="javascript:" onclick="del_confirm('xx/xxx'+${item.id})">删除</a></td>
+                            <td><a href="javascript:"
+                                   onclick="del_confirm('xx/xxx'+${item.id})">删除</a></td>
                         </tr>
                     </#list>
                     </tbody>
@@ -54,21 +58,27 @@
                     <#if listBean.curPage lte 1>
                         <li class="disabled"><a href="#">上一页</a></li>
                     <#else>
-                        <li><a href="/admin/post/list?page=${listBean.curPage - 1}&size=${pageSize}">上一页</a></li>
+                        <li>
+                            <a href="/admin/post/list?page=${listBean.curPage - 1}&size=${pageSize}">上一页</a>
+                        </li>
                     </#if>
 
                     <#list 1..listBean.totalPage as index>
                         <#if listBean.curPage == index>
                             <li class="disabled"><a href="#">${index}</a></li>
                         <#else>
-                            <li><a href="/admin/post/list?page=${index}&size=${pageSize}">${index}</a></li>
+                            <li>
+                                <a href="/admin/post/list?page=${index}&size=${pageSize}">${index}</a>
+                            </li>
                         </#if>
                     </#list>
 
                     <#if listBean.curPage gte listBean.totalPage>
                         <li class="disabled"><a href="#">下一页</a></li>
                     <#else>
-                        <li><a href="/admin/post/list?page=${listBean.curPage + 1}&size=${pageSize}">下一页</a></li>
+                        <li>
+                            <a href="/admin/post/list?page=${listBean.curPage + 1}&size=${pageSize}">下一页</a>
+                        </li>
                     </#if>
                 </ul>
             </div>

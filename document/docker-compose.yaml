@@ -8,7 +8,7 @@ services:
       - ./mysql/data/:/var/lib/mysql/                             #映射mysql的数据目录到宿主机，保存数据
       - ./mysql/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf #把mysql的配置文件映射到容器的相应目录
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=ROOT
   nginx:
@@ -26,9 +26,9 @@ services:
       - ./nginx/logs/:/var/log/nginx/
       - ./nginx/data/:/var/share/nginx/html/                     #映射nginx的网页目录到容器里
     links:
-      - tomcat_1                                               #连接 tomcat镜像
-  tomcat_1:
-    container_name: tomcat_1
+      - tomcat                                               #连接 tomcat镜像
+  tomcat:
+    container_name: tomcat
     image: tomcat:latest
     restart: always
     ports:
@@ -40,4 +40,16 @@ services:
       - ./tomcat/logs/:/usr/local/tomcat/logs/
     links:
       - mysql                                                   #连接数据库镜像
-
+  redis:
+    # 指定镜像
+    image: redis
+    ports:
+      # 端口映射
+      - 6379:6379
+    volumes:
+      # 目录映射
+      - ./redis/conf:/usr/local/etc/redis
+      - ./redis/data:/data
+    command:
+      # 执行的命令
+      redis-server

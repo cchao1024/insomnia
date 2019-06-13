@@ -11,8 +11,13 @@
         reader.onloadend = function () {
             var preview_music = $("#preview_music");
             preview_music.attr("src", reader.result);
+            // 填入 时长
+            preview_music.on("canplay", function () {
+                $("#during").attr("value", preview_music.get(0).duration);
+            });
         };
         reader.readAsDataURL(input_file[0].files[0]);
+
     }
 
     var upload_suc = false;
@@ -85,7 +90,7 @@
                       onsubmit="return on_submit()" style="margin-top: 50px">
                     <div class="form-group">
                         <label>时长，单位s</label>
-                        <input name="during" type="number" class="form-control"
+                        <input id="during" name="during" type="number" class="form-control"
                                value="${(fallMusic.during)!''}"/>
                     </div>
 

@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: admin
     password: admin
-    url: jdbc:mysql://127.0.0.1:3307/insomnia?characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/insomnia?characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
   jpa:
     show-sql: true
     open-in-view: true
@@ -14,7 +14,9 @@ spring:
           auto=update
       id:
         new_generator_mappings: false
-
+  freemarker:
+    settings:
+      number_format: '0.##'   #数字格式化，无千分符
   jackson:
     default-property-inclusion: non_null
   servlet:

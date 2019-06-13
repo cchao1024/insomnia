@@ -1,10 +1,13 @@
 # Insomnia
 
 Insomnia-server 是全栈项目 ** Insomnia ** 的服务端代码，项目基于 SpringBoot 开发
+整合 **jwt，mysql，Spring Jpa，Redis，Freemarker**等主流后端开发框架
+本地环境基于 **docker-compose** 部署。
 
  * [insomnia-server springBoot后端项目](https://github.com/cchao1024/insomnia-server)
  * [insomnia-android android 客户端](https://github.com/cchao1024/insomnia-android)
  * [simpleLib android 基础类库](https://github.com/cchao1024/insomnia-server)
+
 ## 项目结构
 ```
 Insomnia-server
@@ -12,6 +15,8 @@ Insomnia-server
 ├── insomnia_api 为前端app提供 接口
 └── insomnia_common 通用的响应和常量
 ```
+项目为多模块构建，**后台管理admin** 依赖于 api模块，拿到后者提供的接口数据，交由 **Freemarker** 模板引擎填充展示。
+common模块 则放置一些通用的类库和常量
 
 ## 主要功能
 ```
@@ -38,17 +43,21 @@ Insomnia-server
       
 ```
 
-## 其他端
-* 项目后台 运行 insomnia_admin 模块后，进入 [localhost:8080/admin/index](localhost:8080/admin/index) 查看
-* Android 端 App 已实现基本功能，项目地址:[cchao1024/insomnia-android](https://github.com/cchao1024/insomnia-android)
-* Web 端处于开发阶段。
+## 后台管理
+完成本地部署(文末有部署步骤)后可以通过 [localhost:8080/admin/index](localhost:8080/admin/index) 查看，
+> TODO 这里需要放一个远程地址，但是 VPS 的 IP 被敬爱的组织临时封了，不懂几时能恢复
 
+大概长这样子：
+![](https://raw.githubusercontent.com/cchao1024/insomnia-server/master/document/admin_1.jpg) 
+![](https://raw.githubusercontent.com/cchao1024/insomnia-server/master/document/admin_2.jpg) 
+![](https://raw.githubusercontent.com/cchao1024/insomnia-server/master/document/admin_3.jpg) 
+
+* Android 端 App 已实现基本功能，项目地址:[cchao1024/insomnia-android](https://github.com/cchao1024/insomnia-android)
 
 # 依赖框架
 技术 | 说明 | 官网
 ----|----|----
 Spring Boot | 容器+MVC框架 | [https://spring.io/projects/spring-boot](https://spring.io/projects/spring-boot)
-Spring Security | 认证和授权框架 | [https://spring.io/projects/spring-security](https://spring.io/projects/spring-security)
 Spring Jpa | 持久层API | [https://spring.io/projects/spring-data-jpa](https://spring.io/projects/spring-data-jpa)
 Swagger-UI | 文档生产工具 | [https://github.com/swagger-api/swagger-ui](https://github.com/swagger-api/swagger-ui)
 javax.validation | 验证框架 | [javax.validation](https://docs.oracle.com/javaee/7/api/javax/validation/package-summary.html)
@@ -62,4 +71,29 @@ JWT | JWT登录支持 | [https://github.com/jwtk/jjwt](https://github.com/jwtk/j
 Lombok | 简化对象封装工具 | [https://github.com/rzwitserloot/lombok](https://github.com/rzwitserloot/lombok)
 
 # 本地环境搭建
-运行本地环境仅需配置 mysql 数据库即可
+1 **配置 docker-compose 运行环境**
+
+ 可以参见笔者博文 [https://cchao1024.github.io/Docker解放生产力](https://cchao1024.github.io/2019-06-Docker%20%E8%A7%A3%E6%94%BE%E7%94%9F%E4%BA%A7%E5%8A%9B/)
+
+2 **搭建开发环境**
+
+将项目中 **document/docker-compose.yaml** 复制到你期望的 docker 目录下，执行
+
+```c
+docker-compose up
+```
+3 **导入数据库**
+ 
+将项目中 **document/backup.sql** 复制到你的 docker 目录下的 **mysql/data**(这个目录会映射到 mysql 容器中，docker-compose.yaml配置文件中有说明的)
+ 执行 数据库还原，这样通过本机的 **3306** 端口就会看到 已经恢复的 insomnia 数据库
+ ```$xslt
+    mysql -u root -pROOT < /var/lib/mysql/backup.sql
+ ```
+4 **运行** 
+
+ 使用 IDEA 打开 insomnia-server 项目并运行，通过 **localhost:8080/admin/index** 进入后台。
+
+# TODO 
+1 如果进行顺利，加入个 **睡不着？起来嗨** 模块，放一下 **刺激的，引人深思** 的文章或图片或视频
+2 加入 Banner 超链接，提供一些七七八八的文章
+2 COS 流量有点贵，考虑把资源放到 aliyun 下的海外 VPS

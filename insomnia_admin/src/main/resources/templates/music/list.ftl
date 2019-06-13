@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html>
 <#include "../common/header.ftl">
 
@@ -11,7 +10,7 @@
     <div class="container-fluid">
         <div class="row clearfix">
             <div class="content_title">
-                 音乐列表
+                音乐列表
             </div>
 
             <a class="add_item" href="/admin/fall_music/add">新增项目</a>
@@ -49,7 +48,7 @@
                             <td>${fallMusic.createTime}</td>
                             <td>${fallMusic.updateTime}</td>
                             <td><a href="javascript:"
-                                   onclick="del_confirm('/admin/fall_music/delete?id='+${fallMusic.id})">删除</a>
+                                   onclick="del_confirm('/admin/fall_music/delete?id=${fallMusic.id}')">删除</a>
                             </td>
                         </tr>
                     </#list>

@@ -5,7 +5,6 @@
 
 <script>
     /*
-
         var preview = document.querySelector('img');
         var file = document.querySelector('input[type=file]').files[0];
         var reader = new FileReader();
@@ -22,22 +21,31 @@
     */
 
     // 预览图片
-    function preview_img() {
+    function on_preview() {
         var input_file = $("#file_input");
         var reader = new FileReader();
+        var image_file = input_file[0].files[0];
+        reader.readAsDataURL(image_file);
         reader.onloadend = function () {
             var preview_img = $("#preview_image");
             preview_img.attr("src", reader.result);
-            preview_img.naturalHeight;
-            preview_img.naturalWidth;
-
-            console.log("真实高度 " + preview_img.naturalHeight);
         };
-        reader.readAsDataURL(input_file[0].files[0]);
+
+        // 填入宽高
+        var _URL = window.URL || window.webkitURL;
+        var file, img;
+        if ((file = image_file)) {
+            img = new Image();
+            img.onload = function () {
+                $("#img_h").attr("value", this.height);
+                $("#img_w").attr("value", this.width);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
     }
 
+    // 上传图片
     var upload_suc = false;
-
     function on_submit() {
         var input_file = $("#file_input");
         var filename = input_file.val();
@@ -52,7 +60,7 @@
         // 发起请求 上传到服务端
         $.ajax({
             type: "POST",
-            url: "/file/uploadImage",
+            url: "/file/upload",
             enctype: 'multipart/form-data',
             processData: false,
             contentType: false,
@@ -71,7 +79,7 @@
                 var object = eval("(" + data.responseText + ")");
                 console.log("返回json data：" + object['data']['relativeUrl']);
                 upload_suc = true;
-                // 成功回调
+                // 成功后，提交表单
                 $("#resouce").attr("value", object['data']['relativeUrl']);
                 $("#submit_btn").click();
             },
@@ -80,7 +88,6 @@
             }
         });
         return upload_suc;
-    }
     }
 </script>
 
@@ -97,7 +104,7 @@
 
                 <div class="form-group">
                     <input type="file" id="file_input" accept="image/*"
-                           onchange="preview_img()"/>
+                           onchange="on_preview(this)"/>
                 </div>
 
                 <img id="preview_image" src="/image/place_holder.svg" height="200"
@@ -107,12 +114,12 @@
                       onsubmit="return on_submit()" style="margin-top: 50px">
                     <div class="form-group">
                         <label>width</label>
-                        <input name="width" type="number" class="form-control"
+                        <input id="img_w" name="width" type="number" class="form-control"
                                value="${(fallImage.width)!''}"/>
                     </div>
                     <div class="form-group">
                         <label>height</label>
-                        <input name="height" type="number" class="form-control"
+                        <input id="img_h" name="height" type="number" class="form-control"
                                value="${(fallImage.height)!''}"/>
                     </div>
 

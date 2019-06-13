@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.15, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.16, for Linux (x86_64)
 --
--- Host: localhost    Database: insomnia
+-- Host: 127.0.0.1    Database: insomnia
 -- ------------------------------------------------------
--- Server version	8.0.15
+-- Server version	8.0.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -34,7 +34,7 @@ CREATE TABLE `comment` (
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `review_count` int(11) DEFAULT '0' COMMENT '评论数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6600020 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6600022 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (6000005,0,29,29,'ggggg',NULL,0,'2019-05-10 05:39:18','2019-05-29 09:41:56',0),(6000010,12,29,29,'cvhjji',NULL,0,'2019-05-10 06:20:41','2019-05-29 09:41:56',0),(6000011,12,29,29,'hhdjdjdjf',NULL,0,'2019-05-10 06:20:48','2019-05-29 09:41:56',0),(6000012,9,28,29,'ddddy',NULL,0,'2019-05-10 06:30:59','2019-05-29 09:41:56',0),(6000013,1,1,29,'发咯哦吴奇隆旅途',NULL,0,'2019-05-24 08:06:02','2019-05-29 09:41:56',0),(6000014,10,28,30,'可口可乐看',NULL,0,'2019-05-27 03:29:48','2019-05-29 09:41:56',0),(6000015,5000015,5,4,'图片不错哦',NULL,15,'2019-05-29 09:16:00','2019-05-30 06:48:37',3),(6000016,5000015,5,3,'我一开始就想歪了，我有罪',NULL,0,'2019-05-29 09:26:28','2019-05-29 09:43:42',1),(6600017,5000015,5,4,'我不得弄什么','',1,'2019-05-30 02:34:19','2019-05-30 03:36:38',0),(6600018,5000015,5,4,'如图一五天前','',0,'2019-05-30 02:34:31','2019-05-30 02:34:31',0),(6600019,5000015,5,4,'擦擦擦得得','',0,'2019-05-30 02:37:06','2019-05-30 02:37:06',0);
+INSERT INTO `comment` VALUES (6000014,10,28,30,'可口可乐看',NULL,0,'2019-05-27 03:29:48','2019-05-29 09:41:56',0),(6000015,5000015,5,4,'图片不错哦',NULL,15,'2019-05-29 09:16:00','2019-05-30 06:48:37',3),(6000016,5000015,5,3,'看到图，我就想歪了，我有罪',NULL,1,'2019-05-29 09:26:28','2019-06-05 06:42:37',1),(6600019,5000015,5,4,'擦擦擦得得','',0,'2019-05-30 02:37:06','2019-05-30 02:37:06',0),(6600020,5500016,3,5,'最后就是我了，我叫 诺敏楚仑乌罕札雅孟赫额尔德尼恩赫特古勒德日，\n我敬你一杯，开始吧。','',0,'2019-06-05 06:17:44','2019-06-05 06:20:03',1),(6600021,5500016,3,29,'初次见面，也没带什么见面礼，就送你们个汉族名字吧。你叫张三……','',0,'2019-06-05 06:22:24','2019-06-05 06:23:14',0);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS `fall_image`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `fall_image` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `src` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `src` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `width` int(11) DEFAULT NULL COMMENT '图片宽',
   `height` int(11) DEFAULT NULL COMMENT '图片高',
   `like_count` int(11) DEFAULT NULL COMMENT '点赞数',
@@ -85,10 +85,10 @@ DROP TABLE IF EXISTS `fall_music`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `fall_music` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `singer` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `src` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cover_img` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '专辑图',
-  `name` varchar(1024) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '帖子图片列表',
+  `singer` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `src` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cover_img` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '专辑图',
+  `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '帖子图片列表',
   `like_count` int(11) DEFAULT NULL COMMENT '点赞数',
   `play_count` int(11) DEFAULT NULL COMMENT '播放数',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -117,8 +117,8 @@ DROP TABLE IF EXISTS `feed_back`;
 CREATE TABLE `feed_back` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
-  `content` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '反馈内容',
-  `email` varchar(1024) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '联系邮箱',
+  `content` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '反馈内容',
+  `email` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '联系邮箱',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
@@ -153,7 +153,7 @@ CREATE TABLE `post` (
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   `review_count` int(11) DEFAULT '0' COMMENT '评论数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5500016 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5500017 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +162,7 @@ CREATE TABLE `post` (
 
 LOCK TABLES `post` WRITE;
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
-INSERT INTO `post` VALUES (5000001,1,'23423423','image00000000',NULL,34,'2019-03-09 10:03:30','2019-05-30 05:53:12',1),(5000002,1,'xxxxx 101','90000',NULL,20,'2019-03-09 10:03:30','2019-05-30 03:44:21',0),(5000003,2,'2342xcx','88',NULL,2,'2019-03-09 10:48:10','2019-05-24 07:50:06',0),(5000004,1,'222 xxxxx 102',NULL,NULL,4,'2019-03-09 10:03:30','2019-05-24 07:51:22',0),(5000005,1,'223 xxxxx 102',NULL,NULL,1,'2019-03-09 10:03:30','2019-05-24 07:46:26',0),(5000006,2,'223 xxxxx 102',NULL,NULL,0,'2019-03-09 10:03:30','2019-03-09 10:48:10',1),(5000007,2,'2223243 xxxxx 102',NULL,NULL,5,'2019-03-09 10:03:30','2019-03-09 10:48:10',1),(5000008,3,'8888的 post  content',NULL,NULL,0,'2019-03-09 10:03:30','2019-03-09 10:48:10',0),(5000009,28,'退咯哦下午兔兔哦www','',NULL,0,'2019-05-08 07:29:29','2019-05-10 06:30:59',1),(5000010,28,'阿胶浆还比哈哈','',NULL,0,'2019-05-09 02:15:09','2019-05-27 03:29:48',1),(5000011,29,'djdjdjdkjffjfj','',NULL,19,'2019-05-10 03:19:58','2019-05-27 03:29:25',0),(5000013,29,'hhshsshdjsjsjs','/upload/image/2019_05_10/46219.png',NULL,29,'2019-05-10 03:40:46','2019-05-30 03:50:25',0),(5000014,5,'疯狂的夜市，',NULL,NULL,1,'2019-05-29 09:12:10','2019-05-30 03:35:45',0),(5000015,5,'疯狂的夜市，','/upload/image/2019_05_29/23818.jpg',NULL,12,'2019-05-29 09:13:58','2019-05-30 06:35:32',5);
+INSERT INTO `post` VALUES (5000015,5,'上午打LOL，正是激烈的时候，有一队友喊语音：“兄弟们对不起，我要回去上课了，再见。”\n然后我们各种喷！“上个毛课啊，逃课没事的啦，打完再走嘛！”\n\n然后那队友来了句：“我特么知道逃课没事，但是我特么的是老师啊！！”','/upload/image/2019_05_29/23818.jpg',NULL,12,'2019-05-29 09:13:58','2019-05-30 06:35:32',5),(5500016,3,'“哥们儿，我们内蒙喝酒有个规矩。我先介绍一下今天桌上的几个朋友，然后咱们先喝一圈。喝完之后你能说出来他们的名字，就是你认我们这些朋友，我们自己喝一杯。要是你说不出来名字，就是情谊还没到，你自己喝一杯。\n准备好没? 先从你旁边的噶拉仓巴拉丹扎木苏日丹开始，再往下是乌勒吉德勒格列日图愣巴猜…”','',NULL,1,'2019-06-05 06:15:21','2019-06-05 06:38:20',2);
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,7 +187,7 @@ CREATE TABLE `reply` (
   `comment_user_id` bigint(20) NOT NULL,
   `to_reply_id` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7600010 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7600011 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `reply` (
 
 LOCK TABLES `reply` WRITE;
 /*!40000 ALTER TABLE `reply` DISABLE KEYS */;
-INSERT INTO `reply` VALUES (7000001,8,2,4,4,'回复 9999 的 content','imagesdf',0,'2019-05-07 08:38:43','2019-05-29 09:42:24',0,0),(7000002,8,2,4,4,'回复 9999 的 content','imagesdf',0,'2019-05-07 08:38:43','2019-05-29 09:42:24',0,0),(7000003,12,0,29,29,'dhhdjffuf',NULL,0,'2019-05-10 06:32:34','2019-05-29 09:42:24',0,0),(7000004,12,0,29,29,'oooooloo',NULL,0,'2019-05-10 07:38:09','2019-05-29 09:42:24',0,0),(7000005,12,8,29,29,'oooooloo',NULL,0,'2019-05-10 07:40:52','2019-05-29 09:42:24',0,0),(7000006,5000015,6000015,4,3,'客官，请自重',NULL,2,'2019-05-29 09:18:57','2019-05-30 03:36:18',0,0),(7000007,5000015,6000016,3,4,'没事 我懂你呀',NULL,23,'2019-05-29 09:27:49','2019-05-30 06:56:54',0,0),(7600008,5000015,6000015,3,4,'我可什么都没说 你自己瞎想。。。','',3,'2019-05-30 02:08:05','2019-05-30 02:09:00',4,7000006),(7600009,5000015,6000015,4,5,'知我者谓我心忧 中央音乐学院     知我者谓我心忧 我问一下','',0,'2019-05-30 06:48:37','2019-05-30 06:48:37',4,7600008);
+INSERT INTO `reply` VALUES (7000001,8,2,4,4,'回复 9999 的 content','imagesdf',0,'2019-05-07 08:38:43','2019-05-29 09:42:24',0,0),(7000002,8,2,4,4,'回复 9999 的 content','imagesdf',0,'2019-05-07 08:38:43','2019-05-29 09:42:24',0,0),(7000003,12,0,29,29,'dhhdjffuf',NULL,0,'2019-05-10 06:32:34','2019-05-29 09:42:24',0,0),(7000004,12,0,29,29,'oooooloo',NULL,0,'2019-05-10 07:38:09','2019-05-29 09:42:24',0,0),(7000005,12,8,29,29,'oooooloo',NULL,0,'2019-05-10 07:40:52','2019-05-29 09:42:24',0,0),(7000006,5000015,6000015,4,3,'我替我表弟问下，你这些图片是哪里下载的？',NULL,2,'2019-05-29 09:18:57','2019-06-05 06:44:05',0,0),(7000007,5000015,6000016,3,4,'你表弟我认识，他说他没问过',NULL,23,'2019-05-29 09:27:49','2019-06-05 06:44:07',0,0),(7600008,5000015,6000015,3,4,'。。。这图。。。','',4,'2019-05-30 02:08:05','2019-06-05 06:44:06',4,7000006),(7600009,5000015,6000015,4,5,'表弟： 。。。','',0,'2019-05-30 06:48:37','2019-06-05 06:44:54',4,7600008),(7600010,5500016,6600020,5,4,'我好像近视了，你的用户名倒过来怎么读来着？','',0,'2019-06-05 06:20:03','2019-06-05 06:21:34',5,0);
 /*!40000 ALTER TABLE `reply` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,7 +229,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'123456@yahoo.com','123456','123456','common/default/avatar.png',0,0,57,'2019-04-24 07:28:12','2019-05-30 05:53:12',0),(2,'666666@yahoo.com','666666','123456','common/default/avatar.png',0,0,3,'2019-04-24 07:28:12','2019-05-24 07:50:06',0),(3,'888888@qq.com','东山黄赌毒','123456','/avatar/2019_05_30/94115.jpg',1,45,2,'2019-04-24 07:28:12','2019-05-30 06:56:29',0),(4,'999999@qq.com','暗夜枫佑翼','123456','/avatar/2019_05_30/14472.jpg',0,25,43,'2019-04-24 07:28:12','2019-05-30 06:56:54',0),(5,'1000eee@qq.com','八级大狂风','123456','/avatar/2019_05_30/28881.jpg',1,23,13,'2019-04-24 07:28:12','2019-05-30 06:35:32',0),(19,'53929@qq.com','游客53929','123456','common/default/avatar.png',0,0,0,'2019-04-24 07:28:12','2019-05-07 10:11:59',1),(20,'75770@qq.com','游客75770','123456','common/default/avatar.png',0,0,0,'2019-04-24 07:28:12','2019-05-07 10:11:59',1),(21,'74357@qq.com','游客74357','123456','common/default/avatar.png',0,0,0,'2019-04-24 07:28:12','2019-05-07 10:11:59',1),(22,'67612@qq.com','游客67612','123456','common/default/avatar.png',0,0,0,'2019-04-24 07:28:12','2019-05-07 10:11:59',1),(23,'38286@qq.com','游客38286','123456','common/default/avatar.png',0,0,0,'2019-04-24 07:28:12','2019-05-07 10:11:59',1),(24,'71962@qq.com','游客71962','123456','common/default/avatar.png',0,0,0,'2019-05-07 09:42:52','2019-05-07 10:11:59',1),(25,'79419@qq.com','游客79419','123456','common/default/avatar.png',0,0,0,'2019-05-08 03:14:39','2019-05-08 03:14:39',1),(26,'19788@qq.com','游客19788','123456','common/default/avatar.png',0,0,0,'2019-05-08 06:40:20','2019-05-08 06:40:20',1),(28,'147852@163.com','陈成浩','123456','common/default/avatar.png',1,0,0,'2019-05-08 09:59:21','2019-05-09 03:50:44',0),(29,'360666@yahoo.com','360硬盘','123456','/avatar/2019_05_24/68336.jpg',1,0,48,'2019-05-09 03:42:50','2019-05-30 03:50:25',0),(30,'','游客71200','123456','common/default/avatar.png',0,0,0,'2019-05-27 03:27:51','2019-05-27 03:27:51',1);
+INSERT INTO `user` VALUES (1,'123456@yahoo.com','123456','123456','common/default/avatar.png',0,0,57,'2019-04-24 07:28:12','2019-05-30 05:53:12',0),(2,'666666@yahoo.com','666666','123456','common/default/avatar.png',0,0,3,'2019-04-24 07:28:12','2019-05-24 07:50:06',0),(3,'888888@qq.com','东山黄赌毒','123456','/avatar/2019_05_30/94115.jpg',1,45,4,'2019-04-24 07:28:12','2019-06-05 06:38:20',0),(4,'999999@qq.com','暗夜枫佑翼','123456','/avatar/2019_05_30/14472.jpg',0,25,44,'2019-04-24 07:28:12','2019-06-05 01:34:44',0),(5,'1000eee@qq.com','八级大狂风','123456','/avatar/2019_05_30/28881.jpg',1,23,13,'2019-04-24 07:28:12','2019-05-30 06:35:32',0),(19,'53929@qq.com','游客53929','123456','common/default/avatar.png',0,0,0,'2019-04-24 07:28:12','2019-05-07 10:11:59',1),(20,'75770@qq.com','游客75770','123456','common/default/avatar.png',0,0,0,'2019-04-24 07:28:12','2019-05-07 10:11:59',1),(21,'74357@qq.com','游客74357','123456','common/default/avatar.png',0,0,0,'2019-04-24 07:28:12','2019-05-07 10:11:59',1),(22,'67612@qq.com','游客67612','123456','common/default/avatar.png',0,0,0,'2019-04-24 07:28:12','2019-05-07 10:11:59',1),(23,'38286@qq.com','游客38286','123456','common/default/avatar.png',0,0,0,'2019-04-24 07:28:12','2019-05-07 10:11:59',1),(24,'71962@qq.com','游客71962','123456','common/default/avatar.png',0,0,0,'2019-05-07 09:42:52','2019-05-07 10:11:59',1),(25,'79419@qq.com','游客79419','123456','common/default/avatar.png',0,0,0,'2019-05-08 03:14:39','2019-05-08 03:14:39',1),(26,'19788@qq.com','游客19788','123456','common/default/avatar.png',0,0,0,'2019-05-08 06:40:20','2019-05-08 06:40:20',1),(28,'147852@163.com','陈成浩','123456','common/default/avatar.png',1,0,0,'2019-05-08 09:59:21','2019-05-09 03:50:44',0),(29,'360666@yahoo.com','360硬盘','123456','/avatar/2019_05_24/68336.jpg',1,0,48,'2019-05-09 03:42:50','2019-05-30 03:50:25',0),(30,'','游客71200','123456','common/default/avatar.png',0,0,0,'2019-05-27 03:27:51','2019-05-27 03:27:51',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,4 +269,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-30 10:00:25
+-- Dump completed on 2019-06-13  7:09:44

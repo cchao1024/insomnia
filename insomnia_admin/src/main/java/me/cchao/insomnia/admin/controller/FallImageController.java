@@ -76,7 +76,7 @@ public class FallImageController {
     /**
      * 删除
      */
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     public ModelAndView save(@RequestParam long id, Map<String, Object> map) {
         // 提交保存
         mFallService.deleteImage(id);

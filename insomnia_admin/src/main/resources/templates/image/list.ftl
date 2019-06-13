@@ -42,7 +42,7 @@
                             <td>${fallImage.createTime}</td>
                             <td>${fallImage.updateTime}</td>
                             <td><a href="javascript:"
-                                   onclick="del_confirm('/admin/fall_image/delete?id='+${fallImage.id})">删除</a>
+                                   onclick="del_confirm('/admin/fall_music/delete?id=${fallImage.id}')">删除</a>
                             </td>
                         </tr>
                     </#list>
