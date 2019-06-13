@@ -1,6 +1,6 @@
 # Insomnia
 
-Insomnia-server 是全栈项目 ** Insomnia ** 的服务端代码，项目基于 SpringBoot 开发
+Insomnia-server 是全栈项目 **Insomnia** 的服务端代码，项目基于 SpringBoot 开发
 整合 **jwt，mysql，Spring Jpa，Redis，Freemarker**等主流后端开发框架
 本地环境基于 **docker-compose** 部署。
 
@@ -94,6 +94,6 @@ docker-compose up
  使用 IDEA 打开 insomnia-server 项目并运行，通过 **localhost:8080/admin/index** 进入后台。
 
 # TODO 
-1 如果进行顺利，加入个 **睡不着？起来嗨** 模块，放一下 **刺激的，引人深思** 的文章或图片或视频
-2 加入 Banner 超链接，提供一些七七八八的文章
-2 COS 流量有点贵，考虑把资源放到 aliyun 下的海外 VPS
+1. 如果进行顺利，加入个 **睡不着？起来嗨** 模块，放一下 **刺激的，引人深思** 的文章或图片或视频
+2. 加入 Banner 超链接，提供一些七七八八的文章
+3. COS 流量有点贵，考虑把资源放到 aliyun 下的海外 VPS
