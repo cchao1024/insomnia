@@ -17,6 +17,7 @@ import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.controller.FileController;
 import me.cchao.insomnia.api.domain.FallImage;
 import me.cchao.insomnia.api.service.FallService;
+import me.cchao.insomnia.api.util.Printer;
 import me.cchao.insomnia.common.RespListBean;
 
 /**
@@ -77,11 +78,11 @@ public class FallImageController {
      * 删除
      */
     @RequestMapping("/delete")
-    public ModelAndView save(@RequestParam long id, Map<String, Object> map) {
+    public String delete(@RequestParam long id, Map<String, Object> map) {
         // 提交保存
         mFallService.deleteImage(id);
 
-        map.put("url", "/admin/fall_image/list");
-        return new ModelAndView("common/success", map);
+        Printer.print("delete fall_image suc " + id);
+        return "redirect:/admin/fall_image/list";
     }
 }
