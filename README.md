@@ -44,8 +44,8 @@ Insomnia-server
 ```
 
 ## 后台管理
+通过笔者远程地址可以预览 [http://47.240.35.14:8080/admin/fall_image/list](http://47.240.35.14:8080/admin/fall_image/list) 
 完成本地部署(文末有部署步骤)后可以通过 [localhost:8080/admin/index](localhost:8080/admin/index) 查看，
-> TODO 这里需要放一个远程地址，但是 VPS 的 IP 被敬爱的组织临时封了，不懂几时能恢复
 
 大概长这样子：
 ![](https://raw.githubusercontent.com/cchao1024/insomnia-server/master/document/admin_1.jpg) 
@@ -85,10 +85,15 @@ docker-compose up
 3 **导入数据库**
  
 将项目中 **document/backup.sql** 复制到你的 docker 目录下的 **mysql/data**(这个目录会映射到 mysql 容器中，docker-compose.yaml配置文件中有说明的)
- 执行 数据库还原，这样通过本机的 **3306** 端口就会看到 已经恢复的 insomnia 数据库
+ 执行 数据库还原
+ 
  ```$xslt
-    mysql -u root -pROOT < /var/lib/mysql/backup.sql
+ 1 docker-compose exec mysql bash    # 进入docker终端
+ 2 mysql -u root -pROOT
+ 3 create database insomnia;
+ 4 source /var/lib/mysql/backup.sql
  ```
+这样通过本机的 **3306** 端口就会看到 已经恢复的 insomnia 数据库
 4 **运行** 
 
  使用 IDEA 打开 insomnia-server 项目并运行，通过 **localhost:8080/admin/index** 进入后台。

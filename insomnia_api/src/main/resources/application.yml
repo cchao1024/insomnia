@@ -1,8 +1,8 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    username: admin
-    password: admin
+    username: root
+    password: ROOT
     url: jdbc:mysql://127.0.0.1:3306/insomnia?characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
   jpa:
     show-sql: true
