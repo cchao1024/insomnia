@@ -45,6 +45,7 @@ Insomnia-server
 
 ## 后台管理
 通过笔者远程地址可以预览 [http://47.240.35.14:8080/admin/fall_image/list](http://47.240.35.14:8080/admin/fall_image/list) 
+
 完成本地部署(文末有部署步骤)后可以通过 [localhost:8080/admin/index](localhost:8080/admin/index) 查看，
 
 大概长这样子：
