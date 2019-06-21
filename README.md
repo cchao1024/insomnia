@@ -73,18 +73,18 @@ JWT | JWT登录支持 | [https://github.com/jwtk/jjwt](https://github.com/jwtk/j
 Lombok | 简化对象封装工具 | [https://github.com/rzwitserloot/lombok](https://github.com/rzwitserloot/lombok)
 
 # 本地环境搭建
-1 **配置 docker-compose 运行环境**
+**1 配置 docker-compose 运行环境**
 
  可以参见笔者博文 [https://cchao1024.github.io/Docker解放生产力](https://cchao1024.github.io/2019-06-Docker%20%E8%A7%A3%E6%94%BE%E7%94%9F%E4%BA%A7%E5%8A%9B/)
 
-2 **搭建开发环境**
+**2 搭建开发环境**
 
 将项目中 **document/docker-compose.yaml** 复制到你期望的 docker 目录下，执行
 
 ```c
 docker-compose up
 ```
-3 **导入数据库**
+**3 导入数据库**
  
 将项目中 **document/backup.sql** 复制到你的 docker 目录下的 **mysql/data**(这个目录会映射到 mysql 容器中，docker-compose.yaml配置文件中有说明的)
  执行 数据库还原
@@ -96,11 +96,11 @@ docker-compose up
  4 source /var/lib/mysql/backup.sql
  ```
 这样通过本机的 **3306** 端口就会看到 已经恢复的 insomnia 数据库
-4 **运行** 
+**4 运行** 
 
  使用 IDEA 打开 insomnia-server 项目并运行，通过 **localhost:8080/admin/index** 进入后台。
 
-5. **消息队列部署**
+**5 消息队列部署**
 
 这一项不是必选的，说说被小伙伴点赞后会发送一条推送消息（基于JPush）到说说用户的设备上
 笔者将这个流程放入**消息队列**，交由**消息消费者系统**去负责发送这些推送，也算是分布式应用了
