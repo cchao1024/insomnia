@@ -8,5 +8,5 @@ import lombok.Getter;
  */
 @Getter
 public enum WishType {
-    IMAGE,MUSIC
+    IMAGE, MUSIC
 }

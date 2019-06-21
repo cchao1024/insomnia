@@ -55,10 +55,10 @@ public class WishService {
                     long wishId = wish.getWishId();
                     wishItem.setType(GlobalConfig.getTypeById(wishId));
                     switch (GlobalConfig.getTypeById(wishId)) {
-                        case Constant.TYPE.FALL_IMAGE:
+                        case Constant.Module.FALL_IMAGE:
                             object = mFallService.getImage(wishId);
                             break;
-                        case Constant.TYPE.FALL_MUSIC:
+                        case Constant.Module.FALL_MUSIC:
                             object = mFallService.getMusic(wishId);
                             break;
                     }

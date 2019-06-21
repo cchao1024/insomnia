@@ -10,6 +10,7 @@ import java.util.Optional;
 import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.req.post.ReplyDTO;
 import me.cchao.insomnia.api.bean.resp.post.ReplyVO;
+import me.cchao.insomnia.api.business.MQueueHandler;
 import me.cchao.insomnia.api.domain.Comment;
 import me.cchao.insomnia.api.domain.Reply;
 import me.cchao.insomnia.api.domain.User;
@@ -17,6 +18,7 @@ import me.cchao.insomnia.api.exception.CommonException;
 import me.cchao.insomnia.api.repository.ReplyRepository;
 import me.cchao.insomnia.api.security.SecurityHelper;
 import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.common.constant.Constant;
 import me.cchao.insomnia.common.constant.Results;
 
 /**
@@ -26,6 +28,8 @@ import me.cchao.insomnia.common.constant.Results;
 @Service
 public class ReplyService {
 
+    @Autowired
+    MQueueHandler mMqHandler;
     @Autowired
     ReplyRepository mReplyRepository;
     @Autowired
@@ -109,6 +113,9 @@ public class ReplyService {
             mReplyRepository.save(reply.increaseLike());
 
             mUserService.increaseLike(reply.getReplyUserId());
+            // 加入推送队列
+            mMqHandler.pushLikeEvent(Constant.POST_TYPE.Reply, id, reply.getReplyUserId());
+
             return RespBean.suc();
         } else {
             throw CommonException.of(Results.UN_EXIST_COMMENT);

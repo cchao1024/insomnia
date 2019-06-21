@@ -6,6 +6,7 @@ import lombok.experimental.Accessors;
 
 /**
  * app启动初始化参数
+ *
  * @author : cchao
  * @version 2019-04-13
  */

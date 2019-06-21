@@ -3,7 +3,7 @@ services:
   mysql:
     container_name: mysql
     image: mysql:latest                            #从私有仓库拉镜像
-    restart: always                    
+    restart: always
     volumes:
       - ./mysql/data/:/var/lib/mysql/                             #映射mysql的数据目录到宿主机，保存数据
       - ./mysql/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf #把mysql的配置文件映射到容器的相应目录
@@ -53,3 +53,20 @@ services:
     command:
       # 执行的命令
       redis-server
+
+# 消息队列不是必须的，请查阅 readme
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=root
+    restart: always
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"

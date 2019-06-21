@@ -16,12 +16,12 @@ public class AppService {
 
     public void feedBack(String content, String email) {
         if (StringUtils.isEmpty(email)) {
-            email= SecurityHelper.getUser().getEmail();
+            email = SecurityHelper.getUser().getEmail();
         }
-        FeedBack feedBack=new FeedBack();
+        FeedBack feedBack = new FeedBack();
         feedBack.setContent(content)
-            .setEmail(email)
-            .setUserId(SecurityHelper.getUserId());
+                .setEmail(email)
+                .setUserId(SecurityHelper.getUserId());
 
         mRepository.save(feedBack);
     }

@@ -40,9 +40,9 @@ public class JWTUtil {
 
         Algorithm algorithm = Algorithm.HMAC256(secret);
         JWTVerifier verifier = JWT.require(algorithm)
-            .withClaim(Constant.USER_NAME, username)
-            .withClaim(Constant.USER_ID, userId)
-            .build();
+                .withClaim(Constant.USER_NAME, username)
+                .withClaim(Constant.USER_ID, userId)
+                .build();
         verifier.verify(token);
         return true;
     }
@@ -99,9 +99,9 @@ public class JWTUtil {
         Algorithm algorithm = Algorithm.HMAC256(secret);
         // 附带username信息
         return JWT.create()
-            .withClaim(Constant.USER_NAME, username)
-            .withClaim(Constant.USER_ID, id)
-            .withExpiresAt(date)
-            .sign(algorithm);
+                .withClaim(Constant.USER_NAME, username)
+                .withClaim(Constant.USER_ID, id)
+                .withExpiresAt(date)
+                .sign(algorithm);
     }
 }

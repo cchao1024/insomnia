@@ -17,6 +17,7 @@ spring:
   freemarker:
     settings:
       number_format: '0.##'   #数字格式化，无千分符
+
   jackson:
     default-property-inclusion: non_null
   servlet:
@@ -24,6 +25,7 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
       location:
+
   redis:
     database: 0
     host: localhost
@@ -36,6 +38,14 @@ spring:
         max-wait: -1ms
         max-idle: 8
         min-idle: 0
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: root
+    password: root
+    virtual-host: /
+    publisher-confirms: true
 
 project:
   uploadDirPath: /www/file/upload

@@ -35,6 +35,7 @@ public class Post extends Auditable {
         likeCount++;
         return this;
     }
+
     public Post increaseReview() {
         reviewCount++;
         return this;

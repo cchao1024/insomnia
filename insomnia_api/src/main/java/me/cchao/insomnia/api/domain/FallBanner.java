@@ -1,9 +1,11 @@
 package me.cchao.insomnia.api.domain;
 
 import lombok.Data;
+
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+
 import java.util.Date;
 
 @Entity

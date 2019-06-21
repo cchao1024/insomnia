@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class FileUtil {
 
-    public static String getFileSuffix(String orignalName,String defaultV) {
+    public static String getFileSuffix(String orignalName, String defaultV) {
         if (StringUtils.isEmpty(orignalName)) {
             return defaultV;
         }

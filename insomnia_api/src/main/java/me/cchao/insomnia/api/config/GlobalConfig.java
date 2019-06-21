@@ -63,11 +63,11 @@ public class GlobalConfig {
      */
     public static int getTypeById(long id) {
         if (id > 2000000) {
-            return Constant.TYPE.FALL_MUSIC;
+            return Constant.Module.FALL_MUSIC;
         } else if (id > 1000000) {
-            return Constant.TYPE.FALL_IMAGE;
+            return Constant.Module.FALL_IMAGE;
         } else {
-            return Constant.TYPE.FALL_IMAGE;
+            return Constant.Module.FALL_IMAGE;
         }
     }
 }

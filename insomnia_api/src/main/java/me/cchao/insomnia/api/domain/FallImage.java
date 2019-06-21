@@ -12,7 +12,7 @@ import lombok.Data;
 @Entity
 @Data
 @DynamicUpdate
-public class FallImage extends Auditable{
+public class FallImage extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -29,7 +29,8 @@ public enum Results implements ErrorMessage {
     // 4000+ 帖子
     UN_EXIST_POST(4010, "该帖子不存在"),
     UN_EXIST_COMMENT(4020, "该评论不存在"),
-    UN_EXIST_REPLY(4030, "该回复不存在"),;
+    UN_EXIST_REPLY(4030, "该回复不存在"),
+    ;
 
 
     private Integer code;

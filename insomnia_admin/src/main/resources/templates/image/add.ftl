@@ -46,6 +46,7 @@
 
     // 上传图片
     var upload_suc = false;
+
     function on_submit() {
         var input_file = $("#file_input");
         var filename = input_file.val();

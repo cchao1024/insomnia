@@ -61,7 +61,7 @@ Insomnia-server
 ----|----|----
 Spring Boot | 容器+MVC框架 | [https://spring.io/projects/spring-boot](https://spring.io/projects/spring-boot)
 Spring Jpa | 持久层API | [https://spring.io/projects/spring-data-jpa](https://spring.io/projects/spring-data-jpa)
-Swagger-UI | 文档生产工具 | [https://github.com/swagger-api/swagger-ui](https://github.com/swagger-api/swagger-ui)
+RabbitMQ | 消息队列 | [https://www.rabbitmq.com/getstarted.html](https://www.rabbitmq.com/getstarted.html)
 javax.validation | 验证框架 | [javax.validation](https://docs.oracle.com/javaee/7/api/javax/validation/package-summary.html)
 Freemarker | 模板引擎 | [https://freemarker.apache.org/](https://freemarker.apache.org/)
 Redis | 分布式缓存 | [https://redis.io/](https://redis.io/)
@@ -100,7 +100,12 @@ docker-compose up
 
  使用 IDEA 打开 insomnia-server 项目并运行，通过 **localhost:8080/admin/index** 进入后台。
 
+5. **消息队列部署**
+
+这一项不是必选的，说说被小伙伴点赞后会发送一条推送消息（基于JPush）到说说用户的设备上
+笔者将这个流程放入**消息队列**，交由**消息消费者系统**去负责发送这些推送，也算是分布式应用了
+如果需要这个环节，需要 clone [这个项目](https://github.com/cchao1024/MsgQueueHandler.git)来运行，后面也会将邮箱验证发送放入消息队列
 # TODO 
 1. 如果进行顺利，加入个 **睡不着？起来嗨** 模块，放一下 **刺激的，引人深思** 的文章或图片或视频
 2. 加入 Banner 超链接，提供一些七七八八的文章
-3. COS 流量有点贵，考虑把资源放到 aliyun 下的海外 VPS
+3. 消息队列放入邮箱验证，由消息消费者系统分布式处理

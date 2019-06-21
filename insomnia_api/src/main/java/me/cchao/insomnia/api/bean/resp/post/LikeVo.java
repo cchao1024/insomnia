@@ -5,6 +5,7 @@ import lombok.experimental.Accessors;
 
 /**
  * 点赞后的返回
+ *
  * @author cchao
  * @version 2019-05-24.
  */

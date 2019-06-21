@@ -36,7 +36,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         @Override
         public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-            log.info(Logs.getFormat("完成请求", request.getRequestURI(),response.getStatus()));
+            log.info(Logs.getFormat("完成请求", request.getRequestURI(), response.getStatus()));
         }
     }
 }

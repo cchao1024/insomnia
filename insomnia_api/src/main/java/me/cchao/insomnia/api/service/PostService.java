@@ -13,8 +13,10 @@ import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.req.post.PostDTO;
 import me.cchao.insomnia.api.bean.resp.post.LikeVo;
 import me.cchao.insomnia.api.business.ImagePathConvert;
+import me.cchao.insomnia.api.business.MQueueHandler;
 import me.cchao.insomnia.common.RespBean;
 import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.common.constant.Constant;
 import me.cchao.insomnia.common.constant.Results;
 import me.cchao.insomnia.api.bean.resp.post.CommentVO;
 import me.cchao.insomnia.api.bean.resp.post.PostListVO;
@@ -36,6 +38,8 @@ public class PostService {
     PostRepository mPostRepository;
     @Autowired
     UserService mUserService;
+    @Autowired
+    MQueueHandler mMqHandler;
     @Autowired
     CommentService mCommentService;
 
@@ -124,6 +128,9 @@ public class PostService {
 
             // 用户 like +1
             mUserService.increaseLike(post.getUserId());
+            // 加入推送队列
+            mMqHandler.pushLikeEvent(Constant.POST_TYPE.Post, id, post.getUserId());
+
             LikeVo likeVo = new LikeVo();
             likeVo.setLikedNum(post.getLikeCount());
             return RespBean.suc(likeVo);

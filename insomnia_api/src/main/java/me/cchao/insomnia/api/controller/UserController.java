@@ -43,7 +43,7 @@ public class UserController {
     /**
      * updateUserInfo
      *
-     * @param user         the map
+     * @param user        the map
      * @param httpRequest the http request
      * @return the resp me.cchao.insomnia.bean
      */

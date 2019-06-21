@@ -93,8 +93,8 @@ public class ExceptionHandlers {
     public RespBean methodArgumentNotValidException(MethodArgumentNotValidException ex) {
         ex.printStackTrace();
         String errorMsg = ex.getBindingResult().getFieldErrors().stream()
-            .map(DefaultMessageSourceResolvable::getDefaultMessage)
-            .collect(Collectors.joining(","));
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .collect(Collectors.joining(","));
 
         log.error("ExceptionHandlers", ex);
         return RespBean.of(203, errorMsg);
@@ -109,9 +109,9 @@ public class ExceptionHandlers {
     public RespBean methodArgumentNotValidException(BindException ex) {
         ex.printStackTrace();
         String errorMsg = ex.getBindingResult().getFieldErrors()
-            .stream()
-            .map(DefaultMessageSourceResolvable::getDefaultMessage)
-            .collect(Collectors.joining(","));
+                .stream()
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .collect(Collectors.joining(","));
 
         log.error("ExceptionHandlers", ex);
         return RespBean.fail(Results.PARAM_ERROR).setMsg(errorMsg);

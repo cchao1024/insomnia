@@ -32,8 +32,8 @@ public class FallController {
     public RespBean<FallIndex> getFallIndex() {
         PageDTO pageDTO = PageDTO.of(1, 10);
         FallIndex fallIndex = new FallIndex()
-            .setFallImages(mFallService.getImageByPage(pageDTO).getData())
-            .setMusic(mFallService.getMusicByPage(pageDTO).getData());
+                .setFallImages(mFallService.getImageByPage(pageDTO).getData())
+                .setMusic(mFallService.getMusicByPage(pageDTO).getData());
         return RespBean.suc(fallIndex);
     }
 
