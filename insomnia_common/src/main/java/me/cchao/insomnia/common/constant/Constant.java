@@ -14,6 +14,10 @@ public interface Constant {
         int Reply = 3;
     }
 
+    interface Email_TYPE {
+        int Verify_Email = 1;
+    }
+
 
     String USER_NAME = "userName";
     String USER_ID = "userId";

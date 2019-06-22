@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -17,9 +19,11 @@ import javax.validation.Valid;
 import me.cchao.insomnia.api.bean.req.user.EditUserDTO;
 import me.cchao.insomnia.api.bean.req.user.UserLoginDTO;
 import me.cchao.insomnia.api.bean.resp.user.UpdateUser;
-import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.api.business.MQueueHandler;
 import me.cchao.insomnia.api.security.JWTUtil;
 import me.cchao.insomnia.api.service.UserService;
+import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.common.constant.Constant;
 
 /**
  * The type User controller.
@@ -31,6 +35,9 @@ public class UserController {
     @Autowired
     private UserService mUserService;
 
+    @Autowired
+    private MQueueHandler mQueueHandler;
+
     /**
      * login
      */
@@ -39,6 +46,23 @@ public class UserController {
         return RespBean.suc(mUserService.login(params)).setMsg("登录成功");
     }
 
+    /**
+     * 验证邮箱
+     */
+    @RequestMapping(value = "/email/send_verify")
+    public RespBean sendVerify(@RequestParam String email) {
+        mQueueHandler.pushVerifyEmailEvent(Constant.Email_TYPE.Verify_Email, email);
+        return RespBean.suc("验证码已发送至邮箱[" + email + "]，10min内有效，请注意查收");
+    }
+
+    /**
+     * 验证邮箱
+     */
+    @RequestMapping(value = "/email/verify")
+    public RedirectView verifyEmail(@RequestParam String email, @RequestParam String code) {
+        RedirectView red = new RedirectView("localhost:8081/email/verify?email=" + email + "&code=" + code, true);
+        return red;
+    }
 
     /**
      * updateUserInfo

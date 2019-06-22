@@ -8,6 +8,7 @@ import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -66,6 +67,13 @@ public class ExceptionHandlers {
     public RespBean handle401(TokenExpiredException e) {
         log.error("ExceptionHandlers", e);
         return RespBean.fail(Results.TOKEN_EXPIRED);
+    }
+
+    @ResponseBody
+    @ExceptionHandler(value = MissingServletRequestParameterException.class)
+    public RespBean handle401(MissingServletRequestParameterException e) {
+        log.error("MissingServletRequestParameterException", e);
+        return RespBean.fail(Results.PARAM_MISSING);
     }
 
     @ResponseBody

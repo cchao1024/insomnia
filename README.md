@@ -108,4 +108,5 @@ docker-compose up
 # TODO 
 1. 如果进行顺利，加入个 **睡不着？起来嗨** 模块，放一下 **刺激的，引人深思** 的文章或图片或视频
 2. 加入 Banner 超链接，提供一些七七八八的文章
-3. 消息队列放入邮箱验证，由消息消费者系统分布式处理
+3. 消息队列放入 **推送，邮箱验证**等，由消息消费者系统分布式处理（已完成）
+4. 使用 nginx 反向代理 邮箱验证api（不再到tomcat才转发），很棘手mac下docker桌面版不支持[使用宿主网络](https://docs.docker.com/compose/compose-file/#network_mode) ，再研究

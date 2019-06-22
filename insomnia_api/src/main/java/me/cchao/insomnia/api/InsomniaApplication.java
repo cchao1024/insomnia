@@ -18,7 +18,7 @@ public class InsomniaApplication {
 
     @Bean
     public Queue emailVerifyQueue() {
-        return new Queue("email_verify");
+        return new Queue("email");
     }
 
     @Bean

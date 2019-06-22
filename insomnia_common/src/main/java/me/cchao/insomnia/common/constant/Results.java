@@ -19,6 +19,7 @@ public enum Results implements ErrorMessage {
     PARAM_EMPTY(3, "参数为空"),
     PRODUCT_NOT_EXIST(4, "请求ID不存在"),
     FILE_EMPTY(5, "file is empty"),
+    PARAM_MISSING(6, "必要参数缺失"),
 
     // 1000+ 用户
     UN_EXIST_USER(1001, "用户不存在"),

@@ -1,4 +1,4 @@
-package me.cchao.insomnia.api.bean.msgqueue;
+package me.cchao.insomnia.api.bean.mq;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
