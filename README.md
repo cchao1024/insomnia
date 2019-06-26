@@ -5,18 +5,20 @@ Insomnia-server 是全栈项目 **Insomnia** 的服务端代码，项目基于 S
 本地环境基于 **docker-compose** 部署。
 
  * [insomnia-server springBoot后端项目](https://github.com/cchao1024/insomnia-server)
+ * [MsgQueueHandler 消费消息队列](https://github.com/cchao1024/MsgQueueHandler)
  * [insomnia-android android 客户端](https://github.com/cchao1024/insomnia-android)
- * [simpleLib android 基础类库](https://github.com/cchao1024/insomnia-server)
+ * [simpleLib android 基础类库](https://github.com/cchao1024/simpleLib)
 
 ## 项目结构
 ```
 Insomnia-server
 ├── insomnia_admin 后台管理系统
+├── MsgQueueHandler 消息队列处理
 ├── insomnia_api 为前端app提供 接口
 └── insomnia_common 通用的响应和常量
 ```
 项目为多模块构建，**后台管理admin** 依赖于 api模块，拿到后者提供的接口数据，交由 **Freemarker** 模板引擎填充展示。
-common模块 则放置一些通用的类库和常量
+common模块 则放置一些通用的类库和常量，MsgQueueHandler为拆分降耦的独立项目，处理 放入的推送和邮箱验证码等任务。
 
 ## 主要功能
 ```

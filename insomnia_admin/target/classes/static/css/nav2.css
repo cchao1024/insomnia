@@ -1,0 +1,61 @@
+body, ul, li, a {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: auto;
+}
+
+.nav_content {
+    background-color: #1c1c1c;
+    font-size: 0;
+    width: 180px;
+    height: 100%;
+    float: left;
+}
+
+.top_title a {
+    font-size: 20px;
+    height: 100px;
+    line-height: 100px;
+    color: #ffffff;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.navbar {
+    margin: 0 auto;
+    list-style-type: none;
+    width: 100%;
+}
+
+.navbar li {
+    padding: 0 5px;
+    cursor: pointer;
+    line-height: 50px;
+}
+
+.navbar li:hover {
+    background-color: #0095bb;
+}
+
+.navbar a {
+    display: block;
+    height: 50px;
+    font-family: "微软雅黑", "Microsoft Yahei", "Hiragino Sans GB", tahoma, arial, "宋体", sans-serif;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+.toggled {
+    padding-left: 180px;
+    padding-right: 100px;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}

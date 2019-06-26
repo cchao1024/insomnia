@@ -1,0 +1,54 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: ROOT
+    url: jdbc:mysql://127.0.0.1:3306/insomnia?characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
+  jpa:
+    show-sql: true
+    open-in-view: true
+    properties:
+      enable_lazy_load_no_trans: true
+      hibernate:
+        hbm2ddl:
+          auto=update
+      id:
+        new_generator_mappings: false
+  freemarker:
+    settings:
+      number_format: '0.##'   #数字格式化，无千分符
+
+  jackson:
+    default-property-inclusion: non_null
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      location:
+
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    timeout: 1000ms
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: root
+    password: root
+    virtual-host: /
+    publisher-confirms: true
+
+project:
+  uploadDirPath: /www/file/upload
+  sourceServerPath: https://me.cchao.insomnia-1254010092.cos.ap-hongkong.myqcloud.com/
+  defaultAvatarPath: common/default/avatar.png
+
