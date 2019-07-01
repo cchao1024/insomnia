@@ -25,7 +25,7 @@ public class GlobalConfig {
      */
     public String uploadDirPath = "/www/file/upload/";
     @Value("${sourceServerPath}")
-    public static final String sourceServerPath = "https://insomnia-1254010092.cos.ap-hongkong.myqcloud.com/";
+    public static final String sourceServerPath = "http://127.0.0.1:80/";
     @Value("${defaultAvatarPath}")
     public static final String defaultAvatarPath = sourceServerPath + "common/default/avatar.png";
     public static final String defaultAvatar = "common/default/avatar.png";
@@ -49,7 +49,7 @@ public class GlobalConfig {
     }
 
     public static File getTempSaveFile(String uploadDirPath, String fileName) {
-        String dir = mUserHome + uploadDirPath;
+        String dir = mUserHome +"Docker/resources" + uploadDirPath;
         if (!new File(dir).exists()) {
             new File(dir).mkdirs();
         }

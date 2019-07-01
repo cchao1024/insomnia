@@ -94,15 +94,17 @@ docker-compose up
  ```$xslt
  1 docker-compose exec mysql bash    # 进入docker终端
  2 mysql -u root -pROOT
- 3 create database insomnia;
- 4 source /var/lib/mysql/backup.sql
+ 3 create database `insomnia` default character set utf8mb4;
+ 4 use insomnia;
+ 5 source /var/lib/mysql/dump.sql
  ```
 这样通过本机的 **3306** 端口就会看到 已经恢复的 insomnia 数据库
 **4 运行** 
 
- 使用 IDEA 打开 insomnia-server 项目并运行，通过 **localhost:8080/admin/index** 进入后台。
+使用 IDEA 打开 insomnia-server 项目并运行，通过 **localhost:8080/admin/index** 进入后台。
+注意 如果项目中的资源使用的是本地 127 则改为远程地址 `47.240.35.14:80` 才能看到资源，远程我使用了nginx去做静态服务器
 
-**5 消息队列部署**
+**4 消息队列部署**
 
 这一项不是必选的，说说被小伙伴点赞后会发送一条推送消息（基于JPush）到说说用户的设备上
 笔者将这个流程放入**消息队列**，交由**消息消费者系统**去负责发送这些推送，也算是分布式应用了
@@ -110,5 +112,4 @@ docker-compose up
 # TODO 
 1. 如果进行顺利，加入个 **睡不着？起来嗨** 模块，放一下 **刺激的，引人深思** 的文章或图片或视频
 2. 加入 Banner 超链接，提供一些七七八八的文章
-3. 消息队列放入 **推送，邮箱验证**等，由消息消费者系统分布式处理（已完成）
-4. 使用 nginx 反向代理 邮箱验证api（不再到tomcat才转发），很棘手mac下docker桌面版不支持[使用宿主网络](https://docs.docker.com/compose/compose-file/#network_mode) ，再研究
+3. 使用 nginx 反向代理 邮箱验证api（不再到tomcat才转发），很棘手 mac下docker桌面版不支持[使用宿主网络](https://docs.docker.com/compose/compose-file/#network_mode) ，再研究

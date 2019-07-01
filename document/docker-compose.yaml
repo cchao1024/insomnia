@@ -24,7 +24,7 @@ services:
       - ./webserver:/webserver
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf            #映射nginx的配置文件到容器里
       - ./nginx/logs/:/var/log/nginx/
-      - ./nginx/data/:/var/share/nginx/html/                     #映射nginx的网页目录到容器里
+      - ./nginx/data/:/usr/share/nginx/html/                     #映射nginx的网页目录到容器里
     links:
       - tomcat                                               #连接 tomcat镜像
   tomcat:

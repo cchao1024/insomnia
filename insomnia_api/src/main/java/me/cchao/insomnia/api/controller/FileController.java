@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 
 import me.cchao.insomnia.api.bean.resp.global.FileUpload;
-import me.cchao.insomnia.api.business.FileServiceManager;
 import me.cchao.insomnia.api.config.GlobalConfig;
 import me.cchao.insomnia.api.util.FileUtil;
 import me.cchao.insomnia.api.util.Logs;
@@ -62,7 +61,7 @@ public class FileController {
         Logs.println("保存文件到 " + tempFile.getAbsolutePath());
         uploadingFile.transferTo(tempFile);
         // 传到文件服务器
-        FileServiceManager.uploadFile(relativePath, tempFile);
+//        FileServiceManager.uploadFile(relativePath, tempFile);
         // 返回值
         FileUpload fileUpload = new FileUpload();
         fileUpload.setAbsoluteUrl(joinRemotePath(relativePath))
