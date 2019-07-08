@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import me.cchao.insomnia.api.business.MQueueHandler;
-import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.api.bean.resp.RespBean;
 
 /**
  * 测试 控制器

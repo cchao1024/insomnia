@@ -18,6 +18,9 @@ spring:
     settings:
       number_format: '0.##'   #数字格式化，无千分符
 
+  messages:
+    basename: i18n/message
+
   jackson:
     default-property-inclusion: non_null
   servlet:

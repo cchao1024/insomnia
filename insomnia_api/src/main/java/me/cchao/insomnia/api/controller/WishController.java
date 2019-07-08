@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.resp.wish.WishItem;
 import me.cchao.insomnia.api.service.WishService;
-import me.cchao.insomnia.common.RespBean;
-import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.api.bean.resp.RespBean;
+import me.cchao.insomnia.api.bean.resp.RespListBean;
 
 @RestController
 @RequestMapping(value = "/wish")
@@ -32,8 +32,7 @@ public class WishController {
     @RequestMapping(value = "/add")
     @RequiresAuthentication
     public RespBean addWish(@RequestParam("id") long id) {
-        mWishService.addWish(id);
-        return RespBean.suc();
+        return mWishService.addWish(id);
     }
 
     @RequestMapping(value = "/remove")

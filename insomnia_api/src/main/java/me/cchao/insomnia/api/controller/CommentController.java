@@ -1,7 +1,7 @@
 package me.cchao.insomnia.api.controller;
 
 import me.cchao.insomnia.api.bean.req.post.CommentDTO;
-import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.api.bean.resp.RespBean;
 import me.cchao.insomnia.api.service.CommentService;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;

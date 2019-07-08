@@ -22,7 +22,7 @@ import me.cchao.insomnia.api.bean.resp.user.UpdateUser;
 import me.cchao.insomnia.api.business.MQueueHandler;
 import me.cchao.insomnia.api.security.JWTUtil;
 import me.cchao.insomnia.api.service.UserService;
-import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.api.bean.resp.RespBean;
 import me.cchao.insomnia.common.constant.Constant;
 
 /**

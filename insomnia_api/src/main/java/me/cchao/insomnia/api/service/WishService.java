@@ -15,8 +15,10 @@ import me.cchao.insomnia.api.config.GlobalConfig;
 import me.cchao.insomnia.api.domain.Wish;
 import me.cchao.insomnia.api.repository.WishRepository;
 import me.cchao.insomnia.api.security.SecurityHelper;
-import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.api.bean.resp.RespBean;
+import me.cchao.insomnia.api.bean.resp.RespListBean;
 import me.cchao.insomnia.common.constant.Constant;
+import me.cchao.insomnia.api.bean.resp.Results;
 
 /**
  * @author : cchao
@@ -30,11 +32,18 @@ public class WishService {
     @Autowired
     FallService mFallService;
 
-    public void addWish(Long id) {
-        Wish wish = new Wish();
+    public RespBean addWish(Long id) {
+        // 看看是否已经存在收藏
+        Wish wish = mWishRepository.findByUserIdAndWishId(SecurityHelper.getUserId(), id);
+
+        if (wish != null) {
+            return RespBean.fail(Results.WISH_EXIST);
+        }
+        wish = new Wish();
         wish.setWishId(id);
         wish.setUserId(SecurityHelper.getUserId());
         mWishRepository.save(wish);
+        return RespBean.suc(Results.WISH_SUC);
     }
 
     public void remove(Long id) {

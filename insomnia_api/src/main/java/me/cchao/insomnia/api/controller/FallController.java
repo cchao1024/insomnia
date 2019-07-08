@@ -9,8 +9,8 @@ import javax.validation.Valid;
 
 import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.resp.fall.FallIndex;
-import me.cchao.insomnia.common.RespBean;
-import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.api.bean.resp.RespBean;
+import me.cchao.insomnia.api.bean.resp.RespListBean;
 import me.cchao.insomnia.api.domain.FallImage;
 import me.cchao.insomnia.api.domain.FallMusic;
 import me.cchao.insomnia.api.service.FallService;

@@ -2,7 +2,6 @@ package me.cchao.insomnia.api.config;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -19,15 +18,7 @@ import me.cchao.insomnia.common.constant.Constant;
 @ConfigurationProperties(prefix = "project")
 @Component
 public class GlobalConfig {
-
-    /**
-     * 文件上传的保存路径
-     */
-    public String uploadDirPath = "/www/file/upload/";
-    @Value("${sourceServerPath}")
-    public static final String sourceServerPath = "http://127.0.0.1:80/";
-    @Value("${defaultAvatarPath}")
-    public static final String defaultAvatarPath = sourceServerPath + "common/default/avatar.png";
+    public static final String sourceServerPath = "http://47.240.35.14:80/";
     public static final String defaultAvatar = "common/default/avatar.png";
     public static String mUserHome = System.getProperty("user.home");
 
@@ -49,7 +40,7 @@ public class GlobalConfig {
     }
 
     public static File getTempSaveFile(String uploadDirPath, String fileName) {
-        String dir = mUserHome +"Docker/resources" + uploadDirPath;
+        String dir = mUserHome + "Docker/resources" + uploadDirPath;
         if (!new File(dir).exists()) {
             new File(dir).mkdirs();
         }

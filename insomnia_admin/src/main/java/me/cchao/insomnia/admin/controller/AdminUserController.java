@@ -2,24 +2,18 @@ package me.cchao.insomnia.admin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
-import javax.validation.Valid;
-
 import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.controller.FileController;
-import me.cchao.insomnia.api.domain.FallImage;
 import me.cchao.insomnia.api.domain.User;
 import me.cchao.insomnia.api.service.UserService;
-import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.api.bean.resp.RespListBean;
 
 /**
  * @author cchao

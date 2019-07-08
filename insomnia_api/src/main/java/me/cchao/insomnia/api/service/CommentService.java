@@ -18,9 +18,9 @@ import me.cchao.insomnia.api.domain.User;
 import me.cchao.insomnia.api.exception.CommonException;
 import me.cchao.insomnia.api.repository.CommentRepository;
 import me.cchao.insomnia.api.security.SecurityHelper;
-import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.api.bean.resp.RespBean;
 import me.cchao.insomnia.common.constant.Constant;
-import me.cchao.insomnia.common.constant.Results;
+import me.cchao.insomnia.api.bean.resp.Results;
 
 /**
  * @author : cchao

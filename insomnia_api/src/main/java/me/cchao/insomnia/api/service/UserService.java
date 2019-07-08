@@ -24,8 +24,8 @@ import me.cchao.insomnia.api.exception.SystemErrorMessage;
 import me.cchao.insomnia.api.repository.UserRepository;
 import me.cchao.insomnia.api.security.JWTUtil;
 import me.cchao.insomnia.api.util.Printer;
-import me.cchao.insomnia.common.RespListBean;
-import me.cchao.insomnia.common.constant.Results;
+import me.cchao.insomnia.api.bean.resp.RespListBean;
+import me.cchao.insomnia.api.bean.resp.Results;
 
 /**
  * @author : cchao

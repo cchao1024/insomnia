@@ -12,11 +12,8 @@ import java.util.Map;
 import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.resp.post.PostListVO;
 import me.cchao.insomnia.api.controller.FileController;
-import me.cchao.insomnia.api.domain.Post;
-import me.cchao.insomnia.api.domain.User;
 import me.cchao.insomnia.api.service.PostService;
-import me.cchao.insomnia.api.service.UserService;
-import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.api.bean.resp.RespListBean;
 
 /**
  * @author cchao

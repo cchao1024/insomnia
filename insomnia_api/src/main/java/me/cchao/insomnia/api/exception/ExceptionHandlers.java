@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.stream.Collectors;
 
 import lombok.extern.slf4j.Slf4j;
-import me.cchao.insomnia.common.RespBean;
-import me.cchao.insomnia.common.constant.Results;
+import me.cchao.insomnia.api.bean.resp.RespBean;
+import me.cchao.insomnia.api.bean.resp.Results;
 
 /**
  * @author : cchao

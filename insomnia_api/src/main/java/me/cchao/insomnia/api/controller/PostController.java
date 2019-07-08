@@ -13,8 +13,8 @@ import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.req.post.PostDTO;
 import me.cchao.insomnia.api.bean.resp.post.PostListVO;
 import me.cchao.insomnia.api.bean.resp.post.PostVO;
-import me.cchao.insomnia.common.RespBean;
-import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.api.bean.resp.RespBean;
+import me.cchao.insomnia.api.bean.resp.RespListBean;
 import me.cchao.insomnia.api.service.PostService;
 
 /**

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import me.cchao.insomnia.api.bean.resp.app.AppLaunch;
 import me.cchao.insomnia.api.bean.resp.user.UpdateUser;
-import me.cchao.insomnia.common.RespBean;
+import me.cchao.insomnia.api.bean.resp.RespBean;
 import me.cchao.insomnia.common.constant.Constant;
 import me.cchao.insomnia.api.security.JWTUtil;
 import me.cchao.insomnia.api.service.AppService;

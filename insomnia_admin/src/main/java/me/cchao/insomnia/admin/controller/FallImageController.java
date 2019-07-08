@@ -18,7 +18,7 @@ import me.cchao.insomnia.api.controller.FileController;
 import me.cchao.insomnia.api.domain.FallImage;
 import me.cchao.insomnia.api.service.FallService;
 import me.cchao.insomnia.api.util.Printer;
-import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.api.bean.resp.RespListBean;
 
 /**
  * @author cchao

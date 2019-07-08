@@ -1,6 +1,5 @@
-package me.cchao.insomnia.common;
+package me.cchao.insomnia.api.bean.resp;
 
-import me.cchao.insomnia.common.constant.Results;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -13,6 +12,10 @@ public class RespBean<T> {
 
     public static RespBean suc() {
         return new RespBean<>(Results.SUC);
+    }
+
+    public static RespBean suc(String msg) {
+        return new RespBean<>(Results.SUC).setMsg(msg);
     }
 
     public static <T> RespBean<T> suc(T data) {

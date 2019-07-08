@@ -1,10 +1,9 @@
-package me.cchao.insomnia.common;
+package me.cchao.insomnia.api.bean.resp;
 
 import org.springframework.data.domain.Page;
 
 import java.util.List;
 
-import me.cchao.insomnia.common.constant.Results;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

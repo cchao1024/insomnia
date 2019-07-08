@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.business.ImagePathConvert;
-import me.cchao.insomnia.common.RespListBean;
+import me.cchao.insomnia.api.bean.resp.RespListBean;
 import me.cchao.insomnia.api.repository.FallImageRepository;
 import me.cchao.insomnia.api.repository.FallMusicRepository;
 import lombok.extern.slf4j.Slf4j;

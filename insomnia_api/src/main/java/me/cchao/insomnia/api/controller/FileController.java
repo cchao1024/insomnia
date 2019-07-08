@@ -13,8 +13,8 @@ import me.cchao.insomnia.api.bean.resp.global.FileUpload;
 import me.cchao.insomnia.api.config.GlobalConfig;
 import me.cchao.insomnia.api.util.FileUtil;
 import me.cchao.insomnia.api.util.Logs;
-import me.cchao.insomnia.common.RespBean;
-import me.cchao.insomnia.common.constant.Results;
+import me.cchao.insomnia.api.bean.resp.RespBean;
+import me.cchao.insomnia.api.bean.resp.Results;
 
 import static me.cchao.insomnia.api.business.ImagePathConvert.joinRemotePath;
 
