@@ -10,12 +10,29 @@ public class RespBean<T> {
     String msg;
     T data;
 
+
+    public static RespBean of(int code, String msg) {
+        return new RespBean(code, msg);
+    }
+
+    public static <T> RespBean<T> of(int code, String msg, T data) {
+        return new RespBean<T>(code, msg).setData(data);
+    }
+
+    public static <T> RespBean<T> of(Results results, T data) {
+        return RespBean.of(results.getCode(), results.getMessage(), data);
+    }
+
     public static RespBean suc() {
         return new RespBean<>(Results.SUC);
     }
 
     public static RespBean suc(String msg) {
         return new RespBean<>(Results.SUC).setMsg(msg);
+    }
+
+    public static RespBean suc(Results results) {
+        return new RespBean(results.getCode(), results.getMessage());
     }
 
     public static <T> RespBean<T> suc(T data) {
@@ -28,10 +45,6 @@ public class RespBean<T> {
 
     public static RespBean fail(Results results) {
         return new RespBean(results.getCode(), results.getMessage());
-    }
-
-    public static RespBean of(int code, String msg) {
-        return new RespBean(code, msg);
     }
 
     public RespBean(int code, String msg) {
