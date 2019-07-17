@@ -52,6 +52,6 @@ spring:
 
 project:
   uploadDirPath: /www/file/upload
-  sourceServerPath: https://me.cchao.insomnia-1254010092.cos.ap-hongkong.myqcloud.com/
+  sourceServerPath: https://127.0.0.1/
   defaultAvatarPath: common/default/avatar.png
 

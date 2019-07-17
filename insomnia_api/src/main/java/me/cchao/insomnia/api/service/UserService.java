@@ -16,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import me.cchao.insomnia.api.bean.req.PageDTO;
 import me.cchao.insomnia.api.bean.req.user.EditUserDTO;
 import me.cchao.insomnia.api.bean.req.user.UserLoginDTO;
+import me.cchao.insomnia.api.bean.resp.RespListBean;
+import me.cchao.insomnia.api.bean.resp.Results;
 import me.cchao.insomnia.api.bean.resp.user.UpdateUser;
 import me.cchao.insomnia.api.business.ImagePathConvert;
 import me.cchao.insomnia.api.domain.User;
@@ -23,9 +25,8 @@ import me.cchao.insomnia.api.exception.CommonException;
 import me.cchao.insomnia.api.exception.SystemErrorMessage;
 import me.cchao.insomnia.api.repository.UserRepository;
 import me.cchao.insomnia.api.security.JWTUtil;
+import me.cchao.insomnia.api.util.I18nHelper;
 import me.cchao.insomnia.api.util.Printer;
-import me.cchao.insomnia.api.bean.resp.RespListBean;
-import me.cchao.insomnia.api.bean.resp.Results;
 
 /**
  * @author : cchao
@@ -116,12 +117,13 @@ public class UserService {
         User user = new User()
                 .setVisitor(1)
                 .setEmail(defEmail)
-                .setNickName("游客" + nameLabel)
+                .setNickName(I18nHelper.getMessage("USER.VISITOR") + nameLabel)
                 .setPassword(defPwd);
 
         // 写入库
         user = mUserRepository.save(user);
         String token = JWTUtil.createToken(defEmail, user.getId(), defPwd);
+        Printer.print("生成 token " + token);
         return wrapUpdateUser(user, token);
     }
 
