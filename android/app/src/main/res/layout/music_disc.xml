@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/dp_0"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingEnd="@dimen/common_margin"
+        android:paddingBottom="@dimen/common_margin">
+
+        <ImageView
+            android:id="@+id/disk"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/music_disk_bg"
+            android:elevation="@dimen/dp_4"
+            android:onClick="@{click::onClick}"
+            android:padding="@dimen/dp_14"
+            app:srcCompat="@drawable/ic_disk"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/controller_field"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:layout_toStartOf="@id/disk"
+            android:background="@color/colorAction"
+            android:visibility="gone"
+            app:cardCornerRadius="@dimen/dp_10"
+            app:cardElevation="@dimen/dp_3"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:background="@color/colorAction"
+                android:divider="@drawable/music_disk_divider"
+                android:gravity="center_vertical"
+                android:showDividers="middle|end|beginning">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/play_list"
+                    style="@style/MusicController"
+                    android:onClick="@{click::onClick}"
+                    android:padding="@dimen/dp_6"
+                    app:srcCompat="@drawable/ic_play_list"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/play_pre"
+                    style="@style/MusicController"
+                    android:onClick="@{click::onClick}"
+                    app:tint="@color/white"
+                    app:srcCompat="@drawable/ic_play_last"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/play_pause"
+                    style="@style/MusicController"
+                    android:onClick="@{click::onClick}"
+                    app:srcCompat="@drawable/music_play"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/play_next"
+                    style="@style/MusicController"
+                    android:onClick="@{click::onClick}"
+                    app:srcCompat="@drawable/ic_play_next"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+</layout>

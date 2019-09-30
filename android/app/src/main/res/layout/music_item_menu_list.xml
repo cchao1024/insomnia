@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="clicker"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:gravity="center_vertical"
+                android:text="@string/music_colon"
+                android:textColor="@color/text_666"
+                android:textSize="@dimen/sp_12"/>
+
+            <TextView
+                android:id="@+id/next_play"
+                style="@style/MusicItemMenuText"
+                android:drawableStart="@drawable/queue_music"
+                android:onClick="@{clicker::onClick}"
+                android:text="@string/add_play_list"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/wish"
+            style="@style/MusicItemMenuText"
+            android:drawableStart="@drawable/like_un"
+            android:onClick="@{clicker::onClick}"
+            android:text="@string/add_wish"/>
+
+        <TextView
+            android:id="@+id/download"
+            style="@style/MusicItemMenuText"
+            android:visibility="gone"
+            android:drawableStart="@drawable/download_cloud"
+            android:onClick="@{clicker::onClick}"
+            android:text="@string/download"/>
+
+        <TextView
+            android:id="@+id/share"
+            style="@style/MusicItemMenuText"
+            android:drawableStart="@drawable/share"
+            android:onClick="@{clicker::onClick}"
+            android:text="@string/share"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</layout>

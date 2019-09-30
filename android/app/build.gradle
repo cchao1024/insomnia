@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.cchao.insomnia"
+        minSdkVersion 19
+        targetSdkVersion 28
+        multiDexEnabled true
+        versionCode 120
+        versionName "1.2.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "4843072e029972be31b49086", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../keystore")
+            storePassword "keystore1024"
+            keyAlias "insomnia"
+            keyPassword "insomnia"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+def support = ':28.0.0'
+def retrofit = ':2.2.0'
+dependencies {
+
+//    implementation 'com.github.cchao:simpleLib:1.0.2'
+    implementation project(':simplelib')
+
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:multidex:1.0.3'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7' + support
+    implementation 'com.android.support:design' + support
+    implementation 'com.android.support:cardview-v7' + support
+    implementation 'com.android.support:palette-v7' + support
+
+    implementation 'com.google.android:flexbox:1.0.0'
+
+    //okHttp
+    implementation 'com.squareup.okio:okio:1.14.0'
+    implementation('com.github.bumptech.glide:okhttp3-integration:4.5.0') {
+        transitive = false
+    }
+
+    // rx
+    implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.9.1@aar'
+    // network
+    implementation 'com.squareup.retrofit2:retrofit' + retrofit
+    implementation 'com.squareup.retrofit2:converter-gson' + retrofit
+    implementation 'com.squareup.retrofit2:adapter-rxjava2' + retrofit
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    // RecyclerViewAdapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+
+    implementation 'com.lzx:MusicLibrary:1.3.9'
+
+    implementation 'com.yinglan.shadowimageview:shadowimageview:1.0.4'
+
+    implementation 'com.github.chrisbanes:PhotoView:2.1.4'
+
+    implementation 'com.yuyh.imgsel:library:2.0.6'
+
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    // cache media player
+    implementation 'com.danikula:videocache:2.7.1'
+
+    compileOnly 'javax.annotation:javax.annotation-api:1.3.2'
+    compileOnly "org.projectlombok:lombok:1.18.6"
+    annotationProcessor "org.projectlombok:lombok:1.18.6"
+
+    implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
+    // jpush
+    implementation 'cn.jiguang.sdk:jpush:3.3.2'
+    implementation 'cn.jiguang.sdk:jcore:2.0.1'
+
+}

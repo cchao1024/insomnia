@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="clicker"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="@string/say_something"
+            android:minLines="5"
+            android:padding="@dimen/common_margin"/>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/picture_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16"
+            app:flexWrap="wrap">
+
+            <ImageView
+                android:id="@+id/add"
+                android:layout_width="@dimen/width_upload_image"
+                android:layout_height="@dimen/width_upload_image"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@color/white_eeeeee"
+                android:onClick="@{clicker::onClick}"
+                app:srcCompat="@drawable/picture_add"/>
+
+        </com.google.android.flexbox.FlexboxLayout>
+    </LinearLayout>
+</layout>

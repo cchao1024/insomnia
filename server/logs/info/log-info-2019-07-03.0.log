@@ -1,0 +1,3 @@
+2019-07-03 14:31:47.940 [Thread-54] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-07-03 14:31:48.325 [Thread-54] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-07-03 14:31:48.395 [Thread-54] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-2} closed

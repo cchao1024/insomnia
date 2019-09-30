@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:paddingEnd="30dp"
+              android:paddingStart="30dp">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/log_in_email_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/log_in_email_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_address"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/log_in_password_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/log_in_password_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <com.cchao.simplelib.view.StateTextView
+        android:id="@+id/login_signup_btn"
+        style="@style/ApplyBlack"
+        android:layout_marginTop="28dp"
+        android:text="@string/sign_up"
+        android:textSize="@dimen/sp_16"/>
+
+    <TextView
+        android:id="@+id/forgot_your_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:includeFontPadding="true"
+        android:padding="@dimen/dp_4"
+        android:text="@string/forgot_your_password"
+        android:textSize="13sp"
+        tools:layout_editor_absoluteX="113dp"/>
+</LinearLayout>

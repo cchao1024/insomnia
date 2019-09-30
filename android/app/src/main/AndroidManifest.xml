@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.cchao.insomnia">
+
+    <application
+        android:name=".global.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.main.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".ui.fall.FallImageActivity"/>
+        <activity android:name=".ui.global.ImageShowActivity"/>
+        <activity
+            android:name=".ui.music.MusicPlayerActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".ui.music.MusicListActivity"/>
+        <activity android:name=".ui.fall.FallMusicListActivity"/>
+        <activity android:name=".ui.account.LogInActivity"/>
+        <activity android:name=".ui.post.PostDetailActivity"/>
+        <activity android:name=".ui.post.AddPostActivity"/>
+        <activity android:name=".ui.main.MainActivity"/>
+        <activity android:name=".ui.account.EditUserInfoActivity"/>
+        <activity
+            android:name=".ui.account.UserInfoActivity"
+            android:theme="@style/ThemeTranStatusBar"/>
+        <activity android:name=".ui.play.Play478Activity"/>
+        <activity android:name=".ui.play.CountSheepActivity"/>
+        <activity android:name=".ui.account.WishListActivity"/>
+        <activity android:name=".ui.main.SettingsActivity"/>
+        <activity android:name=".ui.global.FragmentContainerActivity"/>
+
+
+        <!-- Since JCore2.0.0 Required SDK核心功能-->
+        <!-- 可配置android:process参数将Service放在其他进程中；android:enabled属性不能是false -->
+        <!-- 这个是自定义Service，要继承极光JCommonService，可以在更多手机平台上使得推送通道保持的更稳定 -->
+        <service
+            android:name=".manager.JPushService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action"/>
+            </intent-filter>
+        </service>
+
+        <!-- Required since 3.0.7 -->
+        <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->
+        <!-- 3.3.0开始所有事件将通过该类回调 -->
+        <!-- 该广播需要继承 JPush 提供的 JPushMessageReceiver 类, 并如下新增一个 Intent-Filter -->
+        <receiver
+            android:name=".manager.PushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE"/>
+                <category android:name="com.cchao.insomnia"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

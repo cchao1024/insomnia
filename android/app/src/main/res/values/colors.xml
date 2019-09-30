@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">@color/white_eeeeee</color>
+    <color name="colorAccent">#128bd6</color>
+    <color name="colorAccentDark">#1077ff</color>
+    <color name="colorAction">#128bd6</color>
+    <color name="user_name_color">#505050</color>
+
+</resources>

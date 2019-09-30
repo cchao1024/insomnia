@@ -1,0 +1,66 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="@style/BaseTheme">
+        <item name="android:textColorSecondary">@color/text_333</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ThemeTranStatusBar" parent="AppTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="ClickableImageView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="MusicController">
+        <item name="android:layout_height">@dimen/dp_26</item>
+        <item name="android:layout_width">@dimen/dp_26</item>
+        <item name="android:clickable">true</item>
+        <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="BottomDialog" parent="@style/AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="MusicItemMenuText">
+        <item name="android:paddingStart">@dimen/dp_16</item>
+        <item name="android:paddingEnd">@dimen/dp_16</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:drawablePadding">@dimen/dp_20</item>
+        <item name="android:layout_height">@dimen/dp_50</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <!--<editor-fold desc="通用的应用操作按钮">-->
+    <style name="ApplyAccent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="normalBackgroundColor">@color/colorAccent</item>
+        <item name="pressedBackgroundColor">@color/colorAccentDark</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingLeft">@dimen/dp_40</item>
+        <item name="android:paddingRight">@dimen/dp_40</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="radius">@dimen/dp_2</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ApplyBlack" parent="ApplyAccent">
+        <item name="normalBackgroundColor">@color/black</item>
+        <item name="pressedBackgroundColor">@color/grey800</item>
+    </style>
+
+    <style name="divider_eee">
+        <item name="android:layout_height">@dimen/dp_half</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/eee_color</item>
+    </style>
+</resources>

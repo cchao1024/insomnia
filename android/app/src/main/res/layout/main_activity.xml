@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        tools:openDrawer="start">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="0dp">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/main_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/actionbarHeight"
+                    android:background="@color/white"
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:elevation="@dimen/dp_0"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+                    app:titleTextColor="@color/text_333"/>
+            </android.support.design.widget.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/white"
+                    android:elevation="@dimen/dp_2"
+                    app:tabIndicatorColor="@color/text_333"
+                    app:tabPaddingEnd="@dimen/dp_20"
+                    app:tabPaddingStart="@dimen/dp_20"
+                    app:tabSelectedTextColor="@color/text_333"
+                    app:tabTextColor="#666666"></android.support.design.widget.TabLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/white"
+            android:fitsSystemWindows="false"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fillViewport="true"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/divider_e5"
+                    android:orientation="vertical">
+
+                    <!-- 登录信息 -->
+                    <RelativeLayout
+                        android:id="@+id/login_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:background="@drawable/user_main_login_bg"
+                        android:onClick="@{click::onClick}"
+                        android:paddingStart="@dimen/dp_16"
+                        android:paddingEnd="@dimen/dp_16">
+
+                        <ImageView
+                            android:id="@+id/icon_portrait"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="@dimen/dp_40"
+                            android:padding="@dimen/dp_2"
+                            app:srcCompat="@drawable/user_login_avatar"/>
+
+                        <LinearLayout
+                            android:id="@+id/user_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/icon_portrait"
+                            android:layout_marginStart="@dimen/dp_12"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:layout_toEndOf="@id/icon_portrait"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/user_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/dp_8"
+                                android:text="@string/log_in"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_18"/>
+
+                            <TextView
+                                android:id="@+id/user_email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_4"
+                                android:text="@string/log_in"
+                                android:textColor="@color/white_eeeeee"
+                                android:textSize="@dimen/sp_12"/>
+
+                            <TextView
+                                android:id="@+id/has_running"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_20"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_10"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <!-- 抽屉menu -->
+                    <LinearLayout
+                        android:id="@+id/home_drawer_linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"></LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>
+</layout>

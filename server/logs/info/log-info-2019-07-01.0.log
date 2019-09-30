@@ -1,0 +1,269 @@
+2019-07-01 09:29:39.588 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - Starting InsomniaApplication on cchao.local with PID 2147 (/Users/cchao/github/coding/insomnia-server/insomnia_admin/target/classes started by cchao in /Users/cchao/github/coding/insomnia-server)
+2019-07-01 09:29:39.598 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - No active profile set, falling back to default profiles: default
+2019-07-01 09:29:39.742 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-07-01 09:29:39.743 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-07-01 09:29:42.233 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-01 09:29:42.234 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-07-01 09:29:42.404 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 160ms. Found 9 repository interfaces.
+2019-07-01 09:29:42.432 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-01 09:29:42.434 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-07-01 09:29:42.504 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.CommentRepository.
+2019-07-01 09:29:42.505 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallBannerRepository.
+2019-07-01 09:29:42.506 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallImageRepository.
+2019-07-01 09:29:42.507 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallMusicRepository.
+2019-07-01 09:29:42.508 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FeedBackRepository.
+2019-07-01 09:29:42.509 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.PostRepository.
+2019-07-01 09:29:42.510 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.ReplyRepository.
+2019-07-01 09:29:42.512 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.UserRepository.
+2019-07-01 09:29:42.515 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.WishRepository.
+2019-07-01 09:29:42.515 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35ms. Found 0 repository interfaces.
+2019-07-01 09:29:43.088 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'shiroConfig' of type [me.cchao.insomnia.api.security.ShiroConfig$$EnhancerBySpringCGLIB$$63c84667] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:29:43.180 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'myRealm' of type [me.cchao.insomnia.api.security.MyRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:29:43.440 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:29:43.460 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$d021af11] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:29:43.491 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:29:43.572 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9b5f0e3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:29:44.311 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-07-01 09:29:44.332 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-07-01 09:29:44.344 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-07-01 09:29:44.345 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-07-01 09:29:44.353 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/cchao/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-07-01 09:29:44.490 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-07-01 09:29:44.490 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4746 ms
+2019-07-01 09:29:45.937 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-07-01 09:29:46.649 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-07-01 09:29:46.742 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-01 09:29:46.874 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.7.Final}
+2019-07-01 09:29:46.876 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-07-01 09:29:47.111 [restartedMain] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-07-01 09:29:47.335 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-07-01 09:29:48.600 [restartedMain] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-07-01 09:29:49.503 [restartedMain] INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - Autowired annotation is not supported on static fields: public static final java.lang.String me.cchao.insomnia.api.config.GlobalConfig.sourceServerPath
+2019-07-01 09:29:49.504 [restartedMain] INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - Autowired annotation is not supported on static fields: public static final java.lang.String me.cchao.insomnia.api.config.GlobalConfig.defaultAvatarPath
+2019-07-01 09:29:50.720 [restartedMain] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-07-01 09:29:50.926 [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-07-01 09:29:51.252 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-01 09:29:51.339 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-07-01 09:29:51.566 [restartedMain] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-07-01 09:29:52.431 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2019-07-01 09:29:52.454 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-07-01 09:29:52.501 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-07-01 09:29:52.537 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2019-07-01 09:29:52.584 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-01 09:29:52.588 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - Started InsomniaApplication in 14.061 seconds (JVM running for 15.488)
+2019-07-01 09:29:53.073 [RMI TCP Connection(9)-192.168.2.1] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2019-07-01 09:29:53.084 [RMI TCP Connection(8)-192.168.2.1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-07-01 09:29:53.085 [RMI TCP Connection(8)-192.168.2.1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-07-01 09:29:53.112 [RMI TCP Connection(8)-192.168.2.1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 26 ms
+2019-07-01 09:29:53.149 [RMI TCP Connection(9)-192.168.2.1] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#18e9d96a:0/SimpleConnection@215197e2 [delegate=amqp://root@127.0.0.1:5672/, localPort= 53974]
+2019-07-01 09:29:53.442 [RMI TCP Connection(9)-192.168.2.1] INFO  io.lettuce.core.EpollProvider - Starting without optional epoll library
+2019-07-01 09:29:53.445 [RMI TCP Connection(9)-192.168.2.1] INFO  io.lettuce.core.KqueueProvider - Starting without optional kqueue library
+2019-07-01 09:30:51.476 [http-nio-8080-exec-1] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_music/list】
+2019-07-01 09:30:51.479 [http-nio-8080-exec-2] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/robots.txt】
+2019-07-01 09:30:51.483 [http-nio-8080-exec-2] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/robots.txt】【404】
+2019-07-01 09:30:51.507 [http-nio-8080-exec-2] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/error】
+2019-07-01 09:30:51.569 [http-nio-8080-exec-2] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/error】【404】
+2019-07-01 09:30:51.584 [http-nio-8080-exec-1] INFO  o.h.hql.internal.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-07-01 09:30:52.031 [http-nio-8080-exec-1] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_music/list】【200】
+2019-07-01 09:30:52.124 [http-nio-8080-exec-3] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/css/nav2.css】
+2019-07-01 09:30:52.126 [http-nio-8080-exec-4] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/css/common.css】
+2019-07-01 09:30:52.127 [http-nio-8080-exec-5] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/js/admin.js】
+2019-07-01 09:30:52.138 [http-nio-8080-exec-5] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/js/admin.js】【200】
+2019-07-01 09:30:52.138 [http-nio-8080-exec-3] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/css/nav2.css】【200】
+2019-07-01 09:30:52.139 [http-nio-8080-exec-4] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/css/common.css】【200】
+2019-07-01 09:32:54.620 [http-nio-8080-exec-9] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/user/list】
+2019-07-01 09:32:54.715 [http-nio-8080-exec-9] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/user/list】【200】
+2019-07-01 09:32:57.135 [http-nio-8080-exec-10] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/post/list】
+2019-07-01 09:32:57.204 [http-nio-8080-exec-10] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/post/list】【200】
+2019-07-01 09:33:22.545 [http-nio-8080-exec-1] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/post/list】
+2019-07-01 09:33:22.565 [http-nio-8080-exec-1] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/post/list】【200】
+2019-07-01 09:34:44.000 [http-nio-8080-exec-4] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_music/list】
+2019-07-01 09:34:44.028 [http-nio-8080-exec-4] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_music/list】【200】
+2019-07-01 09:54:29.056 [Thread-31] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-07-01 09:54:29.061 [Thread-31] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-07-01 09:54:29.065 [Thread-31] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-07-01 09:54:29.075 [Thread-31] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-07-01 09:54:30.585 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - Starting InsomniaApplication on cchao.local with PID 2147 (/Users/cchao/github/coding/insomnia-server/insomnia_admin/target/classes started by cchao in /Users/cchao/github/coding/insomnia-server)
+2019-07-01 09:54:30.586 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - No active profile set, falling back to default profiles: default
+2019-07-01 09:54:31.441 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-01 09:54:31.441 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-07-01 09:54:31.521 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 79ms. Found 9 repository interfaces.
+2019-07-01 09:54:31.526 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-01 09:54:31.526 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-07-01 09:54:31.543 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.CommentRepository.
+2019-07-01 09:54:31.543 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallBannerRepository.
+2019-07-01 09:54:31.544 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallImageRepository.
+2019-07-01 09:54:31.545 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallMusicRepository.
+2019-07-01 09:54:31.546 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FeedBackRepository.
+2019-07-01 09:54:31.546 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.PostRepository.
+2019-07-01 09:54:31.547 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.ReplyRepository.
+2019-07-01 09:54:31.548 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.UserRepository.
+2019-07-01 09:54:31.549 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.WishRepository.
+2019-07-01 09:54:31.549 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23ms. Found 0 repository interfaces.
+2019-07-01 09:54:31.651 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'shiroConfig' of type [me.cchao.insomnia.api.security.ShiroConfig$$EnhancerBySpringCGLIB$$63c84667] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:31.678 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'myRealm' of type [me.cchao.insomnia.api.security.MyRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:31.680 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:31.687 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$d021af11] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:31.701 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:31.733 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9b5f0e3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:32.013 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-07-01 09:54:32.016 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-07-01 09:54:32.017 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-07-01 09:54:32.017 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-07-01 09:54:32.062 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-07-01 09:54:32.062 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1473 ms
+2019-07-01 09:54:32.735 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2019-07-01 09:54:32.746 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2019-07-01 09:54:32.758 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-01 09:54:32.768 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-07-01 09:54:32.782 [restartedMain] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-07-01 09:54:32.795 [restartedMain] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-07-01 09:54:32.796 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2019-07-01 09:54:32.797 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2019-07-01 09:54:32.803 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2019-07-01 09:54:32.816 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-07-01 09:54:37.001 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - Starting InsomniaApplication on cchao.local with PID 2147 (/Users/cchao/github/coding/insomnia-server/insomnia_admin/target/classes started by cchao in /Users/cchao/github/coding/insomnia-server)
+2019-07-01 09:54:37.002 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - No active profile set, falling back to default profiles: default
+2019-07-01 09:54:37.901 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-01 09:54:37.901 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-07-01 09:54:37.971 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 70ms. Found 9 repository interfaces.
+2019-07-01 09:54:37.974 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-01 09:54:37.974 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-07-01 09:54:37.987 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.CommentRepository.
+2019-07-01 09:54:37.988 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallBannerRepository.
+2019-07-01 09:54:37.988 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallImageRepository.
+2019-07-01 09:54:37.989 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallMusicRepository.
+2019-07-01 09:54:37.989 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FeedBackRepository.
+2019-07-01 09:54:37.989 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.PostRepository.
+2019-07-01 09:54:37.990 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.ReplyRepository.
+2019-07-01 09:54:37.990 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.UserRepository.
+2019-07-01 09:54:37.990 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.WishRepository.
+2019-07-01 09:54:37.990 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15ms. Found 0 repository interfaces.
+2019-07-01 09:54:38.066 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'shiroConfig' of type [me.cchao.insomnia.api.security.ShiroConfig$$EnhancerBySpringCGLIB$$63c84667] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:38.085 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'myRealm' of type [me.cchao.insomnia.api.security.MyRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:38.086 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:38.091 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$d021af11] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:38.102 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:38.128 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9b5f0e3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:54:38.349 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-07-01 09:54:38.350 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-07-01 09:54:38.350 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-07-01 09:54:38.351 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-07-01 09:54:38.366 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-07-01 09:54:38.366 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1360 ms
+2019-07-01 09:54:39.206 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2019-07-01 09:54:39.219 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2019-07-01 09:54:39.248 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-01 09:54:39.265 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-07-01 09:54:39.558 [restartedMain] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-07-01 09:54:39.577 [restartedMain] INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - Autowired annotation is not supported on static fields: public static final java.lang.String me.cchao.insomnia.api.config.GlobalConfig.sourceServerPath
+2019-07-01 09:54:39.578 [restartedMain] INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - Autowired annotation is not supported on static fields: public static final java.lang.String me.cchao.insomnia.api.config.GlobalConfig.defaultAvatarPath
+2019-07-01 09:54:41.034 [restartedMain] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-07-01 09:54:41.191 [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-07-01 09:54:41.433 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-01 09:54:41.490 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-07-01 09:54:41.624 [restartedMain] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-07-01 09:54:42.090 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2019-07-01 09:54:42.104 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-07-01 09:54:42.119 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-07-01 09:54:42.130 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2019-07-01 09:54:42.133 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-01 09:54:42.134 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - Started InsomniaApplication in 5.197 seconds (JVM running for 1505.065)
+2019-07-01 09:54:42.142 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-07-01 09:56:00.803 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat-1].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-07-01 09:56:00.804 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-07-01 09:56:00.822 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 18 ms
+2019-07-01 09:56:00.830 [http-nio-8080-exec-1] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_music/list】
+2019-07-01 09:56:00.832 [http-nio-8080-exec-1] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_music/list】【404】
+2019-07-01 09:56:00.836 [http-nio-8080-exec-1] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/error】
+2019-07-01 09:56:01.341 [http-nio-8080-exec-1] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/error】【404】
+2019-07-01 09:56:02.908 [Thread-47] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-07-01 09:56:02.914 [Thread-47] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-07-01 09:56:02.916 [Thread-47] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2019-07-01 09:56:02.922 [Thread-47] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2019-07-01 09:56:03.623 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - Starting InsomniaApplication on cchao.local with PID 2147 (/Users/cchao/github/coding/insomnia-server/insomnia_admin/target/classes started by cchao in /Users/cchao/github/coding/insomnia-server)
+2019-07-01 09:56:03.623 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - No active profile set, falling back to default profiles: default
+2019-07-01 09:56:04.409 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-01 09:56:04.410 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-07-01 09:56:04.493 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 83ms. Found 9 repository interfaces.
+2019-07-01 09:56:04.497 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-01 09:56:04.497 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-07-01 09:56:04.511 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.CommentRepository.
+2019-07-01 09:56:04.512 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallBannerRepository.
+2019-07-01 09:56:04.512 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallImageRepository.
+2019-07-01 09:56:04.512 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FallMusicRepository.
+2019-07-01 09:56:04.513 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.FeedBackRepository.
+2019-07-01 09:56:04.514 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.PostRepository.
+2019-07-01 09:56:04.515 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.ReplyRepository.
+2019-07-01 09:56:04.515 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.UserRepository.
+2019-07-01 09:56:04.516 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface me.cchao.insomnia.api.repository.WishRepository.
+2019-07-01 09:56:04.516 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2019-07-01 09:56:04.668 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'shiroConfig' of type [me.cchao.insomnia.api.security.ShiroConfig$$EnhancerBySpringCGLIB$$63c84667] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:56:04.694 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'myRealm' of type [me.cchao.insomnia.api.security.MyRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:56:04.696 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:56:04.705 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$d021af11] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:56:04.720 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:56:04.748 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9b5f0e3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-01 09:56:04.984 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-07-01 09:56:04.986 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-07-01 09:56:04.987 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-07-01 09:56:04.987 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-07-01 09:56:05.004 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-07-01 09:56:05.004 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1378 ms
+2019-07-01 09:56:05.698 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2019-07-01 09:56:05.710 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2019-07-01 09:56:05.729 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-01 09:56:05.739 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-07-01 09:56:05.901 [restartedMain] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-07-01 09:56:06.153 [restartedMain] INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - Autowired annotation is not supported on static fields: public static final java.lang.String me.cchao.insomnia.api.config.GlobalConfig.sourceServerPath
+2019-07-01 09:56:06.153 [restartedMain] INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - Autowired annotation is not supported on static fields: public static final java.lang.String me.cchao.insomnia.api.config.GlobalConfig.defaultAvatarPath
+2019-07-01 09:56:06.797 [restartedMain] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-07-01 09:56:06.930 [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-07-01 09:56:07.115 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-01 09:56:07.155 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-07-01 09:56:07.285 [restartedMain] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-07-01 09:56:07.653 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2019-07-01 09:56:07.654 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-07-01 09:56:07.663 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-07-01 09:56:07.673 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2019-07-01 09:56:07.676 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-01 09:56:07.676 [restartedMain] INFO  me.cchao.insomnia.InsomniaApplication - Started InsomniaApplication in 4.247 seconds (JVM running for 1590.608)
+2019-07-01 09:56:07.682 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-07-01 09:57:20.202 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat-1].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-07-01 09:57:20.203 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-07-01 09:57:20.220 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 17 ms
+2019-07-01 09:57:21.373 [http-nio-8080-exec-2] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_image/list】
+2019-07-01 09:57:21.388 [http-nio-8080-exec-2] INFO  o.h.hql.internal.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-07-01 09:57:21.453 [http-nio-8080-exec-2] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_image/list】【200】
+2019-07-01 09:57:22.691 [http-nio-8080-exec-3] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_music/list】
+2019-07-01 09:57:22.739 [http-nio-8080-exec-3] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_music/list】【200】
+2019-07-01 09:57:24.594 [http-nio-8080-exec-4] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/user/list】
+2019-07-01 09:57:24.646 [http-nio-8080-exec-4] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/user/list】【200】
+2019-07-01 09:57:25.767 [http-nio-8080-exec-5] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/post/list】
+2019-07-01 09:57:25.855 [http-nio-8080-exec-5] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/post/list】【200】
+2019-07-01 09:57:27.404 [http-nio-8080-exec-6] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/user/list】
+2019-07-01 09:57:27.428 [http-nio-8080-exec-6] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/user/list】【200】
+2019-07-01 09:57:28.194 [http-nio-8080-exec-7] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_music/list】
+2019-07-01 09:57:28.217 [http-nio-8080-exec-7] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_music/list】【200】
+2019-07-01 09:57:29.118 [http-nio-8080-exec-8] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_image/list】
+2019-07-01 09:57:29.138 [http-nio-8080-exec-8] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_image/list】【200】
+2019-07-01 09:57:30.288 [http-nio-8080-exec-10] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_music/list】
+2019-07-01 09:57:30.310 [http-nio-8080-exec-10] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_music/list】【200】
+2019-07-01 09:58:02.997 [http-nio-8080-exec-2] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_music/list】
+2019-07-01 09:58:03.028 [http-nio-8080-exec-2] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_music/list】【200】
+2019-07-01 09:58:08.371 [http-nio-8080-exec-3] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_music/list】
+2019-07-01 09:58:08.398 [http-nio-8080-exec-3] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_music/list】【200】
+2019-07-01 10:02:10.681 [http-nio-8080-exec-6] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_music/list】
+2019-07-01 10:02:10.738 [http-nio-8080-exec-6] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_music/list】【200】
+2019-07-01 10:03:00.666 [http-nio-8080-exec-8] INFO  me.cchao.insomnia.api.config.WebConfig - 【收到请求】【/admin/fall_image/list】
+2019-07-01 10:03:00.691 [http-nio-8080-exec-8] INFO  me.cchao.insomnia.api.config.WebConfig - 【完成请求】【/admin/fall_image/list】【200】

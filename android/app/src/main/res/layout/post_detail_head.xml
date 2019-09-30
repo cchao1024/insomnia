@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.cchao.insomnia.model.javabean.post.PostVO"/>
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_16"
+            android:paddingEnd="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_2">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="@dimen/dp_50"
+                circleUrl="@{item.postUserAvatar}"
+                android:layout_height="@dimen/dp_50"/>
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_toEndOf="@+id/avatar"
+                android:text="@{`@`+item.postUserName}"
+                android:textSize="@dimen/sp_16"
+                tools:text="@string/app_name"/>
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_name"
+                android:layout_alignStart="@+id/user_name"
+                android:layout_marginTop="@dimen/dp_8"
+                android:textColor="@color/text_999"
+                android:textSize="@dimen/sp_12"
+                tools:text="@string/app_name"/>
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/avatar"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@{item.content}"
+                android:textSize="@dimen/sp_20"
+                tools:text="@string/app_name"/>
+
+            <com.cchao.simplelib.view.DrawableCenterTextView
+                android:id="@+id/like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dp_8"
+                android:drawableTop="@drawable/post_like_disable"
+                android:gravity="center_vertical"
+                android:text="@{String.valueOf(item.likeCount)}"
+                android:onClick="@{click::onClick}"
+                android:textSize="@dimen/sp_12"
+                tools:text="@string/app_name"/>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flex_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/content"
+                android:layout_marginTop="@dimen/dp_10"
+                app:flexWrap="wrap">
+
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"/>
+
+                <ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"/>
+
+                <ImageView
+                    android:id="@+id/img3"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"/>
+
+                <ImageView
+                    android:id="@+id/img4"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"/>
+
+                <ImageView
+                    android:id="@+id/img5"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"/>
+
+            </com.google.android.flexbox.FlexboxLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:background="@color/white_eeeeee"/>
+    </LinearLayout>
+
+</layout>

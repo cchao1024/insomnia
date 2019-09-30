@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WishView">
+        <attr name="wish_direction" format="integer">
+            <enum name="left" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="right" value="3"/>
+            <enum name="bottom" value="4"/>
+        </attr>
+        <attr name="wish_toggle" format="boolean"/>
+        <attr name="wish_num" format="integer"/>
+    </declare-styleable>
+</resources>

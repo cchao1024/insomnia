@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dp_120">120dp</dimen>
+    <dimen name="actionbarHeight">50dp</dimen>
+    <dimen name="width_upload_image">90dp</dimen>
+    <dimen name="sp_10">10sp</dimen>
+</resources>

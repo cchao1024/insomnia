@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="186dp"
+                android:layout_height="186dp"
+                android:layout_marginTop="50dp">
+
+                <com.cchao.insomnia.view.CircularProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:progressDrawable="@drawable/ball_progress_bar"
+                    android:visibility="gone"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ball"
+                    android:layout_width="@dimen/dp_120"
+                    android:layout_height="@dimen/dp_120"
+                    android:layout_centerInParent="true"
+                    android:src="@color/green600"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/step_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginStart="@dimen/common_margin"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginEnd="@dimen/common_margin"
+                android:text="@string/start_play_478"
+                android:textColor="@color/text_666"
+                android:textSize="@dimen/sp_18"/>
+
+            <Button
+                android:id="@+id/action_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_50"
+                android:onClick="@{click::onClick}"
+                android:text="@string/start"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>

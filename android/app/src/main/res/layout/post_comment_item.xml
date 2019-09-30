@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.cchao.insomnia.ui.post.convert.CommentConvert"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_2">
+
+
+        <ImageView
+            android:id="@+id/from_user_avatar"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginStart="@dimen/dp_16"
+            bind:circleUrl="@{item.fromUserAvatar}"/>
+
+        <TextView
+            android:id="@+id/from_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_toEndOf="@+id/from_user_avatar"
+            android:textColor="@color/user_name_color"
+            android:text="@{`@`+item.fromUserName}"
+            tools:text="@string/app_name"/>
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/from_user_name"
+            android:layout_alignStart="@+id/from_user_name"
+            android:layout_marginEnd="@dimen/dp_50"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@{item.content}"
+            tools:text="@string/app_name"/>
+
+        <TextView
+            android:id="@+id/date"
+            timeText="@{item.updateTime}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/content"
+            android:layout_alignStart="@+id/from_user_name"
+            android:layout_marginTop="@dimen/dp_4"
+            android:textColor="@color/text_999"
+            android:textSize="@dimen/sp_11"
+            tools:text="@string/app_name"/>
+
+        <TextView
+            android:id="@+id/reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_toEndOf="@id/date"
+            android:paddingStart="@dimen/dp_14"
+            android:paddingTop="@dimen/dp_4"
+            android:paddingEnd="@dimen/dp_14"
+            android:paddingBottom="@dimen/dp_4"
+            android:text="@string/reply"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/sp_12"/>
+
+        <com.cchao.insomnia.view.wish.WishView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                               android:id="@+id/like"
+                                               android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:layout_alignParentEnd="true"
+                                               android:layout_marginTop="@dimen/dp_6"
+                                               app:wish_num="@{item.likeCount}"
+                                               app:wish_toggle="@{item.MSourceBean.liked}"
+                                               app:wish_direction="top"/>
+    </RelativeLayout>
+</layout>

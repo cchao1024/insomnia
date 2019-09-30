@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+
+    <string name="lang_ZH">中文简体</string>
+    <string name="lang_ZH_TW">中文繁體</string>
+    <string name="lang_EN">English</string>
+    <string name="lang_FR">Français</string>
+    <string name="lang_ES">Español</string>
+    <string name="lang_DE">Deutsch</string>
+    <string name="lang_IT">Italiano</string>
+    <string name="lang_RU">Pусский</string>
+
+    <!--lang lang_abbr-->
+    <string name="lang_abbr_ZH">zh_CN</string>
+    <string name="lang_abbr_ZH_TW">zh_TW</string>
+    <string name="lang_abbr_EN">en_GB</string>
+    <string name="lang_abbr_FR">fr_FR</string>
+    <string name="lang_abbr_ES">es_ES</string>
+    <string name="lang_abbr_DE">de_DE</string>
+    <string name="lang_abbr_IT">it_IT</string>
+    <string name="lang_abbr_RU">ru_RU</string>
+
+</resources>

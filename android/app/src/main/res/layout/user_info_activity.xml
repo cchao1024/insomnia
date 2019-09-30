@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.cchao.insomnia.model.javabean.user.UserBean"/>
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/title_background"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/user_main_login_bg"
+            android:onClick="@{click::onClick}"/>
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/title_back"
+            android:padding="@dimen/dp_16"
+            android:onClick="@{click::onClick}"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_80"
+            android:layout_marginStart="@dimen/dp_20"
+            android:onClick="@{click::onClick}"
+            android:layout_marginTop="160dp"
+            app:srcCompat="@drawable/default_portrait"/>
+
+        <com.cchao.simplelib.view.StateTextView
+            android:id="@+id/edit_user_info"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_32"
+            android:layout_alignBottom="@id/avatar"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dp_32"
+            android:layout_marginBottom="@dimen/dp_22"
+            android:onClick="@{click::onClick}"
+            android:paddingStart="@dimen/dp_20"
+            android:paddingEnd="@dimen/dp_20"
+            android:text="@string/edit_user_info"
+            android:textColor="@color/white"
+            app:normalBackgroundColor="@color/colorAction"
+            app:radius="@dimen/dp_16"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avatar"
+            android:layout_alignStart="@+id/avatar"
+            android:layout_marginTop="@dimen/dp_14"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font_family_medium"
+                android:text="@{bean.nickName}"
+                android:textSize="27sp"/>
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font_family_medium"
+                android:text="@{bean.email}"
+                android:layout_marginTop="@dimen/dp_2"
+                android:textColor="@color/text_666"/>
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:text="@{bean.age+` 岁`}"
+                android:textColor="@color/text_666"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/get_like"
+                    android:textColor="@color/text_666"/>
+
+                <TextView
+                    android:id="@+id/get_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:fontFamily="@string/font_family_medium"
+                    android:text="@{String.valueOf(bean.getLike)}"
+                    android:textColor="@color/colorAction"
+                    android:textSize="@dimen/sp_18"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
